@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 <main id="main">
 <?php while (have_posts()) : the_post(); ?>
-<?php $has_hero_video = file_exists(get_theme_file_path('assets/managed-it.mp4')); ?>
+<?php $has_hero_video = file_exists(get_theme_file_path('assets/hero-motion.mp4')); ?>
 <section class="home-hero motion-media">
     <div class="hero-photo">
         <?php if ($has_hero_video) : ?>
-        <video muted loop playsinline preload="none" poster="<?php echo esc_url(has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'full') : get_theme_file_uri('assets/managed-it-poster.webp')); ?>" data-src="<?php echo esc_url(get_theme_file_uri('assets/managed-it.mp4')); ?>" aria-label="Illustrative technology infrastructure video"></video>
+        <video muted loop playsinline preload="none" poster="<?php echo esc_url(has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'full') : get_theme_file_uri('assets/hero-motion-poster.webp')); ?>" data-src="<?php echo esc_url(get_theme_file_uri('assets/hero-motion.mp4')); ?>" aria-label="Illustrative technology infrastructure video"></video>
         <?php elseif (has_post_thumbnail()) : the_post_thumbnail('full', ['fetchpriority' => 'high']); else : ?>
         <img src="<?php echo esc_url(get_theme_file_uri('assets/infrastructure.webp')); ?>" width="1536" height="1024" alt="Illustrative technology infrastructure adjoining a modern workplace" fetchpriority="high">
         <?php endif; ?>

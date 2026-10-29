@@ -40,7 +40,16 @@ The export includes a review label, noindex directives, self-hosted assets, and 
 
 The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
 
-Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. Service cards use colour stills from the generated clips. All three original clips remain in the repository for future use.
+Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with visible camera movement, a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. Service cards use colour stills with matching 16:9 crops and equal widths; the final infrastructure card is centred on desktop/tablet. All three original clips remain in the repository for future use.
+
+The revised hero is 1280×720, 24fps, approximately 5.54 seconds and 1.64 MB, with a half-second dissolve across the loop boundary. Rebuild it from a downloaded source with FFmpeg, ffprobe and Python Pillow installed:
+
+```sh
+python3 scripts/prepare-hero-video.py path/to/source.mp4
+python3 scripts/export-preview.py
+```
+
+Higgsfield generation totals **31.5 of the authorized 40 credits**, including the 9-credit hero replacement. No paid retries were made; 8.5 credits remain in the project allowance.
 
 `scripts/refine-v2.php` applies the native-block content refinement once on local installations, retaining each original page in `_tc_content_before_v2`. `local-up.sh` runs it after the initial seed. Subsequent runs preserve CMS edits.
 

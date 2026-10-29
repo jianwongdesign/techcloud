@@ -1,6 +1,6 @@
 {
   "cap": 40,
-  "quoted_total": 22.5,
+  "quoted_total": 31.5,
   "model": "kling3_0_turbo",
   "duration_seconds": 5,
   "resolution": "720p",
@@ -19,8 +19,21 @@
       "index": 3,
       "job_id": "ead6f52e-b1d4-4d08-8d4e-6db7311ca4a3",
       "status": "completed"
+    },
+    {
+      "index": 4,
+      "job_id": "fd51d955-0b86-4775-9f6d-03333a849d60",
+      "status": "completed",
+      "purpose": "Stronger hero camera movement",
+      "model": "kling3_0_turbo",
+      "duration_seconds": 6,
+      "resolution": "720p",
+      "quoted_cost": 9,
+      "charged_cost": 9,
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HOQsp3aI9QdUt9ZM3bz4dnBtay/hf_20261029_150256_fd51d955-0b86-4775-9f6d-03333a849d60.mp4",
+      "website_asset": "theme/techcloud/assets/hero-motion.mp4"
     }
   ],
-  "charged_total": 22.5,
-  "remaining_project_budget": 17.5
+  "charged_total": 31.5,
+  "remaining_project_budget": 8.5
 }
