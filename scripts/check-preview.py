@@ -8,7 +8,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1] / 'preview'
 class Page(HTMLParser):
     def __init__(self):
-        super().__init__(); self.links=[]; self.ids=set(); self.headings=0; self.images=[]
+        super().__init__(); self.links=[]; self.ids=set(); self.headings=0; self.images=[]; self.videos=[]
     def handle_starttag(self, tag, attributes):
         attrs=dict(attributes)
         if tag=='base':
@@ -19,6 +19,7 @@ class Page(HTMLParser):
         for key in ('href','src','poster','data-src'):
             if key in attrs: self.links.append(attrs[key])
         if tag=='img': self.images.append(attrs)
+        if tag=='video': self.videos.append(attrs)
 
 errors=[]; pages={}
 for path in ROOT.rglob('*.html'):
@@ -29,6 +30,10 @@ for path in ROOT.rglob('*.html'):
     if 'noindex,nofollow' not in text or 'Design preview' not in text: errors.append(f'{path}: preview guard missing')
     for img in parser.images:
         if 'alt' not in img: errors.append(f'{path}: missing image alt')
+    expected_videos = 1 if path == ROOT/'index.html' else 0
+    if len(parser.videos) != expected_videos: errors.append(f'{path}: expected {expected_videos} hero videos, found {len(parser.videos)}')
+    for video in parser.videos:
+        if not all(key in video for key in ('muted', 'loop', 'playsinline', 'poster', 'data-src')): errors.append(f'{path}: hero video missing playback attributes or fallback')
 for path, page in pages.items():
     for link in page.links:
         parts=urlsplit(link)

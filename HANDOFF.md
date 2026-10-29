@@ -1,4 +1,4 @@
-# TechCloud — premium monochrome custom-theme preview
+# TechCloud — premium custom-theme preview
 
 Updated 29 October 2026.
 
@@ -18,15 +18,17 @@ Custom WordPress theme only; no Elementor or other page builder. Native blocks e
 
 Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details, banner copy, and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
 
-Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The latest visual direction uses charcoal and warm-white surfaces, self-hosted Manrope with 720–750 heading weights and 500 body weight, a photographic infrastructure hero, detailed service cards, a workplace feature, larger case-study layout, native process blocks, and FAQ disclosures. Photos and videos are displayed in grayscale through CSS; their source assets and the original logo remain unchanged. No additional Higgsfield credits were spent on this refinement.
+Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The latest visual direction uses charcoal and warm-white surfaces, self-hosted Manrope with 720–750 heading weights and 500 body weight, an infrastructure video hero, detailed service cards, a workplace feature, larger case-study layout, native process blocks, and FAQ disclosures. Following user feedback, photos and videos retain their full colours. The charcoal/warm-white layout and stronger typography remain. Source assets and the original logo are unchanged. No additional Higgsfield credits were spent on this refinement.
 
-The richer edition adds three completed Higgsfield Kling 3.0 Turbo videos: managed IT, end-user support and networking. Total charged: **22.5 of the authorized 40 credits**; no paid retries. Website versions are silent 960×540 H.264 loops, approximately ten seconds, under 1 MB combined, with WebP posters. They load only when visible and respect reduced motion/data saver; manual pause persists across scrolling. See `docs/higgsfield-budget.json` and `docs/content-sources.md`.
+The richer edition adds three completed Higgsfield Kling 3.0 Turbo videos: managed IT, end-user support and networking. Total charged: **22.5 of the authorized 40 credits**; no paid retries. Website versions are silent 960×540 H.264 loops, approximately ten seconds, under 1 MB combined, with WebP posters. Only the managed-IT clip plays in the homepage hero; service cards use colour poster stills. The hero loads when its video area is visible and respects reduced motion/data saver; manual pause persists across scrolling. The other two clips remain available in the repository. See `docs/higgsfield-budget.json` and `docs/content-sources.md`.
 
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 One case study is explicitly labelled **illustrative, not a client result**. Replace or remove it before production. Contact uses email and telephone links, not an unconnected submission form.
 
 ## Verification completed
+
+- Current colour-media correction: PHP syntax, motion behavior checks and all 12 exported documents pass. Export checks now enforce exactly one video on the homepage and none on the other pages. Desktop, 820px tablet and 390px mobile hero placement verified in Chrome, along with hero playback, pause/resume and full-colour service stills.
 
 - Type detector returned no findings. Checked text/surface colour pairs exceed 4.5:1; the focus-ring colour against the main surface exceeds 3:1.
 - Monochrome typography reviewed in Chrome at desktop, 820px tablet and 390px mobile, including the long infrastructure service title. Bold headings, 16px section body copy, warmer panels and monochrome media render without observed overlap or clipping.

@@ -16,7 +16,7 @@ if (toggle && nav) {
 // Load motion only near the viewport. User pause and accessibility preferences win.
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const saveData = navigator.connection?.saveData;
-document.querySelectorAll('.service-media').forEach(container => {
+document.querySelectorAll('.motion-media').forEach(container => {
   const video = container.querySelector('video');
   const button = container.querySelector('.motion-control');
   if (!video || !button) return;
@@ -46,7 +46,7 @@ document.querySelectorAll('.service-media').forEach(container => {
   video.addEventListener('play', update);
   video.addEventListener('pause', update);
   video.addEventListener('error', () => { button.hidden = true; });
-  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(container);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(video);
   reducedMotion.addEventListener('change', () => { userStarted = false; sync(); });
   document.addEventListener('visibilitychange', sync);
 });

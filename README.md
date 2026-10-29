@@ -36,11 +36,11 @@ node scripts/check-motion.mjs
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. Contact links open email/phone apps; no enquiry form backend has been introduced.
 
-## Premium monochrome edition
+## Premium visual edition
 
-The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photos and video use a reversible CSS grayscale treatment; the original logo retains its brand colours.
+The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
 
-Service videos are self-hosted, silent MP4 loops with WebP posters. They download only when visible, stop off-screen or in a hidden tab, and provide individual pause/play buttons. Reduced-motion and data-saver preferences show a poster until the visitor explicitly plays a clip. Video filenames are mapped to the three relevant service slugs in `tc_service_list()`; replacing those assets does not change page content.
+Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. Service cards use colour stills from the generated clips. All three original clips remain in the repository for future use.
 
 `scripts/refine-v2.php` applies the native-block content refinement once on local installations, retaining each original page in `_tc_content_before_v2`. `local-up.sh` runs it after the initial seed. Subsequent runs preserve CMS edits.
 

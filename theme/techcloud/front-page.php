@@ -1,9 +1,12 @@
 <?php get_header(); ?>
 <main id="main">
 <?php while (have_posts()) : the_post(); ?>
-<section class="home-hero">
+<?php $has_hero_video = file_exists(get_theme_file_path('assets/managed-it.mp4')); ?>
+<section class="home-hero motion-media">
     <div class="hero-photo">
-        <?php if (has_post_thumbnail()) : the_post_thumbnail('full', ['fetchpriority' => 'high']); else : ?>
+        <?php if ($has_hero_video) : ?>
+        <video muted loop playsinline preload="none" poster="<?php echo esc_url(has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'full') : get_theme_file_uri('assets/managed-it-poster.webp')); ?>" data-src="<?php echo esc_url(get_theme_file_uri('assets/managed-it.mp4')); ?>" aria-label="Illustrative technology infrastructure video"></video>
+        <?php elseif (has_post_thumbnail()) : the_post_thumbnail('full', ['fetchpriority' => 'high']); else : ?>
         <img src="<?php echo esc_url(get_theme_file_uri('assets/infrastructure.webp')); ?>" width="1536" height="1024" alt="Illustrative technology infrastructure adjoining a modern workplace" fetchpriority="high">
         <?php endif; ?>
     </div>
@@ -16,6 +19,9 @@
         </div>
         <div class="hero-caption"><span>People. Systems. Possibilities.</span><p>Technology, with people<br>at its heart.</p></div>
     </div>
+    <?php if ($has_hero_video) : ?>
+    <button class="motion-control hero-motion-control" type="button" hidden aria-label="Play technology infrastructure video">Play video</button>
+    <?php endif; ?>
 </section>
 <div class="wrap">
 <div class="intro-strip"><span>A little less complexity.<br><strong>A lot more peace of mind.</strong></span><span><?php echo tc_icon('server'); ?> Managed IT</span><span><?php echo tc_icon('support'); ?> People-first support</span><span><?php echo tc_icon('network'); ?> Room to grow</span></div>

@@ -16,9 +16,9 @@ function setup({ reduced = false, saveData = false } = {}) {
   const button = { hidden: true, setAttribute() {}, addEventListener: (name, fn) => { buttonHandlers[name] = fn; } };
   const container = { querySelector: name => name === 'video' ? video : button };
   const media = { matches: reduced, addEventListener: (_, fn) => { preferenceChange = fn; } };
-  const document = { hidden: false, querySelector: () => null, querySelectorAll: () => [container], addEventListener: (name, fn) => { documentHandlers[name] = fn; } };
+  const document = { hidden: false, querySelector: () => null, querySelectorAll: selector => selector === '.motion-media' ? [container] : [], addEventListener: (name, fn) => { documentHandlers[name] = fn; } };
   vm.runInNewContext(source, { document, navigator: { connection: { saveData } }, matchMedia: () => media,
-    IntersectionObserver: class { constructor(fn) { intersect = fn; } observe() {} },
+    IntersectionObserver: class { constructor(fn) { intersect = fn; } observe(target) { assert.equal(target, video, 'Observe the actual video so a mobile hero does not start before its media is visible'); } },
   });
   return { video, button, document, enter: () => intersect([{ isIntersecting: true }]), leave: () => intersect([{ isIntersecting: false }]), click: () => buttonHandlers.click(),
     reduce: () => { media.matches = true; preferenceChange(); }, visibility: () => documentHandlers.visibilitychange() };

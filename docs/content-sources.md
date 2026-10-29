@@ -23,4 +23,4 @@ Three Higgsfield Kling 3.0 Turbo clips were requested at 720p, 16:9, five second
 
 Website delivery uses 960×540 H.264 MP4, 24fps, no audio, CRF 27 and fast-start metadata. Each source plays forward then backward to create a ten-second loop without a cut. First-frame WebP posters are compressed at quality 82. Assets are self-hosted; no Higgsfield runtime or third-party video embed is required. The people, locations and equipment shown are illustrative; no identity, partnership or client-result claims are implied.
 
-The premium monochrome refinement displays these images and videos with CSS grayscale filters. Original media files are retained, the TechCloud logo keeps its original colours, and this refinement uses no additional generation credits.
+The premium layout retains the images and videos in their original colours following user feedback. Only the homepage hero plays the managed-IT infrastructure clip; service cards use colour poster stills from the three clips. Original media files are retained, the TechCloud logo keeps its original colours, and this refinement uses no additional generation credits.

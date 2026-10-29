@@ -64,7 +64,7 @@ function tc_service_list($attributes = []) {
         preg_match_all('/<li\b[^>]*>(.*?)<\/li>/s', $service->post_content, $scope);
         echo '<article class="service-row">';
         $clips = ['managed-it-services' => 'managed-it', 'end-user-it-support' => 'support', 'it-installation-infrastructure' => 'network'];
-        if (isset($clips[$service->post_name])) echo tc_video($clips[$service->post_name], $service->post_title);
+        if (isset($clips[$service->post_name])) echo tc_service_image($clips[$service->post_name], $service->post_title);
         echo '<a class="service-card-link" href="' . esc_url(get_permalink($service)) . '"><div class="service-card-top">' . tc_icon($icons[$service->post_name] ?? 'server') . '<span class="circle-arrow">' . tc_arrow() . '</span></div><h3>' . esc_html($service->post_title) . '</h3><p>' . esc_html($service->post_excerpt) . '</p>';
         if (!empty($scope[1])) {
             echo '<ul class="service-capabilities">';
@@ -76,12 +76,9 @@ function tc_service_list($attributes = []) {
     echo '</div>'; return ob_get_clean();
 }
 add_shortcode('techcloud_services', 'tc_service_list');
-function tc_video($name, $label) {
-    if (!file_exists(get_theme_file_path('assets/' . $name . '.mp4'))) {
-        $poster = file_exists(get_theme_file_path('assets/' . $name . '-poster.webp')) ? $name . '-poster.webp' : 'infrastructure.webp';
-        return '<div class="service-media"><img src="' . esc_url(get_theme_file_uri('assets/' . $poster)) . '" width="960" height="540" loading="lazy" alt="Illustrative ' . esc_attr($label) . ' environment"></div>';
-    }
-    return '<div class="service-media"><video muted loop playsinline preload="none" poster="' . esc_url(get_theme_file_uri('assets/' . $name . '-poster.webp')) . '" data-src="' . esc_url(get_theme_file_uri('assets/' . $name . '.mp4')) . '" aria-label="Illustrative ' . esc_attr($label) . ' video"></video><button class="motion-control" type="button" hidden aria-label="Play ' . esc_attr($label) . ' video">Play video</button></div>';
+function tc_service_image($name, $label) {
+    $poster = file_exists(get_theme_file_path('assets/' . $name . '-poster.webp')) ? $name . '-poster.webp' : 'infrastructure.webp';
+    return '<div class="service-media"><img src="' . esc_url(get_theme_file_uri('assets/' . $poster)) . '" width="960" height="540" loading="lazy" alt="Illustrative ' . esc_attr($label) . ' environment"></div>';
 }
 function tc_case_card($heading = 'h3') {
     $heading = in_array($heading, ['h2', 'h3'], true) ? $heading : 'h3';
