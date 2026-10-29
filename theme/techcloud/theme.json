@@ -5,9 +5,9 @@
     "appearanceTools": true,
     "layout": { "contentSize": "760px", "wideSize": "1280px" },
     "color": { "custom": false, "palette": [
-      { "slug": "ink", "name": "Ink", "color": "#171d38" },
+      { "slug": "ink", "name": "Ink", "color": "#1f293a" },
       { "slug": "blue", "name": "TechCloud blue", "color": "#33398d" },
-      { "slug": "mist", "name": "Cloud", "color": "#edf2fa" },
+      { "slug": "mist", "name": "Cloud", "color": "#edf1f7" },
       { "slug": "white", "name": "White", "color": "#ffffff" }
     ] },
     "typography": { "fluid": true, "fontFamilies": [{"slug":"manrope","name":"Manrope","fontFamily":"Manrope, sans-serif"}] }

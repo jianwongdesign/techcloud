@@ -18,17 +18,23 @@ Custom WordPress theme only; no Elementor or other page builder. Native blocks e
 
 Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies and private enquiries. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details, banner copy, and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
 
-Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The visual direction uses charcoal and warm-white surfaces, self-hosted Manrope with 720–750 heading weights and 500 body weight, and full-colour imagery.
+Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The visual direction uses blue-grey neutrals, navy surfaces and logo-blue actions, self-hosted Manrope with 720–750 heading weights and 500 body weight, and full-colour imagery.
 
 The latest revision replaces the small service tiles with a compact dark selector beside one large image and summary. Clicking or using arrow/Home/End keys selects a service; Explore service opens its detail page. The selector stacks above the image on mobile. Without JavaScript its real links go directly to the detail pages. Featured images override the existing illustrative fallback assets; full capabilities remain on the detail pages.
 
-The middle of Home is also redesigned following the supplied screenshot: the business story has a large headline beside the workplace photo, with three benefits underneath, without the previous enclosing box. The case-study feature uses a different network image and charcoal text panel. Process steps have stronger headings and separate top rules. The native content remains editable and the illustrative-case disclosure remains visible.
+The middle of Home is also redesigned following the supplied screenshot: the business story has a large headline beside the workplace photo, with three benefits underneath, without the previous enclosing box. The case-study feature uses a different network image and blue-grey text panel. Process steps have stronger headings and separate top rules. The native content remains editable and the illustrative-case disclosure remains visible.
 
 The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronger hero replacement adds 9 credits, bringing the charged total to **31.5 of the authorized 40 credits**, with **8.5 remaining**; no paid retries. The hero now uses `hero-motion.mp4`: a visible camera move through server infrastructure, silent 1280×720 H.264, 5.54 seconds, 1.64 MB, with a half-second loop dissolve and matching WebP poster. Only this video plays; service imagery remains colour stills. The hero loads when its video area is visible and respects reduced motion/data saver; manual pause persists across scrolling. The three original clips remain in the repository. See `docs/higgsfield-budget.json`, `docs/content-sources.md`, and `scripts/prepare-hero-video.py`.
 
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 One case study is explicitly labelled **illustrative, not a client result**. Replace or remove it before production. Contact now includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+
+## Colour alignment — 30 October
+
+Replaced the green/olive tint in surfaces, overlays, secondary text, button states, focus rings and Contact form with blue-grey neutrals. The original logo blue `#33398d` now carries actions; the contact banner uses the same `#253763` navy as the footer. Native editor palette and static review notice also match. Photography retains full colour.
+
+This is colour-only: all layout/type declarations and every exported main section were checked against the preceding revision and are unchanged. Desktop and 320px phone views were inspected. Body/action contrast exceeds 4.5:1 and field/focus contrast exceeds 3:1 for checked pairs. Export and whitespace checks pass. Publication verification follows this commit.
 
 ## Footer and Contact revision — 30 October
 
