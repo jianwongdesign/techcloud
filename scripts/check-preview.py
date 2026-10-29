@@ -8,7 +8,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1] / 'preview'
 class Page(HTMLParser):
     def __init__(self):
-        super().__init__(); self.links=[]; self.ids=set(); self.headings=0; self.images=[]; self.videos=[]
+        super().__init__(); self.links=[]; self.ids=set(); self.headings=0; self.images=[]; self.videos=[]; self.forms=[]; self.fields=[]; self.maps=[]
     def handle_starttag(self, tag, attributes):
         attrs=dict(attributes)
         if tag=='base':
@@ -20,6 +20,9 @@ class Page(HTMLParser):
             if key in attrs: self.links.append(attrs[key])
         if tag=='img': self.images.append(attrs)
         if tag=='video': self.videos.append(attrs)
+        if tag=='form': self.forms.append(attrs)
+        if tag in ('input', 'select', 'textarea'): self.fields.append(attrs)
+        if tag=='iframe': self.maps.append(attrs)
 
 errors=[]; pages={}
 for path in ROOT.rglob('*.html'):
@@ -30,6 +33,12 @@ for path in ROOT.rglob('*.html'):
     if 'noindex,nofollow' not in text or 'Design preview' not in text: errors.append(f'{path}: preview guard missing')
     for img in parser.images:
         if 'alt' not in img: errors.append(f'{path}: missing image alt')
+    if len(parser.maps) != 1 or not parser.maps[0].get('title'): errors.append(f'{path}: missing labelled footer map')
+    if path == ROOT/'contact/index.html':
+        if len(parser.forms) != 1 or 'data-preview-form' not in parser.forms[0]: errors.append(f'{path}: preview form missing')
+        if any('name' in field for field in parser.fields): errors.append(f'{path}: preview form could transmit named fields')
+        if any(token in text for token in ['tc_nonce', 'submission_token', 'tc_send_enquiry']): errors.append(f'{path}: backend form token leaked')
+        if 'this form does not send messages' not in text: errors.append(f'{path}: preview form disclosure missing')
     expected_videos = 1 if path == ROOT/'index.html' else 0
     if len(parser.videos) != expected_videos: errors.append(f'{path}: expected {expected_videos} hero videos, found {len(parser.videos)}')
     for video in parser.videos:

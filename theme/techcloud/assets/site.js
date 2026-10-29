@@ -13,6 +13,23 @@ if (toggle && nav) {
   matchMedia('(min-width: 761px)').addEventListener('change', close);
 }
 
+// The public design preview has no backend. Never imply that it sent a message.
+document.querySelectorAll('[data-preview-form]').forEach(form => {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const status = form.querySelector('.form-status');
+    status.classList.remove('is-error', 'is-success');
+    status.textContent = 'Preview complete. No message was sent. You can contact TechCloud at ';
+    const email = document.createElement('a');
+    email.href = `mailto:${form.dataset.contactEmail}`;
+    email.textContent = form.dataset.contactEmail;
+    status.append(email, '.');
+    status.hidden = false;
+    status.focus();
+  });
+});
+
 // Enhance real service links into keyboard-accessible tabs. Without JavaScript,
 // the menu remains a direct route to every service's complete detail page.
 document.querySelectorAll('[data-service-showcase]').forEach(showcase => {

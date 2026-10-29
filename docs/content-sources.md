@@ -33,9 +33,4 @@ On 29 October 2026, the user requested more visible movement. A fourth Kling 3.0
 
 The 30 October homepage revision reuses the existing network poster for the illustrative case-study card, separating it visually from the workplace image in the business story. No new media or credits were used. A case-study featured image overrides this fallback.
 
-
-## Editorial layout refinement, 30 October
-
-Following feedback on the overall visual style, the homepage now uses fewer sections, open alignment, a separate hero-video frame and service descriptions beneath the stills. The repeated benefit story and process sequence were removed, and copy was made specific to the existing service scope. No new business claims or generated assets were added. The initial managed-IT still now uses `network-poster.webp`; the illustrative office-move case uses `workplace.webp`. Both remain replaceable through featured images. The case is still clearly marked as an example, not client work.
-
-The revised content is native WordPress blocks, applied locally by `scripts/refine-v3.php`. Prior titles, excerpts and blocks are retained in post metadata for rollback. Existing URLs, business contact details and the configurable Shop placeholder remain intact.
+The footer and Contact revision on 30 October restores the previous homepage design. Its blue footer uses the existing published business email, telephone and address. The map marks Cititech Industrial Building; the text retains unit #03-03. The WordPress form stores enquiries privately; the GitHub design preview explicitly does not send messages. No new media was generated.

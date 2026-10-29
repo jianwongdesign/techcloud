@@ -66,6 +66,19 @@ def export(route, source, destination):
     body = re.search(r'<body([^>]*)>(.*)</body>', source, re.S)
     content = re.sub(r'<script\b[^>]*>.*?</script>', '', body.group(2), flags=re.S)
     content = re.sub(r'<style\b[^>]*>.*?</style>', '', content, flags=re.S)
+    # GitHub Pages has no WordPress backend. Keep a reviewable form, without
+    # endpoints, tokens or named fields that could send enquiry data in a URL.
+    def preview_form(match):
+        form = match.group(0)
+        form = re.sub(r'<input\b[^>]*type=["\']hidden["\'][^>]*>', '', form)
+        form = re.sub(r'\sname=("|\').*?\1', '', form)
+        form = re.sub(r'\saction=("|\').*?\1', ' action="#contact-form"', form, count=1)
+        form = re.sub(r'\smethod=("|\').*?\1', ' method="get"', form, count=1)
+        form = form.replace('data-contact-form', 'data-contact-form data-preview-form', 1)
+        form = form.replace('<div class="form-fields">', '<p class="form-note preview-form-note">Design preview — this form does not send messages.</p><div class="form-fields">', 1)
+        form = form.replace('>Send enquiry ', '>Preview enquiry ', 1)
+        return form
+    content = re.sub(r'<form\b[^>]*data-contact-form\b[^>]*>.*?</form>', preview_form, content, flags=re.S)
     content = re.sub(r'\b(href|src|poster|data-src)=("|\')(.*?)\2', lambda m: f'{m[1]}={m[2]}{html.escape(rewrite_url(m[3], destination.parent), quote=True)}{m[2]}', content)
     def asset(name):
         digest = hashlib.sha256((OUT / 'assets' / name).read_bytes()).hexdigest()[:12]
@@ -79,7 +92,7 @@ def export(route, source, destination):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#20251e;color:#e2e6d8;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}</style></head>
 <body{body.group(1)}>{notice}{content}<script src="{js}" defer></script></body></html>'''
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(document)
+    destination.write_text(re.sub(r'[ \t]+$', '', document, flags=re.M))
     print(route)
 
 for route in sorted(set(routes)):

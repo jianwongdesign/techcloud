@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('techcloud', get_theme_file_uri('assets/site.js'), [], filemtime(get_theme_file_path('assets/site.js')), ['strategy' => 'defer', 'in_footer' => true]);
 });
 function tc_setting($key) {
-    $defaults = ['email' => 'hello@techcloud.sg', 'phone' => '+65 6049 6060', 'address' => '629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838', 'shop_url' => '', 'cta_title' => 'Need IT support?', 'cta_text' => 'Tell us about your systems, your team and the work you need help with.'];
+    $defaults = ['email' => 'hello@techcloud.sg', 'phone' => '+65 6049 6060', 'address' => '629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838', 'shop_url' => '', 'cta_title' => 'Let’s make IT one less thing to worry about.', 'cta_text' => 'Tell us what your business needs. We’ll help you find a practical way forward.'];
     return get_theme_mod('tc_' . $key, $defaults[$key] ?? '');
 }
 add_action('customize_register', function ($customizer) {
@@ -70,14 +70,14 @@ function tc_service_list($attributes = []) {
     foreach ($pages as $i => $service) {
         echo '<article class="service-panel" id="' . esc_attr($showcase_id . '-panel-' . $i) . '" data-service-panel' . ($i ? ' hidden' : '') . '>';
         echo tc_service_image($service);
-        echo '<div class="service-summary"><' . $heading . '>' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><a class="text-link" href="' . esc_url(get_permalink($service)) . '">Service details ' . tc_arrow() . '</a></div></article>';
+        echo '<div class="service-summary"><' . $heading . '>' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><a class="button button-light" href="' . esc_url(get_permalink($service)) . '">Explore service ' . tc_arrow() . '</a></div></article>';
     }
     echo '</div></div>'; return ob_get_clean();
 }
 add_shortcode('techcloud_services', 'tc_service_list');
 function tc_service_image($service) {
     $images = [
-        'managed-it-services' => 'network-poster.webp',
+        'managed-it-services' => 'managed-it-poster.webp',
         'end-user-it-support' => 'support-poster.webp',
         'it-staffing' => 'workplace.webp',
         'project-management' => 'infrastructure.webp',
@@ -94,16 +94,16 @@ function tc_case_card($heading = 'h3') {
     $heading = in_array($heading, ['h2', 'h3'], true) ? $heading : 'h3';
     echo '<a class="case-card" href="' . esc_url(get_permalink()) . '"><div class="case-image">';
     if (has_post_thumbnail()) the_post_thumbnail('large', ['loading' => 'lazy']);
-    else echo '<img src="' . esc_url(get_theme_file_uri('assets/workplace.webp')) . '" width="1536" height="1024" loading="lazy" alt="Illustrative office with workstations">';
+    else echo '<img src="' . esc_url(get_theme_file_uri('assets/network-poster.webp')) . '" width="960" height="540" loading="lazy" alt="Illustrative connected network infrastructure">';
     echo '</div><div class="case-body"><' . $heading . '>' . esc_html(get_the_title()) . '</' . $heading . '><p>' . esc_html(get_the_excerpt()) . '</p>';
     if (get_post_meta(get_the_ID(), '_tc_example', true)) echo '<p class="case-disclosure">Illustrative example · not a client result</p>';
-    echo '<span class="text-link">Read case study ' . tc_arrow() . '</span></div></a>';
+    echo '<span class="text-link">Explore the story ' . tc_arrow() . '</span></div></a>';
 }
 function tc_case_list($attributes = []) {
     $attributes = shortcode_atts(['limit' => 2], $attributes);
     $query = new WP_Query(['post_type' => 'tc_case', 'posts_per_page' => max(1, absint($attributes['limit'])), 'post_status' => 'publish']);
     ob_start();
-    if (!$query->have_posts()) echo '<div class="empty-state"><h3>Case studies are being prepared.</h3><p>Contact us to discuss a similar project or your IT requirements.</p><a class="text-link" href="' . esc_url(home_url('/contact/')) . '">Contact TechCloud ' . tc_arrow() . '</a></div>';
+    if (!$query->have_posts()) echo '<div class="empty-state"><h3>Good work deserves a proper story.</h3><p>Our case studies are being prepared. In the meantime, talk to us about your IT needs.</p><a class="text-link" href="' . esc_url(home_url('/contact/')) . '">Start a conversation ' . tc_arrow() . '</a></div>';
     else {
         echo '<div class="case-grid">';
         while ($query->have_posts()) {
@@ -116,7 +116,7 @@ function tc_case_list($attributes = []) {
 }
 add_shortcode('techcloud_cases', 'tc_case_list');
 function tc_cta() {
-    return '<section class="contact-banner"><div><h2>' . esc_html(tc_setting('cta_title')) . '</h2><p>' . esc_html(tc_setting('cta_text')) . '</p></div><a class="button button-light" href="' . esc_url(home_url('/contact/')) . '">Contact TechCloud ' . tc_arrow() . '</a></section>';
+    return '<section class="contact-banner"><div><h2>' . esc_html(tc_setting('cta_title')) . '</h2><p>' . esc_html(tc_setting('cta_text')) . '</p></div><a class="button button-light" href="' . esc_url(home_url('/contact/')) . '">Let’s talk ' . tc_arrow() . '</a></section>';
 }
 add_shortcode('techcloud_cta', 'tc_cta');
 add_shortcode('techcloud_contact', function () {

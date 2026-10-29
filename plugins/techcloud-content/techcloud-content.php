@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: TechCloud Content
- * Description: Portable case-study content for TechCloud's custom theme. No page builder required.
- * Version: 0.1.0
+ * Description: Case studies and private contact enquiries for TechCloud's custom theme.
+ * Version: 0.2.0
  */
 defined('ABSPATH') || exit;
 function tc_register_content() {
@@ -17,3 +17,4 @@ function tc_register_content() {
 add_action('init', 'tc_register_content');
 register_activation_hook(__FILE__, function () { tc_register_content(); flush_rewrite_rules(); });
 register_deactivation_hook(__FILE__, function () { flush_rewrite_rules(); });
+require_once __DIR__ . '/contact.php';
