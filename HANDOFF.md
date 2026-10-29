@@ -40,7 +40,9 @@ Service selection crossfades in overlapping grid cells that reserve the tallest 
 
 The Contact email, phone and address use CSS sticky positioning on desktops above 1100px with viewport height at least 600px. They stop at the form boundary. Phones, tablets and short desktop windows use normal flow. The user also requested a shorter mobile hero: its copy and actions now sit directly over the video with a dark overlay, replacing the separate text and video stack. At 320px the hero is approximately 536px tall, including the pause control.
 
-Local validation: all 15 exported HTML documents pass link, asset, heading and preview-boundary checks; PHP syntax and service/motion behavior checks pass. Desktop sticky contact behavior was confirmed at successive scroll positions. Desktop case rows and service detail content, 820px service scope/planning, and 320px mobile hero, menu, selector, case cards and Contact flow were inspected. Rapid keyboard selection keeps only one accessible active panel and the longest mobile service title fits without moving the section below. The layout detector reports no findings. Publication verification will be recorded after deployment.
+Local validation: all 15 exported HTML documents pass link, asset, heading and preview-boundary checks; PHP syntax and service/motion behavior checks pass. Desktop sticky contact behavior was confirmed at successive scroll positions. Desktop case rows and service detail content, 820px service scope/planning and case grid, and 320px mobile hero, menu, selector, case cards and Contact flow were inspected. Rapid keyboard selection keeps only one accessible active panel and the longest mobile service title fits without moving the section below. The layout detector reports no findings.
+
+Revision `a34ce05` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40921249723 succeeded. All 14 public pages and the updated CSS/JS returned HTTP 200 and byte-matched the committed preview. Chrome confirmed the published homepage at 390px with the text and buttons over the playing hero video. Production remains untouched.
 
 ## Repeated contact banner removal — 30 October
 
