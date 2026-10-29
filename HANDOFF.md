@@ -29,6 +29,7 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 ## Verification completed
 
 - Current colour-media correction: PHP syntax, motion behavior checks and all 12 exported documents pass. Export checks now enforce exactly one video on the homepage and none on the other pages. Desktop, 820px tablet and 390px mobile hero placement verified in Chrome, along with hero playback, pause/resume and full-colour service stills.
+- Colour-media commit `f4a7d9c` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40896755325 succeeded. All 11 public pages, the revised CSS/JS and hero MP4 returned HTTP 200 and byte-matched the export. Published Chrome state confirms hero playback and still images for all three illustrated services. The user explicitly confirmed video only in the hero and still service images.
 
 - Type detector returned no findings. Checked text/surface colour pairs exceed 4.5:1; the focus-ring colour against the main surface exceeds 3:1.
 - Monochrome typography reviewed in Chrome at desktop, 820px tablet and 390px mobile, including the long infrastructure service title. Bold headings, 16px section body copy, warmer panels and monochrome media render without observed overlap or clipping.
