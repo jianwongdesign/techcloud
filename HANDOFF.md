@@ -30,6 +30,7 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 - Type detector returned no findings. Checked text/surface colour pairs exceed 4.5:1; the focus-ring colour against the main surface exceeds 3:1.
 - Monochrome typography reviewed in Chrome at desktop, 820px tablet and 390px mobile, including the long infrastructure service title. Bold headings, 16px section body copy, warmer panels and monochrome media render without observed overlap or clipping.
+- Monochrome edition commit `1f0b1ca` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40895407895 completed successfully. All 11 public pages and the revised stylesheet returned HTTP 200 and byte-matched the export after deployment; the published desktop hero was also verified in Chrome.
 - Theme activated and seeded successfully on local WordPress 7.0.2 / PHP 8.3.
 - PHP syntax checks passed for theme, plugin, and seed.
 - All 11 published review URLs returned HTTP 200.
