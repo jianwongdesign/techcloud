@@ -7,10 +7,10 @@ function setup({ reduced = false, saveData = false } = {}) {
   const handlers = {}, buttonHandlers = {}, documentHandlers = {};
   let intersect, preferenceChange;
   const video = {
-    paused: true, src: '', dataset: { src: 'clip.mp4' },
+    paused: true, src: '', playCalls: 0, dataset: { src: 'clip.mp4' },
     getAttribute: () => 'Illustrative Managed IT video',
     addEventListener: (name, fn) => { handlers[name] = fn; },
-    play() { this.paused = false; handlers.play?.(); return Promise.resolve(); },
+    play() { this.playCalls++; this.paused = false; handlers.play?.(); return Promise.resolve(); },
     pause() { this.paused = true; handlers.pause?.(); },
   };
   const button = { hidden: true, setAttribute() {}, addEventListener: (name, fn) => { buttonHandlers[name] = fn; } };
@@ -26,6 +26,8 @@ function setup({ reduced = false, saveData = false } = {}) {
 const normal = setup();
 assert.equal(normal.video.src, '', 'Off-screen video must not download');
 normal.enter(); assert.equal(normal.video.paused, false);
+normal.enter(); normal.visibility();
+assert.equal(normal.video.playCalls, 1, 'Repeated visibility events must not restart playing media');
 normal.click(); normal.leave(); normal.enter(); assert.equal(normal.video.paused, true, 'Manual pause survives scrolling');
 normal.click(); assert.equal(normal.video.paused, false);
 normal.document.hidden = true; normal.visibility(); assert.equal(normal.video.paused, true);

@@ -39,12 +39,19 @@ document.querySelectorAll('[data-service-showcase]').forEach(showcase => {
   if (!menu || !choices.length || choices.length !== panels.length) return;
   menu.setAttribute('role', 'tablist');
   menu.setAttribute('aria-orientation', 'vertical');
+  // Overlapping grid cells reserve the tallest panel before selection changes.
+  // Inactive panels stay out of the accessibility tree and keyboard order.
+  showcase.classList.add('has-service-tabs');
   const select = index => {
     choices.forEach((choice, i) => {
       choice.setAttribute('aria-selected', String(i === index));
       choice.tabIndex = i === index ? 0 : -1;
       panels[i].hidden = i !== index;
+      panels[i].inert = i !== index;
+      panels[i].setAttribute('aria-hidden', String(i !== index));
     });
+    const image = panels[index].querySelector('img');
+    if (image) image.loading = 'eager';
   };
   choices.forEach((choice, index) => {
     choice.setAttribute('role', 'tab');
@@ -70,6 +77,19 @@ document.querySelectorAll('[data-service-showcase]').forEach(showcase => {
     });
   });
   select(0);
+  // Warm nearby stills once, so switching services does not reveal an empty image.
+  // Data saver users download only the service they select.
+  if (!navigator.connection?.saveData) {
+    const preload = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      panels.forEach(panel => {
+        const image = panel.querySelector('img');
+        if (image) image.loading = 'eager';
+      });
+      preload.disconnect();
+    }, { rootMargin: '320px 0px' });
+    preload.observe(showcase);
+  }
 });
 
 // Load motion only near the viewport. User pause and accessibility preferences win.
@@ -90,13 +110,14 @@ document.querySelectorAll('.motion-media').forEach(container => {
     button.setAttribute('aria-label', `${playing ? 'Pause' : 'Play'} ${label} video`);
   };
   const play = () => {
+    if (!video.paused) return;
     if (!video.src) video.src = video.dataset.src;
     video.muted = true;
     video.play().catch(update);
   };
   const sync = () => {
     if (visible && !document.hidden && !userPaused && (userStarted || (!reducedMotion.matches && !saveData))) play();
-    else video.pause();
+    else if (!video.paused) video.pause();
   };
   button.addEventListener('click', () => {
     if (video.paused) { userStarted = true; userPaused = false; play(); }

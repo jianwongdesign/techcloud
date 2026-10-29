@@ -11,7 +11,7 @@ function tc_register_content() {
         'public' => true, 'show_in_rest' => true, 'has_archive' => 'case-studies',
         'rewrite' => ['slug' => 'case-studies', 'with_front' => false],
         'menu_icon' => 'dashicons-portfolio',
-        'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions'],
+        'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes'],
     ]);
 }
 add_action('init', 'tc_register_content');

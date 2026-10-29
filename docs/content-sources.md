@@ -34,3 +34,9 @@ On 29 October 2026, the user requested more visible movement. A fourth Kling 3.0
 The 30 October homepage revision reuses the existing network poster for the illustrative case-study card, separating it visually from the workplace image in the business story. No new media or credits were used. A case-study featured image overrides this fallback.
 
 The footer and Contact revision on 30 October restores the previous homepage design. Its blue footer uses the existing published business email, telephone and address. The map marks Cititech Industrial Building; the text retains unit #03-03. The WordPress form stores enquiries privately; the GitHub design preview explicitly does not send messages. No new media was generated.
+
+## Expanded services and illustrative cases — 30 October
+
+The five public service pages were checked again through indexed primary-source content, including https://techcloud.sg/services/managed-it-services/. Expanded copy explains the existing service categories, likely scoping questions and preparation details. It is review copy, with final coverage, response arrangements, availability and pricing left to an agreed proposal. No 24/7 coverage, delivery dates, certifications or numerical improvements are claimed.
+
+Four proposed scenarios now cover an office move, employee support, a network refresh and temporary staffing for a device rollout. These are expressly illustrative, not completed client projects. Their descriptions use proposed work and handover checks rather than invented outcomes. Cards and detail pages retain visible disclosures. Each reuses an existing illustrative still; there are no new generation charges and the credit ledger remains 31.5/40.

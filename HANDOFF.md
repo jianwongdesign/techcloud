@@ -28,7 +28,19 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
-One case study is explicitly labelled **illustrative, not a client result**. Replace or remove it before production. Contact now includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+
+## Services, cases and motion refinement — 30 October
+
+Five service detail pages now explain their scope, suitable situations, preparation details and FAQs, with colour stills and related service links. The overview retains the selector and adds a practical guide. `scripts/refine-services-cases.php` is local-only and runs once through `local-up.sh`; previous page/case content is retained in `_tc_before_expanded_content`.
+
+Home shows two compact case cards and a view-all link. The archive has four distinct illustrative scenarios in a two-column grid, consistent photo proportions and 24px gaps, stacking on phones. Each detail page includes proposed scope and handover considerations. Native case Order controls their sequence. Existing imagery is reused; no credits spent.
+
+Service selection crossfades in overlapping grid cells that reserve the tallest panel. Inactive panels are inert and hidden from accessibility APIs immediately. Nearby stills preload once unless data saver is enabled. Video playback avoids redundant play calls; manual pause, reduced motion and visibility behavior remain. Button hover no longer moves the control, and mobile navigation has a short opening transition.
+
+The Contact email, phone and address use CSS sticky positioning on desktops above 1100px with viewport height at least 600px. They stop at the form boundary. Phones, tablets and short desktop windows use normal flow. The user also requested a shorter mobile hero: its copy and actions now sit directly over the video with a dark overlay, replacing the separate text and video stack. At 320px the hero is approximately 536px tall, including the pause control.
+
+Local validation: all 15 exported HTML documents pass link, asset, heading and preview-boundary checks; PHP syntax and service/motion behavior checks pass. Desktop sticky contact behavior was confirmed at successive scroll positions. Desktop case rows and service detail content, 820px service scope/planning, and 320px mobile hero, menu, selector, case cards and Contact flow were inspected. Rapid keyboard selection keeps only one accessible active panel and the longest mobile service title fits without moving the section below. The layout detector reports no findings. Publication verification will be recorded after deployment.
 
 ## Repeated contact banner removal — 30 October
 

@@ -83,25 +83,37 @@ function tc_service_image($service) {
         'project-management' => 'infrastructure.webp',
         'it-installation-infrastructure' => 'network-poster.webp',
     ];
-    $image = get_the_post_thumbnail($service->ID, 'large', ['loading' => 'lazy', 'alt' => '']);
+    $image = get_the_post_thumbnail($service->ID, 'large', ['loading' => 'lazy', 'decoding' => 'async', 'alt' => '']);
     if (!$image) {
         $asset = $images[$service->post_name] ?? 'infrastructure.webp';
-        $image = '<img src="' . esc_url(get_theme_file_uri('assets/' . $asset)) . '" width="960" height="540" loading="lazy" alt="">';
+        $image = '<img src="' . esc_url(get_theme_file_uri('assets/' . $asset)) . '" width="960" height="540" loading="lazy" decoding="async" alt="">';
     }
     return '<div class="service-visual">' . $image . '</div>';
+}
+function tc_case_image($size = 'large') {
+    if (has_post_thumbnail()) return get_the_post_thumbnail(null, $size, ['loading' => 'lazy', 'decoding' => 'async']);
+    $images = [
+        'connected-workplace-example' => ['network-poster.webp', 'Illustrative connected network infrastructure'],
+        'growing-team-support-example' => ['support-poster.webp', 'Illustrative IT support at a workstation'],
+        'network-refresh-example' => ['infrastructure.webp', 'Illustrative server infrastructure'],
+        'device-rollout-example' => ['workplace.webp', 'Illustrative office workstations'],
+    ];
+    // Real case studies require their own photograph; only demo posts use demo assets.
+    if (!get_post_meta(get_the_ID(), '_tc_example', true)) return '';
+    [$asset, $alt] = $images[get_post_field('post_name', get_the_ID())] ?? $images['connected-workplace-example'];
+    return '<img src="' . esc_url(get_theme_file_uri('assets/' . $asset)) . '" width="960" height="540" loading="lazy" decoding="async" alt="' . esc_attr($alt) . '">';
 }
 function tc_case_card($heading = 'h3') {
     $heading = in_array($heading, ['h2', 'h3'], true) ? $heading : 'h3';
     echo '<a class="case-card" href="' . esc_url(get_permalink()) . '"><div class="case-image">';
-    if (has_post_thumbnail()) the_post_thumbnail('large', ['loading' => 'lazy']);
-    else echo '<img src="' . esc_url(get_theme_file_uri('assets/network-poster.webp')) . '" width="960" height="540" loading="lazy" alt="Illustrative connected network infrastructure">';
+    echo tc_case_image();
     echo '</div><div class="case-body"><' . $heading . '>' . esc_html(get_the_title()) . '</' . $heading . '><p>' . esc_html(get_the_excerpt()) . '</p>';
     if (get_post_meta(get_the_ID(), '_tc_example', true)) echo '<p class="case-disclosure">Illustrative example · not a client result</p>';
-    echo '<span class="text-link">Explore the story ' . tc_arrow() . '</span></div></a>';
+    echo '<span class="text-link">' . (get_post_meta(get_the_ID(), '_tc_example', true) ? 'Explore the example ' : 'Explore the story ') . tc_arrow() . '</span></div></a>';
 }
 function tc_case_list($attributes = []) {
     $attributes = shortcode_atts(['limit' => 2], $attributes);
-    $query = new WP_Query(['post_type' => 'tc_case', 'posts_per_page' => max(1, absint($attributes['limit'])), 'post_status' => 'publish']);
+    $query = new WP_Query(['post_type' => 'tc_case', 'posts_per_page' => max(1, absint($attributes['limit'])), 'post_status' => 'publish', 'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC']]);
     ob_start();
     if (!$query->have_posts()) echo '<div class="empty-state"><h3>Good work deserves a proper story.</h3><p>Our case studies are being prepared. In the meantime, talk to us about your IT needs.</p><a class="text-link" href="' . esc_url(home_url('/contact/')) . '">Start a conversation ' . tc_arrow() . '</a></div>';
     else {
@@ -111,10 +123,17 @@ function tc_case_list($attributes = []) {
             tc_case_card();
         }
         echo '</div>';
+        if (is_front_page()) echo '<a class="text-link case-all-link" href="' . esc_url(get_post_type_archive_link('tc_case')) . '">View all case studies ' . tc_arrow() . '</a>';
     }
     wp_reset_postdata(); return ob_get_clean();
 }
 add_shortcode('techcloud_cases', 'tc_case_list');
+add_action('pre_get_posts', function ($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('tc_case')) {
+        $query->set('posts_per_page', 8);
+        $query->set('orderby', ['menu_order' => 'ASC', 'date' => 'DESC']);
+    }
+});
 function tc_cta() {
     // Retain the legacy shortcode for saved blocks; the footer now handles contact.
     return '';
