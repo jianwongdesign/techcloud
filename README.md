@@ -32,15 +32,18 @@ Local admin username: `techcloud-admin`. A random password is generated into ign
 python3 scripts/export-preview.py
 python3 scripts/check-preview.py
 node scripts/check-motion.mjs
+node scripts/check-services.mjs
 ```
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. Contact links open email/phone apps; no enquiry form backend has been introduced.
 
 ## Premium visual edition
 
-The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, a compact service grid, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
+The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, a compact dark service selector, an open workplace story, a contrasting case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
 
-Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with visible camera movement, a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. All five services use compact image-and-text tiles, with a contact tile completing the grid: three columns on desktop, two on tablet and one on mobile. The overview shows the title and excerpt; detailed capabilities remain on each service page. Thumbnails retain a consistent 16:9 crop. Set each service page’s featured image to replace its illustrative fallback. All three original clips remain in the repository for future use.
+Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with visible camera movement, a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. All five services appear in a bold vertical selector beside one large colour still and a short summary. On mobile the image follows the selector. Click or use the arrow, Home and End keys to change services; Explore service opens the detail page. Without JavaScript, the selector links open the service pages directly. Detailed capabilities remain on each service page. Set each service page’s featured image to replace its illustrative fallback. All three original clips remain in the repository for future use.
+
+The business story pairs its headline with workplace photography, with three benefits below. The case-study feature uses a different network image and a charcoal text panel. Its illustrative disclosure remains visible. Process steps use stronger headings and individual top rules. These sections remain native WordPress blocks or theme-rendered case-study content.
 
 The revised hero is 1280×720, 24fps, approximately 5.54 seconds and 1.64 MB, with a half-second dissolve across the loop boundary. Rebuild it from a downloaded source with FFmpeg, ffprobe and Python Pillow installed:
 

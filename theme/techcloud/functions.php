@@ -59,16 +59,20 @@ function tc_service_list($attributes = []) {
     if (!$parent) return '';
     $heading = is_page($parent->ID) ? 'h2' : 'h3';
     $pages = get_pages(['parent' => $parent->ID, 'sort_column' => 'menu_order,post_title', 'number' => absint($attributes['limit'])]);
-    ob_start(); echo '<div class="services-index">';
-    foreach ($pages as $service) {
-        $title_id = wp_unique_id('service-title-');
-        echo '<article class="service-entry"><a class="service-entry-link" aria-labelledby="' . esc_attr($title_id) . '" href="' . esc_url(get_permalink($service)) . '">';
-        echo tc_service_image($service);
-        echo '<div class="service-summary"><' . $heading . ' id="' . esc_attr($title_id) . '">' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p></div>';
-        echo '<span class="service-action" aria-hidden="true">' . tc_arrow() . '</span></a></article>';
+    if (!$pages) return '';
+    $showcase_id = wp_unique_id('services-');
+    ob_start();
+    echo '<div class="services-index" data-service-showcase><nav class="service-menu" aria-label="IT services">';
+    foreach ($pages as $i => $service) {
+        echo '<a class="service-choice" id="' . esc_attr($showcase_id . '-choice-' . $i) . '" data-service-choice href="' . esc_url(get_permalink($service)) . '"><span>' . esc_html($service->post_title) . '</span>' . tc_arrow() . '</a>';
     }
-    echo '<article class="service-contact"><a href="' . esc_url(home_url('/contact/')) . '"><' . $heading . '>Let’s talk IT.</' . $heading . '><p>Tell us what your business needs.</p><span>Start a conversation ' . tc_arrow() . '</span></a></article>';
-    echo '</div>'; return ob_get_clean();
+    echo '</nav><div class="service-panels">';
+    foreach ($pages as $i => $service) {
+        echo '<article class="service-panel" id="' . esc_attr($showcase_id . '-panel-' . $i) . '" data-service-panel' . ($i ? ' hidden' : '') . '>';
+        echo tc_service_image($service);
+        echo '<div class="service-summary"><' . $heading . '>' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><a class="button button-light" href="' . esc_url(get_permalink($service)) . '">Explore service ' . tc_arrow() . '</a></div></article>';
+    }
+    echo '</div></div>'; return ob_get_clean();
 }
 add_shortcode('techcloud_services', 'tc_service_list');
 function tc_service_image($service) {
@@ -90,7 +94,7 @@ function tc_case_card($heading = 'h3') {
     $heading = in_array($heading, ['h2', 'h3'], true) ? $heading : 'h3';
     echo '<a class="case-card" href="' . esc_url(get_permalink()) . '"><div class="case-image">';
     if (has_post_thumbnail()) the_post_thumbnail('large', ['loading' => 'lazy']);
-    else echo '<img src="' . esc_url(get_theme_file_uri('assets/workplace.webp')) . '" width="1536" height="1024" loading="lazy" alt="Illustrative modern office workspace">';
+    else echo '<img src="' . esc_url(get_theme_file_uri('assets/network-poster.webp')) . '" width="960" height="540" loading="lazy" alt="Illustrative connected network infrastructure">';
     echo '</div><div class="case-body"><' . $heading . '>' . esc_html(get_the_title()) . '</' . $heading . '><p>' . esc_html(get_the_excerpt()) . '</p>';
     if (get_post_meta(get_the_ID(), '_tc_example', true)) echo '<p class="case-disclosure">Illustrative example · not a client result</p>';
     echo '<span class="text-link">Explore the story ' . tc_arrow() . '</span></div></a>';

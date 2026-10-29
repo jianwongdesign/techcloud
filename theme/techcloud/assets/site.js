@@ -13,6 +13,48 @@ if (toggle && nav) {
   matchMedia('(min-width: 761px)').addEventListener('change', close);
 }
 
+// Enhance real service links into keyboard-accessible tabs. Without JavaScript,
+// the menu remains a direct route to every service's complete detail page.
+document.querySelectorAll('[data-service-showcase]').forEach(showcase => {
+  const menu = showcase.querySelector('.service-menu');
+  const choices = [...showcase.querySelectorAll('[data-service-choice]')];
+  const panels = [...showcase.querySelectorAll('[data-service-panel]')];
+  if (!menu || !choices.length || choices.length !== panels.length) return;
+  menu.setAttribute('role', 'tablist');
+  menu.setAttribute('aria-orientation', 'vertical');
+  const select = index => {
+    choices.forEach((choice, i) => {
+      choice.setAttribute('aria-selected', String(i === index));
+      choice.tabIndex = i === index ? 0 : -1;
+      panels[i].hidden = i !== index;
+    });
+  };
+  choices.forEach((choice, index) => {
+    choice.setAttribute('role', 'tab');
+    choice.setAttribute('aria-controls', panels[index].id);
+    panels[index].setAttribute('role', 'tabpanel');
+    panels[index].setAttribute('aria-labelledby', choice.id);
+    choice.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button > 0) return;
+      event.preventDefault();
+      select(index);
+    });
+    choice.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowDown') next = (index + 1) % choices.length;
+      else if (event.key === 'ArrowUp') next = (index - 1 + choices.length) % choices.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = choices.length - 1;
+      else if (event.key === ' ') next = index;
+      else return;
+      event.preventDefault();
+      select(next);
+      choices[next].focus();
+    });
+  });
+  select(0);
+});
+
 // Load motion only near the viewport. User pause and accessibility preferences win.
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const saveData = navigator.connection?.saveData;
