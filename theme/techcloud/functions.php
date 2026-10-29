@@ -61,17 +61,13 @@ function tc_service_list($attributes = []) {
     $pages = get_pages(['parent' => $parent->ID, 'sort_column' => 'menu_order,post_title', 'number' => absint($attributes['limit'])]);
     ob_start(); echo '<div class="services-index">';
     foreach ($pages as $service) {
-        preg_match_all('/<li\b[^>]*>(.*?)<\/li>/s', $service->post_content, $scope);
         $title_id = wp_unique_id('service-title-');
         echo '<article class="service-entry"><a class="service-entry-link" aria-labelledby="' . esc_attr($title_id) . '" href="' . esc_url(get_permalink($service)) . '">';
         echo tc_service_image($service);
-        echo '<div class="service-summary"><' . $heading . ' id="' . esc_attr($title_id) . '">' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><span class="service-detail">View service</span></div>';
-        echo '<ul class="service-scope">';
-        if (!empty($scope[1])) {
-            foreach (array_slice($scope[1], 0, 3) as $item) echo '<li>' . esc_html(wp_strip_all_tags($item)) . '</li>';
-        }
-        echo '</ul><span class="service-action" aria-hidden="true">' . tc_arrow() . '</span></a></article>';
+        echo '<div class="service-summary"><' . $heading . ' id="' . esc_attr($title_id) . '">' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p></div>';
+        echo '<span class="service-action" aria-hidden="true">' . tc_arrow() . '</span></a></article>';
     }
+    echo '<article class="service-contact"><a href="' . esc_url(home_url('/contact/')) . '"><' . $heading . '>Let’s talk IT.</' . $heading . '><p>Tell us what your business needs.</p><span>Start a conversation ' . tc_arrow() . '</span></a></article>';
     echo '</div>'; return ob_get_clean();
 }
 add_shortcode('techcloud_services', 'tc_service_list');
