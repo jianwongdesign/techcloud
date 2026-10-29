@@ -32,3 +32,10 @@ On 29 October 2026, the user requested more visible movement. A fourth Kling 3.0
 `hero-motion.mp4` replaces the original managed-IT clip in the hero only. The delivered version is silent H.264, 1280×720, 24fps, CRF 24, fast-start, 5.54 seconds and 1,640,598 bytes. A half-second dissolve connects the end to the start while preserving forward camera movement. `hero-motion-poster.webp` is its first frame at quality 82. `scripts/prepare-hero-video.py` records the reproducible encoding process. The source result URL is retained in the budget ledger.
 
 The 30 October homepage revision reuses the existing network poster for the illustrative case-study card, separating it visually from the workplace image in the business story. No new media or credits were used. A case-study featured image overrides this fallback.
+
+
+## Editorial layout refinement, 30 October
+
+Following feedback on the overall visual style, the homepage now uses fewer sections, open alignment, a separate hero-video frame and service descriptions beneath the stills. The repeated benefit story and process sequence were removed, and copy was made specific to the existing service scope. No new business claims or generated assets were added. The initial managed-IT still now uses `network-poster.webp`; the illustrative office-move case uses `workplace.webp`. Both remain replaceable through featured images. The case is still clearly marked as an example, not client work.
+
+The revised content is native WordPress blocks, applied locally by `scripts/refine-v3.php`. Prior titles, excerpts and blocks are retained in post metadata for rollback. Existing URLs, business contact details and the configurable Shop placeholder remain intact.
