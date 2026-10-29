@@ -32,6 +32,8 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Verification completed
 
+- Current preview revision `9c4596e` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40909598799 succeeded. All 11 public pages and the revised CSS returned HTTP 200 and byte-matched the committed export. The published desktop homepage confirms the case-study heading and description grouped on the left with clean wrapping. Production remains untouched.
+
 - Text arrangement and phone adaptation: the case-study introduction is now one left-aligned stack, with natural heading wrapping and a 65ch paragraph measure. At phone widths, headings scale down, key body text is 16px, section/card padding is reduced, text-link tap areas are at least 44px high, and the navigation scrolls inside short viewports. Reviewed in Chrome responsive emulation at 320px and 390px portrait, plus 667×375 and 667×320 landscape. The mobile menu opens and its Shop link remains reachable by scrolling; service selection opens the correct infrastructure detail page and the long heading fits. Desktop and 820px tablet introduction layout were also inspected. Export checks, layout detector and diff whitespace checks pass. Physical iOS/Android touch testing remains part of release QA.
 
 - Previous preview revision `d5c14db` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40907820382 succeeded. All 11 public pages and the revised CSS/JavaScript returned HTTP 200 and byte-matched the committed export. Chrome confirmed the published service selector, open business story, three-column benefits and dark case-study feature with the distinct network image. Production remains untouched.
