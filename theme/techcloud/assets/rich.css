@@ -310,30 +310,40 @@ summary{font-size:16px;font-weight:700}
  .process-step h3{font-size:22px}
 }
 @media(max-width:760px){
+ .section{padding-block:48px}
+ .section-head{gap:16px;margin-bottom:24px}
+ .section-head h2,.faq-section h2{font-size:clamp(30px,8.7vw,34px)}
+ .section:has(>.case-grid)>.section-head{margin-bottom:24px}
+ .primary-nav{max-height:calc(100svh - 90px);overflow-y:auto;overscroll-behavior:contain}
+ .hero-actions .text-link,.contact-banner .text-link,.footer-top .text-link{min-height:44px}
+ .page-hero{padding:28px 20px;margin-bottom:32px}
+ .contact-banner{padding:28px 20px}
+ .contact-banner h2{font-size:clamp(28px,8.4vw,33px)}
  .section:has(> .services-index){padding-block:40px}
  .section:has(> .services-index)+.section{padding-top:16px}
  .services-index{grid-template-columns:minmax(0,1fr)}
  .service-menu{padding:12px 22px}
- .service-choice{font-size:22px;padding-block:16px;gap:20px}
+ .service-choice{font-size:clamp(20px,5.6vw,22px);padding-block:16px;gap:16px}
  .service-choice .arrow-icon{width:22px;height:22px}
  .service-panel{min-height:320px;padding:26px 22px}
- .service-summary :is(h2,h3){font-size:30px}
- .service-summary p{font-size:14px;margin-bottom:20px}
+ .service-summary :is(h2,h3){font-size:clamp(27px,7.7vw,30px)}
+ .service-summary p{font-size:16px;margin-bottom:20px}
  .about-panel{grid-template-columns:minmax(0,1fr);gap:20px}
- .about-intro>h2{grid-column:1;grid-row:1;font-size:40px;max-width:15ch;margin:0}
+ .about-intro>h2{grid-column:1;grid-row:1;font-size:clamp(32px,9.5vw,40px);max-width:15ch;margin:0}
  .about-intro>p{grid-column:1;grid-row:2;margin:0;font-size:16px}
  .workplace-photo{grid-column:1;grid-row:3;min-height:0;height:240px;margin-top:4px!important}
  .benefits{grid-column:1;grid-row:4;grid-template-columns:minmax(0,1fr);gap:24px;padding-top:24px;margin-top:4px!important}
  .benefit h3{font-size:21px}
- .benefit p{font-size:15px}
+ .benefit p{font-size:16px}
  .case-card{grid-template-columns:minmax(0,1fr)}
  .case-image{grid-column:1;grid-row:1;min-height:0;height:210px}
- .case-body{grid-column:1;grid-row:2;padding:28px 24px}
- .case-card :is(h2,h3){font-size:33px}
- .case-card p{font-size:15px}
+ .case-body{grid-column:1;grid-row:2;padding:28px 20px}
+ .case-card :is(h2,h3){font-size:clamp(28px,8.4vw,33px)}
+ .case-card p{font-size:16px}
  .home-process{padding-block:12px 44px}
  .process-grid{gap:26px}
  .process-step,.process-step+.process-step{padding-top:18px}
  .process-step .eyebrow{margin-bottom:12px}
  .process-step h3{font-size:24px}
+ .process-step p:not(.eyebrow){font-size:16px}
 }

@@ -45,6 +45,8 @@ Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with 
 
 The business story pairs its headline with workplace photography, with three benefits below. The case-study feature uses a different network image and a charcoal text panel. Its illustrative disclosure remains visible. Process steps use stronger headings and individual top rules. These sections remain native WordPress blocks or theme-rendered case-study content.
 
+Phone layouts use fluid heading sizes, 16px body text in service summaries, benefits, case studies and process steps, tighter section spacing, and larger text-link tap areas. The mobile menu scrolls within short landscape viewports. The case-study introduction keeps its heading and description together in a left-aligned stack at every width.
+
 The revised hero is 1280×720, 24fps, approximately 5.54 seconds and 1.64 MB, with a half-second dissolve across the loop boundary. Rebuild it from a downloaded source with FFmpeg, ffprobe and Python Pillow installed:
 
 ```sh
