@@ -32,6 +32,8 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Verification completed
 
+- Current preview revision `d5c14db` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40907820382 succeeded. All 11 public pages and the revised CSS/JavaScript returned HTTP 200 and byte-matched the committed export. Chrome confirmed the published service selector, open business story, three-column benefits and dark case-study feature with the distinct network image. Production remains untouched.
+
 - Current selector and middle-section redesign: reviewed in Chrome at desktop, 820px tablet, 390px mobile and 320px narrow mobile. The long infrastructure title fits. Mouse selection and arrow-key selection update the image, summary and detail destination; the selected infrastructure button opens its correct detail page. Business story, benefits, contrasting case study and process stack cleanly on mobile. PHP syntax, export validation, motion checks, service interaction checks and diff whitespace checks pass. The layout detector returned no findings. No media was generated; the credit ledger is unchanged.
 
 - Compact services revision: desktop, 820px tablet, 390px mobile and 320px narrow mobile were reviewed in Chrome. All five services and the contact link are present, thumbnail sizes match, and the long infrastructure title fits. Local PHP, export and layout checks pass. No generation credits spent.
