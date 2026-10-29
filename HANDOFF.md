@@ -32,7 +32,7 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Repeated contact banner removal — 30 October
 
-Removed the “Let’s make IT one less thing to worry about” banner from all pages, as requested from the screenshot. The footer enquiry/call buttons, email and map remain. The legacy `techcloud_cta` shortcode returns empty so saved native blocks do not display a raw shortcode; its unused Customizer controls are removed. Every exported HTML document matches the previous revision after removing only that banner. PHP syntax, export and whitespace checks pass. Publication verification follows.
+Removed the “Let’s make IT one less thing to worry about” banner from all pages, as requested from the screenshot. The footer enquiry/call buttons, email and map remain. The legacy `techcloud_cta` shortcode returns empty so saved native blocks do not display a raw shortcode; its unused Customizer controls are removed. Every exported HTML document matches the previous revision after removing only that banner. PHP syntax, export and whitespace checks pass. Revision `ded08ce` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40917777861 succeeded. All 11 public pages returned HTTP 200 and byte-matched the export, with no contact-banner markup. Chrome confirms the homepage FAQ leads directly to the footer.
 
 ## Colour alignment — 30 October
 
