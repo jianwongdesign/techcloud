@@ -277,6 +277,9 @@ summary{font-size:16px;font-weight:700}
 .benefit{border:0;padding:0;margin:0}
 .benefit h3{font-size:21px;margin:0 0 10px}
 .benefit p{font-size:15px;line-height:1.65;margin:0}
+.section:has(>.case-grid)>.section-head{grid-template-columns:1fr;gap:16px;margin-bottom:32px}
+.section:has(>.case-grid)>.section-head h2{max-width:none}
+.section:has(>.case-grid)>.section-head p{justify-self:start;max-width:65ch;margin:0;text-wrap:pretty}
 .case-card{grid-template-columns:1fr 1.08fr;background:#20211f;color:white;border:0}
 .case-image{grid-column:2;grid-row:1;min-height:380px;aspect-ratio:auto}
 .case-image img{height:100%;object-fit:cover}
