@@ -32,6 +32,8 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Verification completed
 
+- Current preview revision `d037796` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40912591604 succeeded. All 11 public pages and the revised CSS returned HTTP 200 and byte-matched the committed export. Chrome confirmed the published light hero, playback pause/resume, open service selector, distinct network/office stills and compact case entry. The final case image and text stack were also checked at 390px. Production remains untouched.
+
 - Editorial revision: PHP syntax, all 12 exported documents, motion/service behavior checks, layout/type detector and whitespace checks pass. The V3 native-block content and backups were verified, and rerunning the migration leaves content unchanged. Chrome review covers desktop, 820px tablet, 390px phone, and 320px service selection/detail. The menu opens and closes; selecting infrastructure and opening Service details reaches the correct page. Only the hero plays video. No media credits spent.
 
 - Previous preview revision `9c4596e` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40909598799 succeeded. All 11 public pages and the revised CSS returned HTTP 200 and byte-matched the committed export. The published desktop homepage confirms the case-study heading and description grouped on the left with clean wrapping. Production remains untouched.
