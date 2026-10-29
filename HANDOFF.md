@@ -28,7 +28,8 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Verification completed
 
-- Compact services revision: desktop, 820px tablet, 390px mobile and 320px narrow mobile were reviewed in Chrome. All five services and the contact link are present, thumbnail sizes match, and the long infrastructure title fits. Local PHP, export and layout checks pass. Final spacing confirmation/public deployment pending. No generation credits spent.
+- Compact services revision: desktop, 820px tablet, 390px mobile and 320px narrow mobile were reviewed in Chrome. All five services and the contact link are present, thumbnail sizes match, and the long infrastructure title fits. Local PHP, export and layout checks pass. No generation credits spent.
+- Current preview revision `953e345` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40904621416 succeeded. All 11 public pages and the stylesheet returned HTTP 200 and matched the committed export. The published homepage confirms the compact two-row grid and reduced section spacing; its new contact tile opens Contact. The unchanged hero MP4 also byte-matches the local source. Production remains untouched.
 
 - Services redesign: reviewed in Chrome at desktop, 820px tablet and 390px mobile, including the long infrastructure title. All five services retain their detail links, descriptions and three capabilities. The layout detector returned no findings; PHP syntax, export checks and diff whitespace checks pass. No media was generated and the credit ledger is unchanged.
 - Previous preview revision `88690da` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40902934549 succeeded. All 11 public pages and the revised stylesheet returned HTTP 200 and matched the committed export. The published homepage service rows were visually confirmed, and clicking Managed IT opened its correct detail page. Production remains untouched.
