@@ -1,3 +1,4 @@
 @import url('./site.css');
+@import url('./rich.css');
 .editor-styles-wrapper { padding: 24px; }
 .editor-styles-wrapper .wp-block { max-width: 1280px; }

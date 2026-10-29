@@ -5,6 +5,7 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.parse import urlsplit, urlunsplit
 import html
+import hashlib
 import json
 import os
 import re
@@ -65,13 +66,17 @@ def export(route, source, destination):
     body = re.search(r'<body([^>]*)>(.*)</body>', source, re.S)
     content = re.sub(r'<script\b[^>]*>.*?</script>', '', body.group(2), flags=re.S)
     content = re.sub(r'<style\b[^>]*>.*?</style>', '', content, flags=re.S)
-    content = re.sub(r'\b(href|src)=("|\')(.*?)\2', lambda m: f'{m[1]}={m[2]}{html.escape(rewrite_url(m[3], destination.parent), quote=True)}{m[2]}', content)
-    css = rewrite_url('/assets/site.css', destination.parent)
-    js = rewrite_url('/assets/site.js', destination.parent)
+    content = re.sub(r'\b(href|src|poster|data-src)=("|\')(.*?)\2', lambda m: f'{m[1]}={m[2]}{html.escape(rewrite_url(m[3], destination.parent), quote=True)}{m[2]}', content)
+    def asset(name):
+        digest = hashlib.sha256((OUT / 'assets' / name).read_bytes()).hexdigest()[:12]
+        return rewrite_url('/assets/' + name + '?v=' + digest, destination.parent)
+    css = asset('site.css')
+    rich_css = asset('rich.css')
+    js = asset('site.js')
     notice = '<div class="preview-notice">TechCloud · Design preview · Content for review</div>'
     base_tag = '<base href="/techcloud/">' if route == '/404.html' else ''
     document = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="stylesheet" href="{css}"><style>.preview-notice{{text-align:center;background:#171d38;color:#e8ecff;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}</style></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#171d38;color:#e8ecff;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}</style></head>
 <body{body.group(1)}>{notice}{content}<script src="{js}" defer></script></body></html>'''
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(document)

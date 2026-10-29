@@ -16,7 +16,7 @@ class Page(HTMLParser):
             return
         if tag=='h1': self.headings+=1
         if 'id' in attrs: self.ids.add(attrs['id'])
-        for key in ('href','src'):
+        for key in ('href','src','poster','data-src'):
             if key in attrs: self.links.append(attrs[key])
         if tag=='img': self.images.append(attrs)
 

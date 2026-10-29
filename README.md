@@ -31,9 +31,18 @@ Local admin username: `techcloud-admin`. A random password is generated into ign
 ```sh
 python3 scripts/export-preview.py
 python3 scripts/check-preview.py
+node scripts/check-motion.mjs
 ```
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. Contact links open email/phone apps; no enquiry form backend has been introduced.
+
+## Richer visual edition
+
+The second design uses a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets.
+
+Service videos are self-hosted, silent MP4 loops with WebP posters. They download only when visible, stop off-screen or in a hidden tab, and provide individual pause/play buttons. Reduced-motion and data-saver preferences show a poster until the visitor explicitly plays a clip. Video filenames are mapped to the three relevant service slugs in `tc_service_list()`; replacing those assets does not change page content.
+
+`scripts/refine-v2.php` applies the native-block content refinement once on local installations, retaining each original page in `_tc_content_before_v2`. `local-up.sh` runs it after the initial seed. Subsequent runs preserve CMS edits.
 
 ## Production boundary
 

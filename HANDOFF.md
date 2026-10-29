@@ -1,4 +1,4 @@
-# TechCloud — first custom-theme build
+# TechCloud — richer custom-theme preview
 
 Updated 29 October 2026.
 
@@ -18,7 +18,11 @@ Custom WordPress theme only; no Elementor or other page builder. Native blocks e
 
 Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details, banner copy, and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
 
-Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. Indigo/pale-blue visual direction, self-hosted Manrope font, CSS/SVG technology illustration, responsive service lists, and native FAQ disclosures.
+Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. Indigo/pale-blue visual direction, self-hosted Manrope font, photographic infrastructure hero, detailed service cards, a workplace feature, larger case-study layout, native process blocks, and FAQ disclosures.
+
+The richer edition adds three completed Higgsfield Kling 3.0 Turbo videos: managed IT, end-user support and networking. Total charged: **22.5 of the authorized 40 credits**; no paid retries. Website versions are silent 960×540 H.264 loops, approximately ten seconds, under 1 MB combined, with WebP posters. They load only when visible and respect reduced motion/data saver; manual pause persists across scrolling. See `docs/higgsfield-budget.json` and `docs/content-sources.md`.
+
+`rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 One case study is explicitly labelled **illustrative, not a client result**. Replace or remove it before production. Contact uses email and telephone links, not an unconnected submission form.
 
@@ -28,9 +32,10 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 - PHP syntax checks passed for theme, plugin, and seed.
 - All 11 published review URLs returned HTTP 200.
 - Export checker passed all 12 HTML documents including the 404: internal links, assets, anchors, one H1, alt attributes, noindex/review labels, and no leaked localhost/WordPress backend URLs.
-- Browser reviewed the desktop layout, 820px tablet layout, and 390px mobile hero/service layout. Keyboard opened the mobile menu; Escape closes it in the script. No console messages observed in the local preview during review.
+- Richer layout reviewed in Chrome at desktop, 820px tablet and 390px mobile. Mobile navigation opens; service detail text wraps correctly. Video playback and pause controls verified in-browser; no console messages observed during review.
+- `node scripts/check-motion.mjs` passes lazy loading, pause persistence, off-screen/tab visibility, reduced-motion, data-saver and explicit-play checks. Media inspection confirms silent H.264 video. The design detector reported no deterministic issues in the revised components.
 - Server-side checks confirmed native block content and page excerpts, case-study editor support, and both `/shop/` and absolute external Shop URL formats.
-- Published homepage opened successfully in Chrome. Latest successful deployment at that check: https://github.com/jianwongdesign/techcloud/actions/runs/40851018407.
+- First edition was previously published and verified. The richer edition is exported from the same local WordPress pages; check the latest Pages workflow for its publication state.
 - `.env` is ignored and absent from tracked files.
 
 ## Remaining review and release work

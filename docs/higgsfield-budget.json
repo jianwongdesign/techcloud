@@ -1,0 +1,26 @@
+{
+  "cap": 40,
+  "quoted_total": 22.5,
+  "model": "kling3_0_turbo",
+  "duration_seconds": 5,
+  "resolution": "720p",
+  "jobs": [
+    {
+      "index": 1,
+      "job_id": "c9d9be8c-0a0e-475d-8b87-5c493b659029",
+      "status": "completed"
+    },
+    {
+      "index": 2,
+      "job_id": "e02ee5f0-3298-42e3-97ce-1ed31cd2d64d",
+      "status": "completed"
+    },
+    {
+      "index": 3,
+      "job_id": "ead6f52e-b1d4-4d08-8d4e-6db7311ca4a3",
+      "status": "completed"
+    }
+  ],
+  "charged_total": 22.5,
+  "remaining_project_budget": 17.5
+}
