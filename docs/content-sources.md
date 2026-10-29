@@ -23,7 +23,7 @@ Three Higgsfield Kling 3.0 Turbo clips were requested at 720p, 16:9, five second
 
 The original three website clips use 960×540 H.264 MP4, 24fps, no audio, CRF 27 and fast-start metadata. Each source plays forward then backward to create a ten-second loop without a cut. First-frame WebP posters are compressed at quality 82. Assets are self-hosted; no Higgsfield runtime or third-party video embed is required. The people, locations and equipment shown are illustrative; no identity, partnership or client-result claims are implied.
 
-The premium layout retains the images and videos in their original colours following user feedback. Only the homepage hero plays video; service cards use colour poster stills from the original three clips, all at a consistent 16:9 crop. The original media and logo colours are preserved.
+The premium layout retains the images and videos in their original colours following user feedback. Only the homepage hero plays video; the redesigned service rows use colour stills at a consistent 16:9 crop. Managed IT, end-user support and infrastructure use posters from the original clips; staffing and project management reuse the existing illustrative workplace and infrastructure images. Service-page featured images can replace these defaults. This layout revision created no new media or generation charges. The original media and logo colours are preserved.
 
 ## Stronger hero movement
 

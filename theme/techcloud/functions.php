@@ -57,28 +57,38 @@ function tc_service_list($attributes = []) {
     $attributes = shortcode_atts(['limit' => 0], $attributes);
     $parent = get_page_by_path('services');
     if (!$parent) return '';
+    $heading = is_page($parent->ID) ? 'h2' : 'h3';
     $pages = get_pages(['parent' => $parent->ID, 'sort_column' => 'menu_order,post_title', 'number' => absint($attributes['limit'])]);
-    ob_start(); echo '<div class="service-list">';
-    foreach ($pages as $i => $service) {
-        $icons = ['managed-it-services' => 'server', 'end-user-it-support' => 'support', 'it-staffing' => 'people', 'project-management' => 'project', 'it-installation-infrastructure' => 'network'];
+    ob_start(); echo '<div class="services-index">';
+    foreach ($pages as $service) {
         preg_match_all('/<li\b[^>]*>(.*?)<\/li>/s', $service->post_content, $scope);
-        echo '<article class="service-row">';
-        $clips = ['managed-it-services' => 'managed-it', 'end-user-it-support' => 'support', 'it-installation-infrastructure' => 'network'];
-        if (isset($clips[$service->post_name])) echo tc_service_image($clips[$service->post_name], $service->post_title);
-        echo '<a class="service-card-link" href="' . esc_url(get_permalink($service)) . '"><div class="service-card-top">' . tc_icon($icons[$service->post_name] ?? 'server') . '<span class="circle-arrow">' . tc_arrow() . '</span></div><h3>' . esc_html($service->post_title) . '</h3><p>' . esc_html($service->post_excerpt) . '</p>';
+        $title_id = wp_unique_id('service-title-');
+        echo '<article class="service-entry"><a class="service-entry-link" aria-labelledby="' . esc_attr($title_id) . '" href="' . esc_url(get_permalink($service)) . '">';
+        echo tc_service_image($service);
+        echo '<div class="service-summary"><' . $heading . ' id="' . esc_attr($title_id) . '">' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><span class="service-detail">View service</span></div>';
+        echo '<ul class="service-scope">';
         if (!empty($scope[1])) {
-            echo '<ul class="service-capabilities">';
             foreach (array_slice($scope[1], 0, 3) as $item) echo '<li>' . esc_html(wp_strip_all_tags($item)) . '</li>';
-            echo '</ul>';
         }
-        echo '<span class="service-explore">Explore service ' . tc_arrow() . '</span></a></article>';
+        echo '</ul><span class="service-action" aria-hidden="true">' . tc_arrow() . '</span></a></article>';
     }
     echo '</div>'; return ob_get_clean();
 }
 add_shortcode('techcloud_services', 'tc_service_list');
-function tc_service_image($name, $label) {
-    $poster = file_exists(get_theme_file_path('assets/' . $name . '-poster.webp')) ? $name . '-poster.webp' : 'infrastructure.webp';
-    return '<div class="service-media"><img src="' . esc_url(get_theme_file_uri('assets/' . $poster)) . '" width="960" height="540" loading="lazy" alt="Illustrative ' . esc_attr($label) . ' environment"></div>';
+function tc_service_image($service) {
+    $images = [
+        'managed-it-services' => 'managed-it-poster.webp',
+        'end-user-it-support' => 'support-poster.webp',
+        'it-staffing' => 'workplace.webp',
+        'project-management' => 'infrastructure.webp',
+        'it-installation-infrastructure' => 'network-poster.webp',
+    ];
+    $image = get_the_post_thumbnail($service->ID, 'large', ['loading' => 'lazy', 'alt' => '']);
+    if (!$image) {
+        $asset = $images[$service->post_name] ?? 'infrastructure.webp';
+        $image = '<img src="' . esc_url(get_theme_file_uri('assets/' . $asset)) . '" width="960" height="540" loading="lazy" alt="">';
+    }
+    return '<div class="service-visual">' . $image . '</div>';
 }
 function tc_case_card($heading = 'h3') {
     $heading = in_array($heading, ['h2', 'h3'], true) ? $heading : 'h3';

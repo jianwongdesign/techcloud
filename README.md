@@ -5,7 +5,7 @@ A bespoke WordPress theme for **TechCloud Singapore**, using the native WordPres
 ## Pages and editing
 
 - **Home:** edit its title, excerpt, and native blocks in Pages. Sections use theme styling.
-- **Services:** overview plus five individual child pages. Edit service title, excerpt, content, and page order; the overview updates automatically.
+- **Services:** overview plus five individual child pages. Edit service title, excerpt, content, featured image, and page order; the Home and Services indexes update automatically.
 - **Contact:** editable page copy; email, phone, address, and global contact banner under Appearance → Customize → TechCloud business details.
 - **Case studies:** a dedicated post type provided by the small first-party `TechCloud Content` plugin; supports editor content, excerpts, featured images, and revisions. Content stays portable when changing themes.
 - **Shop:** configure the destination under Appearance → Customize → TechCloud business details. Empty configuration opens the local Shop placeholder. Supports `/shop/` or a full URL such as `https://shop.example.com`.
@@ -38,9 +38,9 @@ The export includes a review label, noindex directives, self-hosted assets, and 
 
 ## Premium visual edition
 
-The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
+The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, an aligned service index, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.
 
-Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with visible camera movement, a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. Service cards use colour stills with matching 16:9 crops and equal widths; the final infrastructure card is centred on desktop/tablet. All three original clips remain in the repository for future use.
+Only the home hero plays a video: a self-hosted, silent infrastructure MP4 with visible camera movement, a WebP poster and pause/play control. It downloads when the video area is visible and stops off-screen or in a hidden tab. Reduced-motion and data-saver preferences show the poster until the visitor explicitly plays it. All five services use the same full-width row layout, with a colour thumbnail, summary, key capabilities and detail-page link. Thumbnails retain a consistent 16:9 crop; the rows stack vertically on mobile. Set each service page’s featured image to replace its illustrative fallback. All three original clips remain in the repository for future use.
 
 The revised hero is 1280×720, 24fps, approximately 5.54 seconds and 1.64 MB, with a half-second dissolve across the loop boundary. Rebuild it from a downloaded source with FFmpeg, ffprobe and Python Pillow installed:
 
