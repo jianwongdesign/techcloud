@@ -1,0 +1,3 @@
+<?php get_header(); ?>
+<main id="main" class="wrap"><?php while (have_posts()) : the_post(); ?><section class="page-hero"><a class="breadcrumb" href="<?php echo esc_url(get_post_type_archive_link('tc_case')); ?>">← All case studies</a><h1><?php the_title(); ?></h1><p class="hero-description"><?php echo esc_html(get_the_excerpt()); ?></p><?php if (get_post_meta(get_the_ID(), '_tc_example', true)) : ?><p class="example-notice">Illustrative example for design review. This is not a completed client project or a claim of results.</p><?php endif; ?></section><article class="article-content"><?php if (has_post_thumbnail()) the_post_thumbnail('large'); the_content(); ?></article><?php endwhile; echo tc_cta(); ?></main>
+<?php get_footer(); ?>

@@ -1,0 +1,37 @@
+name: techcloud
+services:
+  database:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: techcloud
+      MARIADB_USER: techcloud
+      MARIADB_PASSWORD: local-development-only
+      MARIADB_ROOT_PASSWORD: local-root-only
+    volumes:
+      - database:/var/lib/mysql
+  wordpress:
+    image: wordpress:7.0.2-php8.3-apache
+    ports:
+      - "127.0.0.1:8129:80"
+    environment: &wordpress-env
+      WORDPRESS_DB_HOST: database
+      WORDPRESS_DB_USER: techcloud
+      WORDPRESS_DB_PASSWORD: local-development-only
+      WORDPRESS_DB_NAME: techcloud
+    volumes: &wordpress-volumes
+      - wordpress:/var/www/html
+      - ./theme/techcloud:/var/www/html/wp-content/themes/techcloud
+      - ./plugins/techcloud-content:/var/www/html/wp-content/plugins/techcloud-content
+      - ./scripts:/scripts:ro
+    depends_on:
+      - database
+  cli:
+    image: wordpress:cli-php8.3
+    user: "33:33"
+    environment: *wordpress-env
+    volumes: *wordpress-volumes
+    profiles: [tools]
+    entrypoint: [wp]
+volumes:
+  database:
+  wordpress:

@@ -1,0 +1,1 @@
+<?php get_header(); ?><main id="main" class="wrap page-hero"><p class="eyebrow">404 · PAGE NOT FOUND</p><h1>A little off the network.</h1><p class="hero-description">This page may have moved. Let’s get you back to the right place.</p><a class="button" href="<?php echo esc_url(home_url('/')); ?>">Back to home <?php echo tc_arrow(); ?></a></main><?php get_footer(); ?>
