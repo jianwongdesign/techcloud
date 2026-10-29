@@ -34,7 +34,7 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 Replaced the green/olive tint in surfaces, overlays, secondary text, button states, focus rings and Contact form with blue-grey neutrals. The original logo blue `#33398d` now carries actions; the contact banner uses the same `#253763` navy as the footer. Native editor palette and static review notice also match. Photography retains full colour.
 
-This is colour-only: all layout/type declarations and every exported main section were checked against the preceding revision and are unchanged. Desktop and 320px phone views were inspected. Body/action contrast exceeds 4.5:1 and field/focus contrast exceeds 3:1 for checked pairs. Export and whitespace checks pass. Publication verification follows this commit.
+This is colour-only: all layout/type declarations and every exported main section were checked against the preceding revision and are unchanged. Desktop and 320px phone views were inspected. Body/action contrast exceeds 4.5:1 and field/focus contrast exceeds 3:1 for checked pairs. Export and whitespace checks pass. Revision `c2269b1` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40916363590 succeeded. All 11 public pages and the updated CSS returned HTTP 200 and byte-matched the committed export. Production remains untouched.
 
 ## Footer and Contact revision — 30 October
 
