@@ -16,7 +16,7 @@ Custom WordPress theme only; no Elementor or other page builder. Native blocks e
 
 ## Implementation
 
-Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies and private enquiries. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details, banner copy, and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
+Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies and private enquiries. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
 
 Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The visual direction uses blue-grey neutrals, navy surfaces and logo-blue actions, self-hosted Manrope with 720–750 heading weights and 500 body weight, and full-colour imagery.
 
@@ -29,6 +29,10 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 One case study is explicitly labelled **illustrative, not a client result**. Replace or remove it before production. Contact now includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+
+## Repeated contact banner removal — 30 October
+
+Removed the “Let’s make IT one less thing to worry about” banner from all pages, as requested from the screenshot. The footer enquiry/call buttons, email and map remain. The legacy `techcloud_cta` shortcode returns empty so saved native blocks do not display a raw shortcode; its unused Customizer controls are removed. Every exported HTML document matches the previous revision after removing only that banner. PHP syntax, export and whitespace checks pass. Publication verification follows.
 
 ## Colour alignment — 30 October
 

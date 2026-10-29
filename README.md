@@ -6,7 +6,7 @@ A bespoke WordPress theme for **TechCloud Singapore**, using the native WordPres
 
 - **Home:** edit its title, excerpt, and native blocks in Pages. Sections use theme styling.
 - **Services:** overview plus five individual child pages. Edit service title, excerpt, content, featured image, and page order; the Home and Services indexes update automatically.
-- **Contact:** editable page copy and a native enquiry form; email, phone, address, and global contact banner under Appearance → Customize → TechCloud business details.
+- **Contact:** editable page copy and a native enquiry form; email, phone and address under Appearance → Customize → TechCloud business details.
 - **Case studies:** a dedicated post type provided by the small first-party `TechCloud Content` plugin; supports editor content, excerpts, featured images, and revisions. Content stays portable when changing themes.
 - **Shop:** configure the destination under Appearance → Customize → TechCloud business details. Empty configuration opens the local Shop placeholder. Supports `/shop/` or a full URL such as `https://shop.example.com`.
 - **Navigation:** Appearance → Menus → Primary navigation. A built-in fallback supplies the initial links.

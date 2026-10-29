@@ -17,12 +17,12 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('techcloud', get_theme_file_uri('assets/site.js'), [], filemtime(get_theme_file_path('assets/site.js')), ['strategy' => 'defer', 'in_footer' => true]);
 });
 function tc_setting($key) {
-    $defaults = ['email' => 'hello@techcloud.sg', 'phone' => '+65 6049 6060', 'address' => '629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838', 'shop_url' => '', 'cta_title' => 'Let’s make IT one less thing to worry about.', 'cta_text' => 'Tell us what your business needs. We’ll help you find a practical way forward.'];
+    $defaults = ['email' => 'hello@techcloud.sg', 'phone' => '+65 6049 6060', 'address' => '629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838', 'shop_url' => ''];
     return get_theme_mod('tc_' . $key, $defaults[$key] ?? '');
 }
 add_action('customize_register', function ($customizer) {
     $customizer->add_section('tc_business', ['title' => 'TechCloud business details', 'priority' => 30]);
-    foreach (['email' => 'Contact email', 'phone' => 'Phone number', 'address' => 'Office address', 'shop_url' => 'Shop destination (full URL or /shop/)', 'cta_title' => 'Contact banner heading', 'cta_text' => 'Contact banner description'] as $key => $label) {
+    foreach (['email' => 'Contact email', 'phone' => 'Phone number', 'address' => 'Office address', 'shop_url' => 'Shop destination (full URL or /shop/)'] as $key => $label) {
         $sanitize = $key === 'email' ? 'sanitize_email' : ($key === 'shop_url' ? 'esc_url_raw' : 'sanitize_text_field');
         $customizer->add_setting('tc_' . $key, ['default' => tc_setting($key), 'sanitize_callback' => $sanitize]);
         $customizer->add_control('tc_' . $key, ['section' => 'tc_business', 'label' => $label, 'type' => 'text']);
@@ -116,7 +116,8 @@ function tc_case_list($attributes = []) {
 }
 add_shortcode('techcloud_cases', 'tc_case_list');
 function tc_cta() {
-    return '<section class="contact-banner"><div><h2>' . esc_html(tc_setting('cta_title')) . '</h2><p>' . esc_html(tc_setting('cta_text')) . '</p></div><a class="button button-light" href="' . esc_url(home_url('/contact/')) . '">Let’s talk ' . tc_arrow() . '</a></section>';
+    // Retain the legacy shortcode for saved blocks; the footer now handles contact.
+    return '';
 }
 add_shortcode('techcloud_cta', 'tc_cta');
 add_shortcode('techcloud_contact', function () {
