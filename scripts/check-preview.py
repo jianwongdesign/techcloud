@@ -11,6 +11,9 @@ class Page(HTMLParser):
         super().__init__(); self.links=[]; self.ids=set(); self.headings=0; self.images=[]
     def handle_starttag(self, tag, attributes):
         attrs=dict(attributes)
+        if tag=='base':
+            assert attrs.get('href') == '/techcloud/', 'Unexpected preview base URL'
+            return
         if tag=='h1': self.headings+=1
         if 'id' in attrs: self.ids.add(attrs['id'])
         for key in ('href','src'):
