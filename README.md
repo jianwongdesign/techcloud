@@ -36,9 +36,9 @@ node scripts/check-motion.mjs
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. Contact links open email/phone apps; no enquiry form backend has been introduced.
 
-## Richer visual edition
+## Premium monochrome edition
 
-The second design uses a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets.
+The design uses charcoal and warm-white surfaces, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, detailed service cards, workplace imagery, a larger case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photos and video use a reversible CSS grayscale treatment; the original logo retains its brand colours.
 
 Service videos are self-hosted, silent MP4 loops with WebP posters. They download only when visible, stop off-screen or in a hidden tab, and provide individual pause/play buttons. Reduced-motion and data-saver preferences show a poster until the visitor explicitly plays a clip. Video filenames are mapped to the three relevant service slugs in `tc_service_list()`; replacing those assets does not change page content.
 

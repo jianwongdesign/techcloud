@@ -1,4 +1,4 @@
-# TechCloud — richer custom-theme preview
+# TechCloud — premium monochrome custom-theme preview
 
 Updated 29 October 2026.
 
@@ -18,7 +18,7 @@ Custom WordPress theme only; no Elementor or other page builder. Native blocks e
 
 Theme: `theme/techcloud`. Tiny first-party content plugin: `plugins/techcloud-content` for portable case studies. Only this plugin is active locally. Core editor, excerpts, featured images and revisions are supported. Business details, banner copy, and Shop destination are in Appearance → Customize → TechCloud business details. Primary navigation is editable through Appearance → Menus.
 
-Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. Indigo/pale-blue visual direction, self-hosted Manrope font, photographic infrastructure hero, detailed service cards, a workplace feature, larger case-study layout, native process blocks, and FAQ disclosures.
+Five services follow the existing public website: managed IT, end-user support, IT staffing, project management, installation/infrastructure. Logo is the existing asset. The latest visual direction uses charcoal and warm-white surfaces, self-hosted Manrope with 720–750 heading weights and 500 body weight, a photographic infrastructure hero, detailed service cards, a workplace feature, larger case-study layout, native process blocks, and FAQ disclosures. Photos and videos are displayed in grayscale through CSS; their source assets and the original logo remain unchanged. No additional Higgsfield credits were spent on this refinement.
 
 The richer edition adds three completed Higgsfield Kling 3.0 Turbo videos: managed IT, end-user support and networking. Total charged: **22.5 of the authorized 40 credits**; no paid retries. Website versions are silent 960×540 H.264 loops, approximately ten seconds, under 1 MB combined, with WebP posters. They load only when visible and respect reduced motion/data saver; manual pause persists across scrolling. See `docs/higgsfield-budget.json` and `docs/content-sources.md`.
 
@@ -28,6 +28,8 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 
 ## Verification completed
 
+- Type detector returned no findings. Checked text/surface colour pairs exceed 4.5:1; the focus-ring colour against the main surface exceeds 3:1.
+- Monochrome typography reviewed in Chrome at desktop, 820px tablet and 390px mobile, including the long infrastructure service title. Bold headings, 16px section body copy, warmer panels and monochrome media render without observed overlap or clipping.
 - Theme activated and seeded successfully on local WordPress 7.0.2 / PHP 8.3.
 - PHP syntax checks passed for theme, plugin, and seed.
 - All 11 published review URLs returned HTTP 200.
