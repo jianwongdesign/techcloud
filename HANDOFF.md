@@ -35,7 +35,7 @@ One case study is explicitly labelled **illustrative, not a client result**. Rep
 - Richer layout reviewed in Chrome at desktop, 820px tablet and 390px mobile. Mobile navigation opens; service detail text wraps correctly. Video playback and pause controls verified in-browser; no console messages observed during review.
 - `node scripts/check-motion.mjs` passes lazy loading, pause persistence, off-screen/tab visibility, reduced-motion, data-saver and explicit-play checks. Media inspection confirms silent H.264 video. The design detector reported no deterministic issues in the revised components.
 - Server-side checks confirmed native block content and page excerpts, case-study editor support, and both `/shop/` and absolute external Shop URL formats.
-- First edition was previously published and verified. The richer edition is exported from the same local WordPress pages; check the latest Pages workflow for its publication state.
+- Richer edition commit `6a07cd9` is published: https://github.com/jianwongdesign/techcloud/actions/runs/40857394947 completed successfully. All 11 public pages, all three MP4s, the revised stylesheet and JavaScript returned HTTP 200 and byte-matched the committed export. Published hero and service-video playback also verified in Chrome.
 - `.env` is ignored and absent from tracked files.
 
 ## Remaining review and release work
