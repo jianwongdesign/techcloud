@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import re
+from preview_expiry import guard
 
 ROOT = Path(__file__).resolve().parents[1] / 'preview'
 class Page(HTMLParser):
@@ -27,6 +28,7 @@ class Page(HTMLParser):
 errors=[]; pages={}
 for path in ROOT.rglob('*.html'):
     parser=Page(); text=path.read_text(); parser.feed(text); pages[path.resolve()]=parser
+    if guard() not in text: errors.append(f'{path}: expiry policy is missing or stale')
     if parser.headings!=1: errors.append(f'{path}: expected one h1, found {parser.headings}')
     for forbidden in ['localhost:', '127.0.0.1', 'wp-admin', 'wp-json', 'wp-content', 'elementor']:
         if forbidden in text: errors.append(f'{path}: leaked {forbidden}')

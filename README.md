@@ -89,3 +89,11 @@ Local integration checks intercept mail and remove test records:
 Before launch: approve copy and visual direction, confirm business details/shop destination, replace or remove the four clearly labelled illustrative case studies, migrate content, test editing on the target WordPress instance, configure SEO/indexing for production, exclude Contact from full-page caching, and configure/test mail delivery and enquiry retention on the target hosting. No testimonials, certifications, service levels, client results, or response-time guarantees have been invented.
 
 Reference content and asset provenance: [docs/content-sources.md](docs/content-sources.md).
+
+## Three-day review expiry
+
+`preview-policy.json` fixes the preview deadline at **2 November 2026, 11:30:14 am Singapore/Malaysia time** (`2026-11-02T03:30:14Z`). It does not reset on visits or exports. The inline guard checks first load, open tabs, focus, page restore and visibility changes. After expiry it replaces the site with an AdCendes contact screen.
+
+Pages builds go through `scripts/build-pages.py`. At and after the deadline, the published artifact contains only expiry pages for every route and the 404, with no original images, video, fonts or scripts. The GitHub schedule checks every 15 minutes and skips deployment before the deadline. Scheduled runs can be delayed by GitHub; the browser guard provides the immediate display limit using the visitor's clock.
+
+This is a review-window restriction, not authentication or DRM. The public repository/history and copies already downloaded remain accessible. Local WordPress is unaffected. To extend, edit the policy, re-export, verify and push. Checks: `python3 scripts/check-expiry.py`, `node scripts/check-expiry.mjs`, `python3 scripts/check-preview.py`.

@@ -2,7 +2,9 @@ name: Publish review preview
 on:
   push:
     branches: [main]
-    paths: ['preview/**', '.github/workflows/pages.yml', 'scripts/check-preview.py']
+    paths: ['preview/**', 'preview-policy.json', '.github/workflows/pages.yml', 'scripts/**']
+  schedule:
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,7 +14,25 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
+  expiry:
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.check.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os, sys
+          sys.path.insert(0, 'scripts')
+          from preview_expiry import expired
+          print('publish=' + str(os.environ['EVENT_NAME'] != 'schedule' or expired()).lower())
+          PY
   deploy:
+    needs: expiry
+    if: needs.expiry.outputs.publish == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -20,10 +40,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 scripts/check-preview.py
+      - run: python3 scripts/check-expiry.py
+      - run: node scripts/check-expiry.mjs
+      - run: python3 scripts/build-pages.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: preview
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4

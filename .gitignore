@@ -5,3 +5,5 @@ artifacts/
 *.zip
 *.log
 wp-config.php
+_site/
+__pycache__/

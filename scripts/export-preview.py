@@ -10,6 +10,7 @@ import json
 import os
 import re
 import shutil
+from preview_expiry import guard
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'preview'
@@ -89,10 +90,11 @@ def export(route, source, destination):
     rich_css = asset('rich.css')
     js = asset('site.js')
     guard_js = asset('preview-guard.js')
+    expiry_guard = guard()
     notice = '<div class="preview-notice">TechCloud · Design preview · Content for review</div>'
     base_tag = '<base href="/techcloud/">' if route == '/404.html' else ''
     document = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
+<html lang="en"><head><meta charset="utf-8"><script>{expiry_guard}</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
 <body{body.group(1)}>{notice}{content}<script src="{js}" defer></script><script src="{guard_js}" defer></script></body></html>'''
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(re.sub(r'[ \t]+$', '', document, flags=re.M))
