@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## Footer credit and policy links — 30 October
 
-Removed the footer text “Back to top” while keeping the floating arrow. Added linked “Designed by AdCendes” credit and Terms & Conditions, Privacy Policy and Cookies. Three native editable policy drafts are created by the local-only, idempotent `scripts/add-policy-pages.php`; existing published policies are preserved. The new pages explain the review preview and flag unconfirmed production privacy details. Cookies is an information page, not a preference manager. Desktop and 390px footer layout confirmed; all 18 exported HTML documents pass link/asset/heading/preview checks.
+Removed the footer text “Back to top” while keeping the floating arrow. Added linked “Designed by AdCendes” credit and Terms & Conditions, Privacy Policy and Cookies. Three native editable policy drafts are created by the local-only, idempotent `scripts/add-policy-pages.php`; existing published policies are preserved. The new pages explain the review preview and flag unconfirmed production privacy details. Cookies is an information page, not a preference manager. Desktop and 390px footer layout confirmed; all 18 exported HTML documents pass link/asset/heading/preview checks. The mobile Privacy Policy link opens the correct draft page. Published revision `2a467dc`: https://github.com/jianwongdesign/techcloud/actions/runs/40993264215 succeeded. All 18 public HTML documents and the revised CSS returned HTTP 200 and byte-matched the export. Production remains untouched.
 
 ## Sticky header, return arrow and share restrictions — 30 October
 
