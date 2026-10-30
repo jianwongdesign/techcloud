@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## Three-day preview expiry — 30 October
 
-Fixed expiry: `2026-11-02T03:30:14Z` (2 November, 11:30:14 am Singapore/Malaysia time), stored in `preview-policy.json`. Inline guard on all routes checks first load and returning/open tabs, pauses video and replaces the body with a review-expired contact screen. Scheduled Pages checks run every 15 minutes; expired builds omit all original assets and replace all 18 HTML routes. GitHub scheduling is best-effort; browser checks use the visitor clock. Public repository/history and downloaded copies remain accessible. Local WordPress is unchanged. Boundary and browser-event simulations pass, including rebuilding an active artifact into an expired one without leftover media.
+Fixed expiry: `2026-11-02T03:30:14Z` (2 November, 11:30:14 am Singapore/Malaysia time), stored in `preview-policy.json`. Inline guard on all routes checks first load and returning/open tabs, pauses video and replaces the body with a review-expired contact screen. Scheduled Pages checks run every 15 minutes; expired builds omit all original assets and replace all 18 HTML routes. GitHub scheduling is best-effort; browser checks use the visitor clock. Public repository/history and downloaded copies remain accessible. Local WordPress is unchanged. Boundary and browser-event simulations pass, including rebuilding an active artifact into an expired one without leftover media. Published revision `b923591`: https://github.com/jianwongdesign/techcloud/actions/runs/40998901605 succeeded. All 18 public pages returned HTTP 200 and matched the export with the fixed deadline. Production remains untouched.
 
 ## Cloud favicon — 30 October
 
