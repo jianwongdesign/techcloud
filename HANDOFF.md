@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## Sticky header, return arrow and share restrictions — 30 October
 
-Added a full-width sticky header shell, anchor offsets and adjusted desktop sticky Contact details below the header. A floating accessible arrow appears after the first viewport and links to the top with reduced-motion support. Preview exports alone load `scripts/preview-guard.js` and selection/drag CSS; content copy, context menu and drag actions are prevented while editable fields are exempt. These are casual deterrents, not DRM. Verified the sticky header at the footer on desktop and 390px mobile, mobile return-to-top and menu opening. Export, motion/service checks, copy-event/form exemptions and WordPress exclusion checks pass.
+Added a full-width sticky header shell, anchor offsets and adjusted desktop sticky Contact details below the header. A floating accessible arrow appears after the first viewport and links to the top with reduced-motion support. Preview exports alone load `scripts/preview-guard.js` and selection/drag CSS; content copy, context menu and drag actions are prevented while editable fields are exempt. These are casual deterrents, not DRM. Verified the sticky header at the footer on desktop and 390px mobile, mobile return-to-top and menu opening. Export, motion/service checks, copy-event/form exemptions and WordPress exclusion checks pass. Published revision `dfa04d3`: https://github.com/jianwongdesign/techcloud/actions/runs/40989893512 succeeded. All 15 public HTML documents and the three updated CSS/JS files returned HTTP 200 and matched the export. Production remains untouched.
 
 ## Mobile strip, process timeline and video controls — 30 October
 
