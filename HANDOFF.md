@@ -30,6 +30,10 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 
 Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
 
+## Cloud favicon — 30 October
+
+Added a transparent square SVG favicon displaying only the original TechCloud cloud-and-dots symbol, without the wordmark. The SVG embeds the existing logo asset and clips the lettering, preserving the original artwork and colours. WordPress supplies it when no custom Site Icon is set; the static exporter adds a versioned icon link on all 18 pages. Local WordPress output and all exported icon links verified; preview checks pass.
+
 ## Footer credit and policy links — 30 October
 
 Removed the footer text “Back to top” while keeping the floating arrow. Added linked “Designed by AdCendes” credit and Terms & Conditions, Privacy Policy and Cookies. Three native editable policy drafts are created by the local-only, idempotent `scripts/add-policy-pages.php`; existing published policies are preserved. The new pages explain the review preview and flag unconfirmed production privacy details. Cookies is an information page, not a preference manager. Desktop and 390px footer layout confirmed; all 18 exported HTML documents pass link/asset/heading/preview checks. The mobile Privacy Policy link opens the correct draft page. Published revision `2a467dc`: https://github.com/jianwongdesign/techcloud/actions/runs/40993264215 succeeded. All 18 public HTML documents and the revised CSS returned HTTP 200 and byte-matched the export. Production remains untouched.

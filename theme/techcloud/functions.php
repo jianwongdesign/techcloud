@@ -16,6 +16,13 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('techcloud-rich', get_theme_file_uri('assets/rich.css'), ['techcloud'], filemtime(get_theme_file_path('assets/rich.css')));
     wp_enqueue_script('techcloud', get_theme_file_uri('assets/site.js'), [], filemtime(get_theme_file_path('assets/site.js')), ['strategy' => 'defer', 'in_footer' => true]);
 });
+// Use the brand mark until a site icon is supplied through WordPress settings.
+add_action('wp_head', function () {
+    if (!has_site_icon()) {
+        $url = add_query_arg('v', filemtime(get_theme_file_path('assets/favicon.svg')), get_theme_file_uri('assets/favicon.svg'));
+        echo '<link rel="icon" type="image/svg+xml" sizes="any" href="' . esc_url($url) . '">' . "\n";
+    }
+});
 function tc_setting($key) {
     $defaults = ['email' => 'hello@techcloud.sg', 'phone' => '+65 6049 6060', 'address' => '629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838', 'shop_url' => ''];
     return get_theme_mod('tc_' . $key, $defaults[$key] ?? '');
