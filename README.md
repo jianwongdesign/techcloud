@@ -37,6 +37,8 @@ node scripts/check-services.mjs
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. The preview form validates fields and demonstrates its response without sending or saving an enquiry. Submission tokens and field names are removed from the export. Email and phone links remain available.
 
+The header stays visible while scrolling. A floating arrow appears after the first screen and returns to the top; reduced-motion settings disable smooth scrolling. The shared export alone includes casual copy, text-selection, image-drag and right-click deterrents (`scripts/preview-guard.js`), with form-field editing exempt. These are browser-side deterrents, not DRM or access control.
+
 ## Premium visual edition
 
 The design uses blue-grey neutrals, navy dark surfaces and the logo’s blue for actions, bold Manrope headings, medium-weight body text, a photographic infrastructure hero, a compact dark service selector, an open workplace story, a contrasting case-study feature and a three-step process. `assets/rich.css` extends the original brand styles; the native editor imports both stylesheets. Photography and video retain their full colours against the neutral surfaces; the original logo keeps its brand colours.

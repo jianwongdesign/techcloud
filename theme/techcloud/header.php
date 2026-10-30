@@ -4,6 +4,7 @@
 <body id="top" <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="site-header-shell">
 <header class="site-header wrap">
     <a class="brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="TechCloud home"><img src="<?php echo esc_url(get_theme_file_uri('assets/logo.png')); ?>" width="2560" height="1158" alt="TechCloud"></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
@@ -12,3 +13,5 @@
         <a class="shop-link" href="<?php echo esc_url(tc_shop_url()); ?>">Shop <?php echo tc_arrow(); ?></a>
     </nav>
 </header>
+</div>
+<span class="scroll-top-marker" aria-hidden="true"></span>

@@ -28,5 +28,6 @@ $map_embed = 'https://maps.google.com/maps?hl=en&q=' . rawurlencode($footer_addr
         <div class="footer-bottom"><span>© <?php echo esc_html(wp_date('Y')); ?> TechCloud Private Limited.</span><a href="#top">Back to top ↑</a></div>
     </div>
 </footer>
+<a class="back-to-top" href="#top" aria-label="Scroll to top" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a>
 <?php wp_footer(); ?>
 </body></html>

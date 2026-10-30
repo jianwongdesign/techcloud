@@ -13,6 +13,15 @@ if (toggle && nav) {
   matchMedia('(min-width: 761px)').addEventListener('change', close);
 }
 
+// Show the floating return link after the first screen, without scroll handlers.
+const backToTop = document.querySelector('.back-to-top');
+const scrollMarker = document.querySelector('.scroll-top-marker');
+if (backToTop && scrollMarker) {
+  new IntersectionObserver(([entry]) => {
+    backToTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
+  }).observe(scrollMarker);
+}
+
 // The public design preview has no backend. Never imply that it sent a message.
 document.querySelectorAll('[data-preview-form]').forEach(form => {
   form.addEventListener('submit', event => {

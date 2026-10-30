@@ -571,3 +571,17 @@ summary{font-size:16px;font-weight:700}
  .process-grid h3{font-size:22px;line-height:1.25;margin-bottom:10px}
  .process-grid p:last-child{margin-bottom:0;font-size:15px;line-height:1.7}
 }
+
+/* Stable sticky navigation and a compact return control. */
+html{scroll-padding-top:124px}
+.site-header-shell{position:sticky;top:0;z-index:50;background:#f7f8fb;box-shadow:0 1px 0 var(--line)}
+.admin-bar .site-header-shell{top:32px}
+.scroll-top-marker{position:absolute;top:100vh;left:0;width:1px;height:1px;pointer-events:none}
+.back-to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));z-index:45;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#33398d;color:#fff;border:1px solid #ffffff80;box-shadow:0 4px 16px #17213526;transition:background 180ms ease}
+.back-to-top[hidden]{display:none}
+.back-to-top:hover{background:#253763}
+.footer-bottom{padding-right:64px}
+@media(min-width:1101px) and (min-height:600px){.contact-layout .contact-details{top:136px}}
+@media(max-width:782px){.admin-bar .site-header-shell{top:46px}}
+@media(max-width:760px){html{scroll-padding-top:110px}.back-to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:44px;height:44px}.footer-bottom{padding-right:54px}}
+@media(max-width:600px){.admin-bar .site-header-shell{top:0}}
