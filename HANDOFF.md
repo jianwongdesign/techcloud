@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## Cloud favicon — 30 October
 
-Added a transparent square SVG favicon displaying only the original TechCloud cloud-and-dots symbol, without the wordmark. The SVG embeds the existing logo asset and clips the lettering, preserving the original artwork and colours. WordPress supplies it when no custom Site Icon is set; the static exporter adds a versioned icon link on all 18 pages. Local WordPress output and all exported icon links verified; preview checks pass.
+Added a transparent square SVG favicon displaying only the original TechCloud cloud-and-dots symbol, without the wordmark. The SVG embeds the existing logo asset and clips the lettering, preserving the original artwork and colours. WordPress supplies it when no custom Site Icon is set; the static exporter adds a versioned icon link on all 18 pages. Local WordPress output and all exported icon links verified; preview checks pass. Revision `5ba2ed3` is published: Pages run https://github.com/jianwongdesign/techcloud/actions/runs/40995547829 succeeded. All 18 public HTML documents and the favicon returned HTTP 200 and byte-matched the export. Production remains untouched.
 
 ## Footer credit and policy links — 30 October
 
