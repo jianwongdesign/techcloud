@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## White footer logo — 30 October
 
-Replaced the plain-text footer wordmark with the original transparent TechCloud logo, rendered white using a footer-only CSS filter. It retains its proportions at 180px desktop and 160px mobile; the header logo retains its original colours. All 15 exported documents pass preview checks, and the white logo was visually confirmed at 390px in Chrome.
+Replaced the plain-text footer wordmark with the original transparent TechCloud logo, rendered white using a footer-only CSS filter. It retains its proportions at 180px desktop and 160px mobile; the header logo retains its original colours. All 15 exported documents pass preview checks, and the white logo was visually confirmed on desktop and at 390px in Chrome. Revision `3123c08` is published; Pages run https://github.com/jianwongdesign/techcloud/actions/runs/40980031292 succeeded. All 15 public HTML documents and the footer CSS returned HTTP 200 and byte-matched the export. Production remains untouched.
 
 ## Services, cases and motion refinement — 30 October
 
