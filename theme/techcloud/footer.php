@@ -25,7 +25,11 @@ $map_embed = 'https://maps.google.com/maps?hl=en&q=' . rawurlencode($footer_addr
             <a class="footer-wordmark" href="<?php echo esc_url(home_url('/')); ?>" aria-label="TechCloud home"><img src="<?php echo esc_url(get_theme_file_uri('assets/logo.png')); ?>" width="2560" height="1158" alt="TechCloud" loading="lazy" decoding="async"></a>
             <nav aria-label="Footer navigation"><a href="<?php echo esc_url(home_url('/services/')); ?>">Services</a><a href="<?php echo esc_url(home_url('/case-studies/')); ?>">Case studies</a><a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a><a href="<?php echo esc_url(tc_shop_url()); ?>">Shop <?php echo tc_arrow(); ?></a></nav>
         </div>
-        <div class="footer-bottom"><span>© <?php echo esc_html(wp_date('Y')); ?> TechCloud Private Limited.</span><a href="#top">Back to top ↑</a></div>
+        <div class="footer-bottom">
+            <span>© <?php echo esc_html(wp_date('Y')); ?> TechCloud Private Limited.</span>
+            <nav class="footer-legal" aria-label="Website policies"><a href="<?php echo esc_url(home_url('/terms-and-conditions/')); ?>">Terms &amp; Conditions</a><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a><a href="<?php echo esc_url(home_url('/cookies/')); ?>">Cookies</a></nav>
+            <a class="footer-credit" href="https://adcendes.com.sg/" target="_blank" rel="noopener noreferrer">Designed by AdCendes</a>
+        </div>
     </div>
 </footer>
 <a class="back-to-top" href="#top" aria-label="Scroll to top" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a>

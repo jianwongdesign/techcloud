@@ -64,6 +64,10 @@ Higgsfield generation totals **31.5 of the authorized 40 credits**, including th
 
 `scripts/refine-v2.php` applies the native-block content refinement once on local installations, retaining each original page in `_tc_content_before_v2`. `local-up.sh` runs it after the initial seed. Subsequent runs preserve CMS edits.
 
+## Policy pages and footer credit
+
+The footer includes Terms & Conditions, Privacy Policy, Cookies and a linked “Designed by AdCendes” credit. The old footer text link to the top is removed; the floating arrow remains. The three policies are editable native pages created by `scripts/add-policy-pages.php`, included in local setup. They are clearly labelled drafts for review, describe the shared preview accurately, and must be confirmed or replaced for production. Cookies is an information page, not a cookie-consent manager.
+
 ## Contact enquiries and footer
 
 The blue footer includes enquiry and call buttons, email, the configured address, a Google map and directions link. The Contact page uses `[techcloud_contact]` and `[techcloud_contact_form]` in native shortcode blocks.

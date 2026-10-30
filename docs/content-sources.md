@@ -40,3 +40,8 @@ The footer and Contact revision on 30 October restores the previous homepage des
 The five public service pages were checked again through indexed primary-source content, including https://techcloud.sg/services/managed-it-services/. Expanded copy explains the existing service categories, likely scoping questions and preparation details. It is review copy, with final coverage, response arrangements, availability and pricing left to an agreed proposal. No 24/7 coverage, delivery dates, certifications or numerical improvements are claimed.
 
 Four proposed scenarios now cover an office move, employee support, a network refresh and temporary staffing for a device rollout. These are expressly illustrative, not completed client projects. Their descriptions use proposed work and handover checks rather than invented outcomes. Cards and detail pages retain visible disclosures. Each reuses an existing illustrative still; there are no new generation charges and the credit ledger remains 31.5/40.
+
+
+## Policy review pages — 30 October
+
+Terms, Privacy and Cookies are draft review pages based on the actual preview implementation, not approved production policies. General cookie descriptions were checked against [PDPC guidance on selected topics, chapter 6](https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/legislation-and-guidelines/final-advisory-guidelines-on-pdpa-for-selected-topics-31-august-2018.pdf). No confirmed privacy officer, retention period, third-party contracts or consent configuration has been invented. TechCloud should confirm final wording and operating arrangements before launch.

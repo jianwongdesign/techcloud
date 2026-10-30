@@ -23,4 +23,5 @@ docker-compose run --rm cli eval-file /scripts/refine-v2.php
 docker-compose run --rm cli eval-file /scripts/restore-v3.php
 docker-compose run --rm cli eval-file /scripts/refine-contact.php
 docker-compose run --rm cli eval-file /scripts/refine-services-cases.php
+docker-compose run --rm cli eval-file /scripts/add-policy-pages.php
 printf 'Local preview: http://localhost:8129\nLocal WordPress: http://localhost:8129/wp-admin/\nAdmin username: techcloud-admin (password is in the ignored .env file)\n'
