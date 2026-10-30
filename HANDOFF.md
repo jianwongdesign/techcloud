@@ -30,6 +30,10 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 
 Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
 
+## Mobile strip, process timeline and video controls — 30 October
+
+Removed the visible hero play/pause control at the user’s request and its unused styles/handlers. Background playback still respects reduced motion, data saver, off-screen and hidden-tab states. Removed the mobile space previously reserved for the control. Mobile intro copy spans the full row above three aligned icon columns. Process steps connect with a vertical line and three markers; desktop layout remains unchanged. Chrome at 390px confirms all three timeline markers, aligned benefits and the hero without a control. Export, service interactions, motion checks and whitespace validation pass.
+
 ## White footer logo — 30 October
 
 Replaced the plain-text footer wordmark with the original transparent TechCloud logo, rendered white using a footer-only CSS filter. It retains its proportions at 180px desktop and 160px mobile; the header logo retains its original colours. All 15 exported documents pass preview checks, and the white logo was visually confirmed on desktop and at 390px in Chrome. Revision `3123c08` is published; Pages run https://github.com/jianwongdesign/techcloud/actions/runs/40980031292 succeeded. All 15 public HTML documents and the footer CSS returned HTTP 200 and byte-matched the export. Production remains untouched.

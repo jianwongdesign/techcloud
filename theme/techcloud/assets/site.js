@@ -92,41 +92,24 @@ document.querySelectorAll('[data-service-showcase]').forEach(showcase => {
   }
 });
 
-// Load motion only near the viewport. User pause and accessibility preferences win.
+// Play background motion only while visible and allowed by visitor preferences.
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const saveData = navigator.connection?.saveData;
 document.querySelectorAll('.motion-media').forEach(container => {
   const video = container.querySelector('video');
-  const button = container.querySelector('.motion-control');
-  if (!video || !button) return;
+  if (!video) return;
   let visible = false;
-  let userPaused = false;
-  let userStarted = false;
-  const label = video.getAttribute('aria-label').replace(/^Illustrative /, '').replace(/ video$/, '');
-  button.hidden = false;
-  const update = () => {
-    const playing = !video.paused;
-    button.textContent = playing ? 'Pause video' : 'Play video';
-    button.setAttribute('aria-label', `${playing ? 'Pause' : 'Play'} ${label} video`);
-  };
   const play = () => {
     if (!video.paused) return;
     if (!video.src) video.src = video.dataset.src;
     video.muted = true;
-    video.play().catch(update);
+    video.play().catch(() => {});
   };
   const sync = () => {
-    if (visible && !document.hidden && !userPaused && (userStarted || (!reducedMotion.matches && !saveData))) play();
+    if (visible && !document.hidden && !reducedMotion.matches && !saveData) play();
     else if (!video.paused) video.pause();
   };
-  button.addEventListener('click', () => {
-    if (video.paused) { userStarted = true; userPaused = false; play(); }
-    else { userPaused = true; userStarted = false; video.pause(); }
-  });
-  video.addEventListener('play', update);
-  video.addEventListener('pause', update);
-  video.addEventListener('error', () => { button.hidden = true; });
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(video);
-  reducedMotion.addEventListener('change', () => { userStarted = false; sync(); });
+  reducedMotion.addEventListener('change', sync);
   document.addEventListener('visibilitychange', sync);
 });

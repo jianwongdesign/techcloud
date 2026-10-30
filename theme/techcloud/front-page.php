@@ -19,9 +19,6 @@
         </div>
         <div class="hero-caption"><span>People. Systems. Possibilities.</span><p>Technology, with people<br>at its heart.</p></div>
     </div>
-    <?php if ($has_hero_video) : ?>
-    <button class="motion-control hero-motion-control" type="button" hidden aria-label="Play technology infrastructure video">Play video</button>
-    <?php endif; ?>
 </section>
 <div class="wrap">
 <div class="intro-strip"><span>A little less complexity.<br><strong>A lot more peace of mind.</strong></span><span><?php echo tc_icon('server'); ?> Managed IT</span><span><?php echo tc_icon('support'); ?> People-first support</span><span><?php echo tc_icon('network'); ?> Room to grow</span></div>
