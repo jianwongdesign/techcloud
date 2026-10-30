@@ -32,7 +32,7 @@ Four case studies are explicitly labelled **illustrative, not client results**. 
 
 ## Mobile strip, process timeline and video controls — 30 October
 
-Removed the visible hero play/pause control at the user’s request and its unused styles/handlers. Background playback still respects reduced motion, data saver, off-screen and hidden-tab states. Removed the mobile space previously reserved for the control. Mobile intro copy spans the full row above three aligned icon columns. Process steps connect with a vertical line and three markers; desktop layout remains unchanged. Chrome at 390px confirms all three timeline markers, aligned benefits and the hero without a control. Export, service interactions, motion checks and whitespace validation pass.
+Removed the visible hero play/pause control at the user’s request and its unused styles/handlers. Background playback still respects reduced motion, data saver, off-screen and hidden-tab states. Removed the mobile space previously reserved for the control. Mobile intro copy spans the full row above three aligned icon columns. Process steps connect with a vertical line and three markers; desktop layout remains unchanged. Chrome at 390px confirms all three timeline markers, aligned benefits and the hero without a control. Export, service interactions, motion checks and whitespace validation pass. Revision `d5b4dcd` is published; Pages run https://github.com/jianwongdesign/techcloud/actions/runs/40980459683 succeeded. The public homepage, CSS and JavaScript returned HTTP 200 and matched the export. Production remains untouched.
 
 ## White footer logo — 30 October
 
