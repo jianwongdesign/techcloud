@@ -368,6 +368,8 @@ summary{font-size:16px;font-weight:700}
 .footer-address .text-link:hover{color:#d0e1ff}
 .footer-navigation{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:48px;padding:28px 0;border-top:1px solid #64779e}
 .footer-expanded .footer-wordmark{color:white;font-size:34px;letter-spacing:-.035em}
+.footer-expanded .footer-wordmark{display:block;flex-shrink:0;line-height:0}
+.footer-wordmark img{display:block;width:180px;max-width:100%;height:auto;filter:brightness(0) invert(1)}
 .footer-navigation nav{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
 .footer-navigation nav a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:14px;font-weight:650}
 .footer-navigation nav a:hover{text-decoration:underline;text-underline-offset:6px}
@@ -425,6 +427,7 @@ summary{font-size:16px;font-weight:700}
  .footer-address p{font-size:14px;max-width:38ch}
  .footer-address .text-link{margin-top:8px}
  .footer-navigation{align-items:start;flex-direction:column;gap:14px;margin-top:30px;padding-block:24px}
+ .footer-wordmark img{width:160px}
  .footer-navigation nav{gap:4px 24px}
  .footer-expanded .footer-bottom{font-size:11px;gap:6px 20px;align-items:start}
  .contact-layout{grid-template-columns:minmax(0,1fr);gap:36px;margin-bottom:48px}

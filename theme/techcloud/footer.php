@@ -22,7 +22,7 @@ $map_embed = 'https://maps.google.com/maps?hl=en&q=' . rawurlencode($footer_addr
             </div>
         </div>
         <div class="footer-navigation">
-            <a class="footer-wordmark" href="<?php echo esc_url(home_url('/')); ?>" aria-label="TechCloud home">techcloud</a>
+            <a class="footer-wordmark" href="<?php echo esc_url(home_url('/')); ?>" aria-label="TechCloud home"><img src="<?php echo esc_url(get_theme_file_uri('assets/logo.png')); ?>" width="2560" height="1158" alt="TechCloud" loading="lazy" decoding="async"></a>
             <nav aria-label="Footer navigation"><a href="<?php echo esc_url(home_url('/services/')); ?>">Services</a><a href="<?php echo esc_url(home_url('/case-studies/')); ?>">Case studies</a><a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a><a href="<?php echo esc_url(tc_shop_url()); ?>">Shop <?php echo tc_arrow(); ?></a></nav>
         </div>
         <div class="footer-bottom"><span>© <?php echo esc_html(wp_date('Y')); ?> TechCloud Private Limited.</span><a href="#top">Back to top ↑</a></div>

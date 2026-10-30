@@ -30,6 +30,10 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 
 Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
 
+## White footer logo — 30 October
+
+Replaced the plain-text footer wordmark with the original transparent TechCloud logo, rendered white using a footer-only CSS filter. It retains its proportions at 180px desktop and 160px mobile; the header logo retains its original colours. All 15 exported documents pass preview checks, and the white logo was visually confirmed at 390px in Chrome.
+
 ## Services, cases and motion refinement — 30 October
 
 Five service detail pages now explain their scope, suitable situations, preparation details and FAQs, with colour stills and related service links. The overview retains the selector and adds a practical guide. `scripts/refine-services-cases.php` is local-only and runs once through `local-up.sh`; previous page/case content is retained in `_tc_before_expanded_content`.
