@@ -97,3 +97,9 @@ Reference content and asset provenance: [docs/content-sources.md](docs/content-s
 Pages builds go through `scripts/build-pages.py`. At and after the deadline, the published artifact contains only expiry pages for every route and the 404, with no original images, video, fonts or scripts. The GitHub schedule checks every 15 minutes and skips deployment before the deadline. Scheduled runs can be delayed by GitHub; the browser guard provides the immediate display limit using the visitor's clock.
 
 This is a review-window restriction, not authentication or DRM. The public repository/history and copies already downloaded remain accessible. Local WordPress is unaffected. To extend, edit the policy, re-export, verify and push. Checks: `python3 scripts/check-expiry.py`, `node scripts/check-expiry.mjs`, `python3 scripts/check-preview.py`.
+
+## Client brief content
+
+The five client drafts are stored as structured website copy in `scripts/client-brief-content.json`. `extract-client-brief.py` can recreate that file from the local source DOCX, which is ignored by Git. `apply-client-brief.php` is a local-only, one-time migration run after earlier migrations by `local-up.sh`; it preserves original titles, excerpts and content in `_tc_before_client_brief`. Do not reset its option after later CMS edits unless deliberately reapplying the client source.
+
+The native page title, excerpt and blocks edit the H1, hero introduction and body. A TechCloud search/service-card meta box edits SEO titles, descriptions and compact selector text. Existing URLs are retained and brief links are mapped to them. Run `python3 scripts/check-client-brief.py` after export to check supplied copy coverage, SEO descriptions, FAQ counts and safe forms. See `docs/content-sources.md` for the exact mapping and missing source modules.

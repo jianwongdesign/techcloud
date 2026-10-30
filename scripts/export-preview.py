@@ -65,6 +65,8 @@ shutil.copyfile(ROOT / 'scripts/preview-guard.js', OUT / 'assets/preview-guard.j
 
 def export(route, source, destination):
     title = re.search(r'<title>(.*?)</title>', source, re.S).group(1)
+    description_match = re.search(r'<meta name="description" content="([^"]*)"', source)
+    description = description_match.group(1) if description_match else 'TechCloud custom WordPress website design preview.'
     body = re.search(r'<body([^>]*)>(.*)</body>', source, re.S)
     content = re.sub(r'<script\b[^>]*>.*?</script>', '', body.group(2), flags=re.S)
     content = re.sub(r'<style\b[^>]*>.*?</style>', '', content, flags=re.S)
@@ -94,7 +96,7 @@ def export(route, source, destination):
     notice = '<div class="preview-notice">TechCloud · Design preview · Content for review</div>'
     base_tag = '<base href="/techcloud/">' if route == '/404.html' else ''
     document = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><script>{expiry_guard}</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
+<html lang="en"><head><meta charset="utf-8"><script>{expiry_guard}</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="{description}"><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
 <body{body.group(1)}>{notice}{content}<script src="{js}" defer></script><script src="{guard_js}" defer></script></body></html>'''
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(re.sub(r'[ \t]+$', '', document, flags=re.M))

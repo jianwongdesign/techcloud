@@ -1,6 +1,6 @@
 # TechCloud — premium custom-theme preview
 
-Updated 30 October 2026.
+Updated 31 October 2026.
 
 ## Current state
 
@@ -29,6 +29,12 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+
+## Client content brief — 31 October
+
+Applied all five drafts in the supplied FPD x TechCloud brief to Home and the Managed IT, End User Support, IT Staffing and Installation/Infrastructure pages. Service selector and overview summaries now match. Native editable content includes full scopes, FAQs and consultation forms; search titles/descriptions and short service labels are editable in a new page meta box. Existing routes remain; brief internal links are mapped to them. The Managed IT description was a placeholder, so a scope-based description is supplied. Minor source typos are corrected. Unsupported client-logo, testimonial and blog placeholders are not displayed. The document has no replacement for case studies or the Project Management detail page, so these remain. Source DOCX and pre-change database backup remain local/ignored.
+
+`apply-client-brief.php` is local-only and idempotent, with original page fields in `_tc_before_client_brief`. Fresh local setup runs it after prior migrations. `check-client-brief.py` verifies 272 source headings/copy items, all five SEO descriptions, FAQ dropdown counts and five non-sending forms. Preview links/assets, services, motion, expiry and backend contact checks pass; no email was sent. Mobile Home at 390px and the service hero at 320px inspected; desktop service layout, FAQ expansion and consultation columns inspected at 1440px. The first desktop FAQ grid issue was fixed to a compact single-column list. No media credits spent. The fixed expiry is unchanged.
 
 ## Three-day preview expiry — 30 October
 

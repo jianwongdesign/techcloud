@@ -14,7 +14,7 @@
         <div class="hero-copy">
             <h1><?php the_title(); ?></h1>
             <p class="hero-description"><?php echo esc_html(get_the_excerpt()); ?></p>
-            <div class="hero-actions"><a class="button button-light" href="<?php echo esc_url(home_url('/contact/')); ?>">Let’s talk IT <?php echo tc_arrow(); ?></a><a class="text-link" href="<?php echo esc_url(home_url('/services/')); ?>">Explore our services <?php echo tc_arrow(); ?></a></div>
+            <div class="hero-actions"><a class="button button-light" href="<?php echo esc_url(home_url('/contact/')); ?>">Get a Free IT Consultation <?php echo tc_arrow(); ?></a><a class="text-link" href="<?php echo esc_url(home_url('/services/')); ?>">Explore our services <?php echo tc_arrow(); ?></a></div>
             <p class="hero-location">IT services for businesses in Singapore.</p>
         </div>
         <div class="hero-caption"><span>People. Systems. Possibilities.</span><p>Technology, with people<br>at its heart.</p></div>

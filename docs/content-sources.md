@@ -45,3 +45,21 @@ Four proposed scenarios now cover an office move, employee support, a network re
 ## Policy review pages — 30 October
 
 Terms, Privacy and Cookies are draft review pages based on the actual preview implementation, not approved production policies. General cookie descriptions were checked against [PDPC guidance on selected topics, chapter 6](https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/legislation-and-guidelines/final-advisory-guidelines-on-pdpa-for-selected-topics-31-august-2018.pdf). No confirmed privacy officer, retention period, third-party contracts or consent configuration has been invented. TechCloud should confirm final wording and operating arrangements before launch.
+
+## Client content brief applied 31 October 2026
+
+Primary copy authority: `FPD x TechCloud - Content Brief - 20250303.docx (Client).docx`, supplied by the user. All five drafts were read, including the two comments (the installation scope's existing live H1 and use of FAQ dropdowns), tracked insertions, tables and embedded internal links. The agency introduction, keyword-volume tables, revision rules and uploader checklist are editorial instructions, not public copy. The original DOCX and a local database snapshot stay outside Git.
+
+| Brief page | Applied review route |
+| --- | --- |
+| Home | `/` |
+| `/services/managed-services` | `/services/managed-it-services/` |
+| `/services/end-user-support` | `/services/end-user-it-support/` |
+| `/services/it-staffing` | `/services/it-staffing/` |
+| `/services/installation-and-provisioning` | `/services/it-installation-infrastructure/` |
+
+Supplied H1s, body paragraphs, scope features, FAQ answers, service summaries, recommended titles and descriptions are applied. Internal links map to working preview routes; Learn How links use `#how`. The Managed IT recommended description was `[To be optimised with target keywords]`, so its description is written from the supplied scope. Obvious source typos corrected: IR Installation → IT Installation, SIngapore → Singapore, What Are IT Staffing? → What Is IT Staffing?, demeanor → demeanour. WordPress normal typography also converts some punctuation.
+
+The brief supplies no client logo assets, review entries or blog articles, only `[CLIENT LOGOS]`, `[REVIEW MODULES]` and `[BLOG MODULES]`. These unfilled modules are omitted from public output. No reviews, client names or articles are invented. Existing illustrative case studies, the process timeline and Project Management detail content are retained because the document does not replace them. Short Project Management summaries come from the supplied brief.
+
+Client-supplied service statements, including round-the-clock support, pricing, offshore support and security capabilities, are reproduced as their copy rather than independently verified operational facts. Forms on Home and the four service pages reuse the native enquiry form; static review submissions do not send messages. The original fixed preview expiry remains unchanged.

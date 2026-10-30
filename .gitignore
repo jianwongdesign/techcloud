@@ -7,3 +7,6 @@ artifacts/
 wp-config.php
 _site/
 __pycache__/
+
+# Client source document stays local; only the website copy is published.
+FPD*.docx

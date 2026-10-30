@@ -18,7 +18,7 @@ $map_embed = 'https://maps.google.com/maps?hl=en&q=' . rawurlencode($footer_addr
             </div>
             <div class="footer-location">
                 <iframe class="footer-map" src="<?php echo esc_url($map_embed); ?>" title="TechCloud office location at Cititech Industrial Building" width="640" height="260" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <div class="footer-address"><p><?php echo esc_html($footer_address); ?></p><a class="text-link" href="<?php echo esc_url($map_url); ?>" target="_blank" rel="noopener noreferrer">Open in Maps <?php echo tc_arrow(); ?></a></div>
+                <div class="footer-address"><p><?php echo esc_html($footer_address); ?></p><a class="text-link" href="<?php echo esc_url($map_url); ?>" target="_blank" rel="noopener noreferrer nofollow">Open in Maps <?php echo tc_arrow(); ?></a></div>
             </div>
         </div>
         <div class="footer-navigation">
@@ -28,7 +28,7 @@ $map_embed = 'https://maps.google.com/maps?hl=en&q=' . rawurlencode($footer_addr
         <div class="footer-bottom">
             <span>© <?php echo esc_html(wp_date('Y')); ?> TechCloud Private Limited.</span>
             <nav class="footer-legal" aria-label="Website policies"><a href="<?php echo esc_url(home_url('/terms-and-conditions/')); ?>">Terms &amp; Conditions</a><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a><a href="<?php echo esc_url(home_url('/cookies/')); ?>">Cookies</a></nav>
-            <a class="footer-credit" href="https://adcendes.com.sg/" target="_blank" rel="noopener noreferrer">Designed by AdCendes</a>
+            <a class="footer-credit" href="https://adcendes.com.sg/" target="_blank" rel="noopener noreferrer nofollow">Designed by AdCendes</a>
         </div>
     </div>
 </footer>

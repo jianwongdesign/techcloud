@@ -71,13 +71,13 @@ function tc_service_list($attributes = []) {
     ob_start();
     echo '<div class="services-index" data-service-showcase><nav class="service-menu" aria-label="IT services">';
     foreach ($pages as $i => $service) {
-        echo '<a class="service-choice" id="' . esc_attr($showcase_id . '-choice-' . $i) . '" data-service-choice href="' . esc_url(get_permalink($service)) . '"><span>' . esc_html($service->post_title) . '</span>' . tc_arrow() . '</a>';
+        echo '<a class="service-choice" id="' . esc_attr($showcase_id . '-choice-' . $i) . '" data-service-choice href="' . esc_url(get_permalink($service)) . '"><span>' . esc_html(get_post_meta($service->ID, '_tc_service_label', true) ?: $service->post_title) . '</span>' . tc_arrow() . '</a>';
     }
     echo '</nav><div class="service-panels">';
     foreach ($pages as $i => $service) {
         echo '<article class="service-panel" id="' . esc_attr($showcase_id . '-panel-' . $i) . '" data-service-panel' . ($i ? ' hidden' : '') . '>';
         echo tc_service_image($service);
-        echo '<div class="service-summary"><' . $heading . '>' . esc_html($service->post_title) . '</' . $heading . '><p>' . esc_html($service->post_excerpt) . '</p><a class="button button-light" href="' . esc_url(get_permalink($service)) . '">Explore service ' . tc_arrow() . '</a></div></article>';
+        echo '<div class="service-summary"><' . $heading . '>' . esc_html(get_post_meta($service->ID, '_tc_service_label', true) ?: $service->post_title) . '</' . $heading . '><p>' . esc_html(get_post_meta($service->ID, '_tc_service_summary', true) ?: $service->post_excerpt) . '</p><a class="button button-light" href="' . esc_url(get_permalink($service)) . '">Explore service ' . tc_arrow() . '</a></div></article>';
     }
     echo '</div></div>'; return ob_get_clean();
 }
@@ -150,3 +150,5 @@ add_shortcode('techcloud_contact', function () {
     $phone = tc_setting('phone');
     return '<div class="contact-details"><a href="mailto:' . esc_attr(tc_setting('email')) . '"><span class="eyebrow">EMAIL US</span><strong>' . esc_html(tc_setting('email')) . '</strong>' . tc_arrow() . '</a><a href="tel:' . esc_attr(preg_replace('/[^+0-9]/', '', $phone)) . '"><span class="eyebrow">CALL US</span><strong>' . esc_html($phone) . '</strong>' . tc_arrow() . '</a><div><span class="eyebrow">FIND US</span><p>' . esc_html(tc_setting('address')) . '</p></div></div>';
 });
+
+require_once get_theme_file_path('inc/seo.php');

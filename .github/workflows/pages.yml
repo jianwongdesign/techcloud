@@ -40,6 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 scripts/check-preview.py
+      - run: python3 scripts/check-client-brief.py
       - run: python3 scripts/check-expiry.py
       - run: node scripts/check-expiry.mjs
       - run: python3 scripts/build-pages.py
