@@ -38,6 +38,8 @@ Mobile navigation now transitions in both directions with a small fade/translati
 
 Chrome desktop and 390px phone inspection confirmed the form layout, mobile menu, FAQ content and return arrow. Navigation behavior, service interaction, hero motion, all 18 exported pages and all 272 client-copy items pass their checks. No media generation, content/SEO changes or production edits. The fixed preview expiry remains 2 November at 11:30:14 am Singapore/Malaysia time.
 
+Published revision `6419dd5`: https://github.com/jianwongdesign/techcloud/actions/runs/41220094399 succeeded. All 18 public HTML pages plus the updated CSS and JavaScript returned HTTP 200 and byte-matched the export.
+
 ## Client content brief — 31 October
 
 Layout follow-up: the four brief service heroes now pair title and introduction on desktop; their scope headings sit above individual capability rows, each grouping its introduction beside the detailed features. Photos use a fixed crop instead of stretching with long copy. Home's five benefits use aligned rows, consultation form headings are smaller, and related-service links align consistently. Phone layouts stack the same content. `refine-brief-layout.php` is local-only, idempotent, and preserves pre-layout blocks in `_tc_before_brief_layout`; fresh setup runs it after the content import.
