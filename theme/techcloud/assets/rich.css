@@ -448,8 +448,15 @@ summary{font-size:16px;font-weight:700}
 .service-row,.service-row:hover{padding-inline:0;transition:background-color 180ms ease}
 .has-service-tabs .service-panel{grid-area:1 / 1;opacity:1;visibility:visible;z-index:1;transition:opacity 260ms var(--motion-ease),visibility 0s}
 .has-service-tabs .service-panel[hidden]{display:flex;opacity:0;visibility:hidden;pointer-events:none;z-index:0;transition:opacity 260ms var(--motion-ease),visibility 0s 260ms}
-@keyframes nav-open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:760px){.primary-nav.is-open{animation:nav-open 220ms var(--motion-ease)}}
+@media(max-width:760px){
+ .primary-nav{display:block;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 180ms var(--motion-ease),transform 220ms var(--motion-ease),visibility 0s 220ms}
+ .primary-nav.is-open{visibility:visible;opacity:1;pointer-events:auto;transform:none;transition-delay:0s}
+ .menu-lines,.menu-toggle[aria-expanded=true] .menu-lines{height:12px;border:0;transform:none}
+ .menu-lines:before,.menu-lines:after{content:'';position:absolute;left:0;top:1px;width:20px;border-top:1px solid currentColor;transition:transform 220ms var(--motion-ease)}
+ .menu-lines:after{top:10px}
+ .menu-toggle[aria-expanded=true] .menu-lines:before{transform:translateY(4.5px) rotate(45deg)}
+ .menu-toggle[aria-expanded=true] .menu-lines:after{top:10px;transform:translateY(-4.5px) rotate(-45deg)}
+}
 @media(min-width:1101px) and (min-height:600px){
  .contact-layout .contact-details{position:sticky;top:32px;align-self:start}
 }
@@ -579,6 +586,8 @@ html{scroll-padding-top:124px}
 .scroll-top-marker{position:absolute;top:100vh;left:0;width:1px;height:1px;pointer-events:none}
 .back-to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));z-index:45;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#33398d;color:#fff;border:1px solid #ffffff80;box-shadow:0 4px 16px #17213526;transition:background 180ms ease}
 .back-to-top[hidden]{display:none}
+.back-to-top{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(6px);transition:opacity 200ms var(--motion-ease),transform 240ms var(--motion-ease),background-color 180ms ease,visibility 0s 240ms}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
 .back-to-top:hover{background:#253763}
 .footer-bottom{padding-right:64px}
 @media(min-width:1101px) and (min-height:600px){.contact-layout .contact-details{top:136px}}
@@ -686,4 +695,39 @@ html{scroll-padding-top:124px}
  .brief-consultation-intro h2{max-width:24ch;margin-bottom:14px}
  .brief-consultation-intro p{max-width:none;margin-bottom:0}
  .brief-faq{padding-block:28px 36px}
+}
+
+/* One compact enquiry section on Home, without an empty column beside the form. */
+.home .brief-consultation{display:block;max-width:1000px;margin:0 auto 48px;padding:36px;background:#edf1f7;border:1px solid var(--line);border-radius:12px}
+.home .brief-consultation-intro h2{max-width:none;font-size:clamp(28px,3vw,38px);margin-bottom:12px}
+.home .brief-consultation-intro p{max-width:none;margin:0}
+.home .brief-consultation .enquiry-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 24px;margin-top:28px;padding:24px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none}
+.home .enquiry-form>h2,.home .enquiry-form>.form-intro,.home .enquiry-form>.form-status,.home .enquiry-form>.form-fields,.home .enquiry-form>.preview-form-note{grid-column:1 / -1}
+.home .enquiry-form>.form-note{margin:20px 0 0;align-self:center}
+.home .enquiry-form>.preview-form-note{margin:0 0 18px}
+.home .enquiry-form>button{margin-top:20px;align-self:center}
+@media(min-width:1101px){
+ .home .enquiry-form .form-fields{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home .enquiry-form .form-field-wide{grid-column:span 2}
+ .home .enquiry-form .form-field-wide:last-child{grid-column:1 / -1}
+}
+@media(min-width:761px) and (max-width:1100px){.home .enquiry-form .form-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .home .brief-consultation{padding:24px 20px;margin-bottom:32px}
+ .home .brief-consultation .enquiry-form{display:block;margin-top:24px;padding-top:20px}
+ .home .enquiry-form>button{width:100%;margin-top:16px}
+}
+
+/* Small state changes stay local; no scroll listeners or page-wide reveal effects. */
+.form-field :is(input,select,textarea){transition:border-color 160ms ease,background-color 160ms ease}
+.wp-block-details summary{transition:color 160ms ease}
+.wp-block-details summary:hover,.wp-block-details[open]>summary{color:var(--blue)}
+@supports (interpolate-size:allow-keywords) and selector(details::details-content){
+ .wp-block-details{interpolate-size:allow-keywords}
+ .wp-block-details::details-content{block-size:0;overflow:clip;opacity:0;transition:block-size 240ms var(--motion-ease),opacity 180ms ease,content-visibility 240ms allow-discrete}
+ .wp-block-details[open]::details-content{block-size:auto;opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+ .primary-nav,.back-to-top,.case-card:hover .case-image>img,.text-link:hover .arrow-icon{transform:none}
+ .wp-block-details::details-content{transition:none}
 }

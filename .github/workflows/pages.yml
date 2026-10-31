@@ -43,6 +43,7 @@ jobs:
       - run: python3 scripts/check-client-brief.py
       - run: python3 scripts/check-expiry.py
       - run: node scripts/check-expiry.mjs
+      - run: node scripts/check-navigation.mjs
       - run: python3 scripts/build-pages.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

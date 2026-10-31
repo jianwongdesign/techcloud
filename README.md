@@ -33,6 +33,7 @@ python3 scripts/export-preview.py
 python3 scripts/check-preview.py
 node scripts/check-motion.mjs
 node scripts/check-services.mjs
+node scripts/check-navigation.mjs
 ```
 
 The export includes a review label, noindex directives, self-hosted assets, and relative links that work under the repository subpath. Shop remains a clear placeholder until configured. The preview form validates fields and demonstrates its response without sending or saving an enquiry. Submission tokens and field names are removed from the export. Email and phone links remain available.

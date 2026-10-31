@@ -1,6 +1,6 @@
 # TechCloud — premium custom-theme preview
 
-Updated 31 October 2026.
+Updated 1 November 2026.
 
 ## Current state
 
@@ -29,6 +29,14 @@ The original three Higgsfield Kling 3.0 Turbo clips cost 22.5 credits. A stronge
 `rich.css` extends the brand styles and also loads in the native editor. `scripts/refine-v2.php` is local-only and idempotent; the previous content is saved in `_tc_content_before_v2`. It has already run locally. `local-up.sh` applies both seed and refinement for fresh installations.
 
 Four case studies are explicitly labelled **illustrative, not client results**. Replace or remove them before production. Contact includes a first-party enquiry form with name, email, optional company/phone, service selection and message. WordPress saves private administrator-only enquiries and attempts notification to the configured business email. Validation, nonce, honeypot, duplicate handling and rate limiting are included. Email delivery on hosting is not yet verified. The static preview explicitly does not send messages and strips submission fields/tokens.
+
+## Homepage enquiry spacing and interaction polish — 1 November
+
+Home's consultation heading and introduction now sit above a single compact, centred form panel instead of an empty side column. Fields use three columns on wide desktops, two on tablets and one on phones; the privacy note and submit action align along the bottom on desktop. Client copy is unchanged.
+
+Mobile navigation now transitions in both directions with a small fade/translation, including the hamburger icon. Closed mobile links are inert, Escape restores focus, and desktop links remain usable after resizing. The floating return arrow fades in/out without scroll handlers and is removed from keyboard navigation while hidden. FAQ answers expand/collapse gently in browsers supporting intrinsic-size transitions and remain functional elsewhere. Form focus colours transition briefly. Existing reserved-height service crossfades and visibility-aware hero playback remain; reduced-motion preferences disable transitions.
+
+Chrome desktop and 390px phone inspection confirmed the form layout, mobile menu, FAQ content and return arrow. Navigation behavior, service interaction, hero motion, all 18 exported pages and all 272 client-copy items pass their checks. No media generation, content/SEO changes or production edits. The fixed preview expiry remains 2 November at 11:30:14 am Singapore/Malaysia time.
 
 ## Client content brief — 31 October
 

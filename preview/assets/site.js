@@ -1,16 +1,22 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.primary-nav');
 if (toggle && nav) {
-  const close = () => { toggle.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); };
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') !== 'true';
+  const desktopNav = matchMedia('(min-width: 761px)');
+  const setOpen = open => {
     toggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
+    nav.inert = !desktopNav.matches && !open;
+  };
+  const close = () => setOpen(false);
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(open);
   });
   nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('is-open')) { close(); toggle.focus(); } });
   document.addEventListener('click', event => { if (!event.target.closest('.site-header')) close(); });
-  matchMedia('(min-width: 761px)').addEventListener('change', close);
+  desktopNav.addEventListener('change', close);
+  close();
 }
 
 // Show the floating return link after the first screen, without scroll handlers.
@@ -18,8 +24,14 @@ const backToTop = document.querySelector('.back-to-top');
 const scrollMarker = document.querySelector('.scroll-top-marker');
 if (backToTop && scrollMarker) {
   new IntersectionObserver(([entry]) => {
-    backToTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
+    const visible = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+    backToTop.classList.toggle('is-visible', visible);
+    backToTop.tabIndex = visible ? 0 : -1;
+    backToTop.setAttribute('aria-hidden', String(!visible));
   }).observe(scrollMarker);
+  backToTop.tabIndex = -1;
+  backToTop.setAttribute('aria-hidden', 'true');
+  backToTop.hidden = false;
 }
 
 // The public design preview has no backend. Never imply that it sent a message.
