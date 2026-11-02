@@ -93,7 +93,7 @@ Reference content and asset provenance: [docs/content-sources.md](docs/content-s
 
 ## Three-day review expiry
 
-`preview-policy.json` fixes the preview deadline at **2 November 2026, 11:30:14 am Singapore/Malaysia time** (`2026-11-02T03:30:14Z`). It does not reset on visits or exports. The inline guard checks first load, open tabs, focus, page restore and visibility changes. After expiry it replaces the site with an AdCendes contact screen.
+`preview-policy.json` fixes the preview deadline at **5 November 2026, 6:36:19 pm Singapore/Malaysia time** (`2026-11-05T10:36:19Z`). It does not reset on visits or exports. The inline guard checks first load, open tabs, focus, page restore and visibility changes. After expiry it replaces the site with an AdCendes contact screen.
 
 Pages builds go through `scripts/build-pages.py`. At and after the deadline, the published artifact contains only expiry pages for every route and the 404, with no original images, video, fonts or scripts. The GitHub schedule checks every 15 minutes and skips deployment before the deadline. Scheduled runs can be delayed by GitHub; the browser guard provides the immediate display limit using the visitor's clock.
 

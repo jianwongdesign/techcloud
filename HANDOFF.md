@@ -1,6 +1,6 @@
 # TechCloud — premium custom-theme preview
 
-Updated 1 November 2026.
+Updated 2 November 2026.
 
 ## Current state
 
@@ -9,6 +9,10 @@ Updated 1 November 2026.
 - Local WordPress: http://localhost:8129 — isolated Docker project `techcloud`.
 - Local CMS: http://localhost:8129/wp-admin/ — user `techcloud-admin`, random password in ignored `.env`.
 - **techcloud.sg is untouched.** No live-site credentials, backups, migrations, or production changes were involved.
+
+## Preview reactivated — 2 November
+
+At the user's request, renewed the existing preview URL for three days, ending **5 November 2026 at 6:36:19 pm Singapore/Malaysia time** (`2026-11-05T10:36:19Z`). Updated the shared policy and all 18 inline page guards; retained the existing content, assets and expiry mechanism. This supersedes the historical deadlines below. Production is untouched.
 
 ## Agreed scope
 
