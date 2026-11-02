@@ -14,6 +14,8 @@ Updated 2 November 2026.
 
 At the user's request, renewed the existing preview URL for three days, ending **5 November 2026 at 6:36:19 pm Singapore/Malaysia time** (`2026-11-05T10:36:19Z`). Updated the shared policy and all 18 inline page guards; retained the existing content, assets and expiry mechanism. This supersedes the historical deadlines below. Production is untouched.
 
+Verified publication `78ea853` through successful Pages run https://github.com/jianwongdesign/techcloud/actions/runs/41430192868. All 18 public HTML pages, CSS, JavaScript and hero video returned HTTP 200 and byte-matched the restored export.
+
 ## Agreed scope
 
 Custom WordPress theme only; no Elementor or other page builder. Native blocks edit page content. Home; Services overview and five individual child pages; Contact; Case Studies archive/detail; configurable Shop button. User said the Shop may be `/shop/` or a separate shop subdomain, to be supplied later. Empty setting opens a deliberate placeholder page.
