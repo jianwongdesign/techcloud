@@ -1,6 +1,6 @@
 # TechCloud — premium custom-theme preview
 
-Updated 2 November 2026.
+Updated 9 November 2026.
 
 ## Current state
 
@@ -9,6 +9,15 @@ Updated 2 November 2026.
 - Local WordPress: http://localhost:8129 — isolated Docker project `techcloud`.
 - Local CMS: http://localhost:8129/wp-admin/ — user `techcloud-admin`, random password in ignored `.env`.
 - **techcloud.sg is untouched.** No live-site credentials, backups, migrations, or production changes were involved.
+
+## Restart checkpoint — 9 November
+
+- Before this documentation checkpoint, local `main` and `origin/main` both matched `8d181edb3abf52ad866db053bfdb2293f41d5d22`; the working tree was clean. All site changes are committed and pushed.
+- Latest visual changes are the compact homepage enquiry form and restrained menu, FAQ and return-arrow transitions (`6419dd5`). Client-brief copy remains preserved. Their earlier validation and publication evidence is recorded below; no new design edits or browser audit were performed for this restart.
+- The public preview was checked today and displays the expiry page. Its policy deadline is still `2026-11-05T10:36:19Z`. This checkpoint does not extend access.
+- Resume in `/Users/jianwong/project/techcloud`, read this file and `README.md`, then inspect `git status --short --branch`. Start Docker and run `docker-compose up -d wordpress` to resume the existing local site at http://localhost:8129. Use `./scripts/local-up.sh` for documented setup if needed. Keep existing Docker volumes and the ignored `.env`; database state and credentials are local, not stored in Git.
+- Theme: `theme/techcloud`; content plugin: `plugins/techcloud-content`; committed static export: `preview`. Export from the local WordPress render using `python3 scripts/export-preview.py` after future changes, then run the documented checks before pushing.
+- No unfinished source edits or pending deployment at this checkpoint. Await the next requested change. Renew preview access only when requested, updating policy and all inline guards together. Production `techcloud.sg` remains untouched.
 
 ## Preview reactivated — 2 November
 
