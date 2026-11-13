@@ -4,11 +4,11 @@ Updated 13 November 2026.
 
 ## Shareable blog review — 13 November
 
-- User requested a shareable view. Blog review is being published through the existing GitHub Pages workflow from `main`; this does not deploy to techcloud.sg.
+- User requested a shareable view. Blog review was published through the existing GitHub Pages workflow from `main`; this does not deploy to techcloud.sg.
 - Listing: https://jianwongdesign.github.io/techcloud/blog/
 - Article: https://jianwongdesign.github.io/techcloud/blog/disaster-recovery-planning-5-step-emergency-plan-for-smes/
 - Review access renewed until **16 November 2026, 11:30 am Singapore/Malaysia** (`2026-11-16T03:30:00Z`). Policy and all 27 inline page guards were regenerated together. Sample posts remain explicitly labelled.
-- Static links/assets, client copy, expiry and navigation checks passed before publication. Production migration remains deferred until working backend access is supplied.
+- Published commit `34b9a77` via successful Pages run https://github.com/jianwongdesign/techcloud/actions/runs/43357845212. All 72 published HTML/assets returned HTTP 200 and byte-matched the reviewed export. Private evidence: `artifacts/blog-20261113/public-verification.json`. Static links/assets, client copy, expiry and navigation checks passed. Production migration remains deferred until working backend access is supplied.
 
 ## Blog design checkpoint — 13 November
 
