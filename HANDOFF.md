@@ -1,14 +1,57 @@
 # TechCloud — premium custom-theme preview
 
-Updated 9 November 2026.
+Updated 13 November 2026.
+
+## Blog design checkpoint — 13 November
+
+- User requested Git-first blog design, with live migration deferred until the team provides access. Work is on `feature/blog-design`; production was not changed.
+- Native `/blog/` listing and `/blog/{post-slug}/` single templates are built, with six-post numbered pagination, three Related Blogs and a footer Blog link. No search/filter UI, share/category sidebar, Learn More label, All Resources button or extra article CTA banner.
+- Local preview: http://localhost:8129/blog/. Seven labelled sample articles demonstrate pagination and related content; these must not be imported to production. Existing imagery is reused. The legacy article slug is a design fixture, not recovered legacy copy.
+- PHP syntax, seven article routes, pagination, related links and all 27 exported HTML pages passed checks. Desktop, phone 390×844 and tablet 820×1180 layouts were visually inspected in Chrome. The GitHub Pages expiry deadline remains unchanged.
+- Reproduction, scope, validation and later migration steps: `docs/BLOG-DESIGN.md`. Later deploy the reviewed theme diff and configure the posts page/permalinks; preserve live content/users and do not restore the local database.
+- Prior favicon request is prepared in local source/export: blue mark on white, with `assets/site-icon-white.png` for WordPress Site Icon. Live application remains pending. The saved original password was rejected on 11 November; do not retry it. Obtain working access from the team.
+- Local database backup before blog setup: ignored `artifacts/blog-20261113/before-blog.sql`.
 
 ## Current state
 
-- Repository: https://github.com/jianwongdesign/techcloud — public, branch `main`.
+- Repository: https://github.com/jianwongdesign/techcloud — public; current blog work is on `feature/blog-design`, based on `main`.
 - Review preview: https://jianwongdesign.github.io/techcloud/ — GitHub Pages, static export of the local WordPress rendering.
 - Local WordPress: http://localhost:8129 — isolated Docker project `techcloud`.
 - Local CMS: http://localhost:8129/wp-admin/ — user `techcloud-admin`, random password in ignored `.env`.
-- **techcloud.sg is untouched.** No live-site credentials, backups, migrations, or production changes were involved.
+- **Imported to www.techcloud.sg on 10 November 2026.** All-in-One WP Migration reported success; source administrator login and saved permalinks were verified then. Protection/indexing observations below are historical and must be rechecked for later deployment.
+
+## Final client review check — 10 November
+
+- Fresh Edge check of all 17 intended routes passed with expected headings. Phone 390×844 homepage/menu/Contact and tablet 820×1180 Contact/footer/map spot checks passed; desktop Contact layout inspected. No new test email sent.
+- Admin access, indexing restriction and enquiry #76 mail-transport acceptance reconfirmed. HTTP/non-www redirect to HTTPS www; anonymous www still returns hosting Basic-auth 401. Actual inbox delivery remains unverified.
+- Four case studies remain explicitly illustrative; three policies remain labelled drafts; Shop destination still needs client confirmation. Drafted a client migration/review message only, without sending it.
+- Private details: `artifacts/migration-20261110/FINAL-REVIEW.md`. No website code/settings changed. This is a review-ready migration, not a public-launch signoff.
+
+## Live contact form test — 10 November
+
+- User requested a real form test. Empty-submit validation passed; one clearly labelled test `TC-FORM-20261110-A` returned “Thank you. Your enquiry has been received.”.
+- Verified private enquiry ID 76 in WordPress with correct message/details and notification status **Accepted by mail transport**. Contact email is `hello@techcloud.sg`. Test record retained for review.
+- Submission/storage/mail handoff passed through logged-in Edge; recipient inbox delivery and a separate logged-out visitor test remain unverified. No code/settings changed. Private evidence: `artifacts/migration-20261110/FORM-TEST-RESULT.md`.
+
+## Import completed — 10 November
+
+- User explicitly requested the import after preparation. First exported/downloaded the destination backup `www-techcloud-sg-20261110-083429-usra7xen0a4i.wpress` (16,845,403 bytes); whole-archive and all 445 file CRCs passed. Private copies are in Downloads and `artifacts/migration-20261110/destination-before-import/`.
+- Imported the verified `techcloud-wordpress-20261110.wpress` through All-in-One WP Migration in Edge. WordPress displayed “Your site has been imported successfully!”.
+- Successfully signed in as the migrated `techcloud-admin` using the existing ignored `.env` password; saved permalinks and observed “Permalink structure updated.”. The user requested and was given this WordPress login in chat. This does not identify the separate hosting HTTP Basic credentials.
+- Browser checks passed for homepage, Services overview, all five service pages, Case Studies archive and Contact. Desktop homepage shows the restored theme/media; Contact and relevant service pages expose the enquiry fields. TechCloud Content 0.2.0 and All-in-One WP Migration remain active.
+- Reading settings confirmed the intended homepage and `Discourage search engines from indexing this site` checked. Unauthenticated public HTTP requests return 401 with Basic realm “Authorization Required”; logged-in Edge can view the site. These existing protections were not removed, so this is not an unrestricted public launch.
+- A subsequent real form test passed submission, private storage and mail-transport acceptance (see checkpoint above); recipient inbox delivery is still unverified. A new full responsive/device audit and editor walkthrough remain outstanding. Existing draft policies, illustrative cases, Shop placeholder and default content remain for launch review.
+- Detailed private result: `artifacts/migration-20261110/IMPORT-RESULT.md`, copied into the Downloads migration folder. No source design change or GitHub deployment was performed.
+
+## Migration preparation — 10 November (historical pre-import checkpoint)
+
+- Started the existing Colima/Docker site without reseeding; installed All-in-One WP Migration 7.113 locally and exported the actual WordPress source using its standard file-export workflow.
+- Private deliverable: `~/Downloads/TechCloud WordPress Migration - 2026-11-10/techcloud-wordpress-20261110.wpress` (4,025,428 bytes). Import notes, SHA-256 checksum and verification report accompany it. Working backups/manifests are under ignored `artifacts/migration-20261110/`; never commit these database-bearing files.
+- Verified whole-archive CRC and all 37 file CRCs. All 32 theme/content-plugin files byte-match the source, including hero video and all assets. Navigation, motion, services and client-brief checks passed. No restore rehearsal or target rendering/mail test yet.
+- Edge destination: WordPress 7.1.4, Twenty Twenty-Five, one published page and default Hello world post/comment. Migration plugin is active; Import screen shows a 256 MB host upload limit. No import was started and no destination backup was taken.
+- Export includes source users, 13 published pages (including Sample Page), four illustrative case studies and no enquiries. Spam, revisions and inactive plugins/themes are excluded. Source retains `blog_public=0`; static-preview expiry is not included.
+- Before later import, take/download a current destination backup and plan login continuity: a full import replaces destination users with source users. Source credentials remain in the ignored `.env`. Follow the private `IMPORT-NOTES.md` for import and launch checks, including draft policies/case studies/shop, default content, mail, responsive QA and indexing.
+- Local site remains running at port 8129. No GitHub Pages deployment or preview renewal was performed. Earlier untouched-production statements below are historical.
 
 ## Restart checkpoint — 9 November
 

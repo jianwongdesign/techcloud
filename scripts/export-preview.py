@@ -10,6 +10,7 @@ import json
 import os
 import re
 import shutil
+import math
 from preview_expiry import guard
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,14 @@ def rewrite_url(value, current):
         value = value[len(BASE):]
     if value.startswith('/wp-content/themes/techcloud/assets/'):
         value = '/assets/' + value.split('/assets/', 1)[1]
+    if value.startswith('/wp-content/uploads/'):
+        upload_path = urlsplit(value).path
+        target = OUT / 'assets/uploads' / upload_path.split('/uploads/', 1)[1]
+        if not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with urlopen(BASE + upload_path, timeout=20) as response:
+                target.write_bytes(response.read())
+        value = '/assets/uploads/' + value.split('/uploads/', 1)[1]
     if not value.startswith('/'):
         return value
     parts = urlsplit(value)
@@ -53,6 +62,24 @@ for page in pages:
 routes.append('/case-studies/')
 cases = json.loads(fetch('/wp-json/wp/v2/tc_case?per_page=100'))
 routes += [urlsplit(case['link']).path for case in cases]
+# Export every post and numbered listing page, including sites with >100 posts.
+posts = []
+post_page = 1
+while True:
+    try:
+        batch = json.loads(fetch(f'/wp-json/wp/v2/posts?per_page=100&page={post_page}'))
+    except HTTPError as error:
+        # WordPress uses this error after an exact multiple of 100 posts.
+        if error.code == 400 and post_page > 1 and json.loads(error.read()).get('code') == 'rest_post_invalid_page_number':
+            break
+        raise
+    posts.extend(batch)
+    if len(batch) < 100:
+        break
+    post_page += 1
+routes += [urlsplit(post['link']).path for post in posts]
+if any(page['slug'] == 'blog' for page in pages):
+    routes += [f'/blog/page/{number}/' for number in range(2, math.ceil(len(posts) / 6) + 1)]
 OUT.mkdir(exist_ok=True)
 # This directory is generated only. Rebuild deterministically, including removals.
 for child in OUT.iterdir():
@@ -84,19 +111,29 @@ def export(route, source, destination):
         return form
     content = re.sub(r'<form\b[^>]*data-contact-form\b[^>]*>.*?</form>', preview_form, content, flags=re.S)
     content = re.sub(r'\b(href|src|poster|data-src)=("|\')(.*?)\2', lambda m: f'{m[1]}={m[2]}{html.escape(rewrite_url(m[3], destination.parent), quote=True)}{m[2]}', content)
+    def rewrite_srcset(match):
+        candidates = []
+        for candidate in html.unescape(match[2]).split(','):
+            parts = candidate.strip().split()
+            if parts:
+                parts[0] = rewrite_url(parts[0], destination.parent)
+                candidates.append(' '.join(parts))
+        return 'srcset=' + match[1] + html.escape(', '.join(candidates), quote=True) + match[1]
+    content = re.sub(r'\bsrcset=("|\')(.*?)\1', rewrite_srcset, content)
     def asset(name):
         digest = hashlib.sha256((OUT / 'assets' / name).read_bytes()).hexdigest()[:12]
         return rewrite_url('/assets/' + name + '?v=' + digest, destination.parent)
     favicon = asset('favicon.svg')
     css = asset('site.css')
     rich_css = asset('rich.css')
+    blog_css = '<link rel="stylesheet" href="' + asset('blog.css') + '">' if 'blog.css' in source else ''
     js = asset('site.js')
     guard_js = asset('preview-guard.js')
     expiry_guard = guard()
     notice = '<div class="preview-notice">TechCloud · Design preview · Content for review</div>'
     base_tag = '<base href="/techcloud/">' if route == '/404.html' else ''
     document = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><script>{expiry_guard}</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="{description}"><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}"><style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
+<html lang="en"><head><meta charset="utf-8"><script>{expiry_guard}</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">{base_tag}<title>{title} · Design preview</title><meta name="description" content="{description}"><link rel="icon" type="image/svg+xml" sizes="any" href="{favicon}"><link rel="stylesheet" href="{css}"><link rel="stylesheet" href="{rich_css}">{blog_css}<style>.preview-notice{{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}}body{{-webkit-user-select:none;user-select:none}}input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}img,video{{-webkit-user-drag:none}}</style></head>
 <body{body.group(1)}>{notice}{content}<script src="{js}" defer></script><script src="{guard_js}" defer></script></body></html>'''
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(re.sub(r'[ \t]+$', '', document, flags=re.M))

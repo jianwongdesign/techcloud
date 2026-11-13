@@ -20,8 +20,9 @@ with tempfile.TemporaryDirectory() as folder:
     # Rebuild the same directory to confirm old media really disappears.
     assert module.build(output, DEADLINE) == 'expired'
     pages = list(output.rglob('*.html'))
-    assert len(pages) == 18
+    source = Path(__file__).resolve().parents[1] / 'preview'
+    assert {p.relative_to(output) for p in pages} == {p.relative_to(source) for p in source.rglob('*.html')}
     assert not (output / 'assets').exists()
     assert all('This preview has expired.' in p.read_text() for p in pages)
     assert all('<script' not in p.read_text() and '<iframe' not in p.read_text() for p in pages)
-print('PASS: exact deadline, active export, all 18 expired routes, and removal of published site assets.')
+print(f'PASS: exact deadline, active export, all {len(pages)} expired routes, and removal of published site assets.')

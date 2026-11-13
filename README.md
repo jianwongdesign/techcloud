@@ -85,7 +85,7 @@ Local integration checks intercept mail and remove test records:
 
 ## Production boundary
 
-**No production access or deployment has been performed.** Install `theme/techcloud` as a theme and `plugins/techcloud-content` as a plugin on the agreed WordPress staging environment first. `scripts/seed.php` is deliberately localhost-only and will not overwrite existing seeded content.
+**Imported to www.techcloud.sg on 10 November 2026.** A verified destination backup was downloaded before the All-in-One WP Migration import. WordPress reported success; source administrator login, saved permalinks and key page routes were checked in Edge. The source login is `techcloud-admin` with its existing password in ignored `.env`. Hosting HTTP Basic protection and discouraged search indexing remain enabled. See `HANDOFF.md` for evidence, private backup locations and remaining launch checks. `scripts/seed.php` remains localhost-only.
 
 Before launch: approve copy and visual direction, confirm business details/shop destination, replace or remove the four clearly labelled illustrative case studies, migrate content, test editing on the target WordPress instance, configure SEO/indexing for production, exclude Contact from full-page caching, and configure/test mail delivery and enquiry retention on the target hosting. No testimonials, certifications, service levels, client results, or response-time guarantees have been invented.
 
@@ -106,3 +106,7 @@ The five client drafts are stored as structured website copy in `scripts/client-
 `refine-brief-layout.php` then groups the existing service scope blocks into introductions and feature lists without altering their text, retaining the previous native content in `_tc_before_brief_layout`. The four brief service pages use split desktop introductions, consistent scope rows and bounded image crops. Consultation form headings are subordinate to the supplied section headings. These layouts stack on phones; all client copy remains editable in native blocks.
 
 The native page title, excerpt and blocks edit the H1, hero introduction and body. A TechCloud search/service-card meta box edits SEO titles, descriptions and compact selector text. Existing URLs are retained and brief links are mapped to them. Run `python3 scripts/check-client-brief.py` after export to check supplied copy coverage, SEO descriptions, FAQ counts and safe forms. See `docs/content-sources.md` for the exact mapping and missing source modules.
+
+## Blog design review
+
+The `feature/blog-design` branch adds `/blog/`, native WordPress article templates, pagination, Related Blogs and footer navigation. Review locally at http://localhost:8129/blog/. See [blog design and migration notes](docs/BLOG-DESIGN.md) for setup and checks. Sample posts are local review fixtures; live migration is deferred until access is supplied. The existing public preview expiry has not been extended.

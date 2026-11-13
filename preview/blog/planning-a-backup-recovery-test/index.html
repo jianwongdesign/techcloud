@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><script>// Inlined before page content by the exporter. This is a review limit, not authentication.
+(() => {
+  const deadline = Date.parse("2026-11-05T10:36:19Z");
+  const markup = "<style>html,body{margin:0;min-height:100%;background:#f7f8fb;color:#202b3e;font-family:Arial,sans-serif}*{box-sizing:border-box}.preview-lock{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:720px;margin:auto;padding:48px 28px}.preview-lock p{font-size:17px;line-height:1.7;max-width:48ch}.preview-lock h1{font-size:clamp(34px,7vw,56px);line-height:1.08;letter-spacing:-.04em;margin:22px 0 8px}.preview-lock span{color:#33398d;font-size:12px;letter-spacing:.14em;font-weight:700}.preview-lock a{color:#33398d;font-weight:700;display:inline-block;padding:14px 0}</style><main class=\"preview-lock\"><span>TECHCLOUD \u00b7 DESIGN PREVIEW</span><h1>This preview has expired.</h1><p>The review period has ended. Please contact AdCendes to arrange access to the latest preview.</p><a href=\"https://adcendes.com.sg/\">Contact AdCendes \u2197</a></main>";
+  let timer;
+  let locked = false;
+  function lock() {
+    if (!document.body) {
+      document.documentElement.hidden = true;
+      document.addEventListener('DOMContentLoaded', lock, { once: true });
+      return;
+    }
+    if (locked) return;
+    locked = true;
+    clearTimeout(timer);
+    document.querySelectorAll('video').forEach(video => video.pause());
+    document.head.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => node.remove());
+    document.body.innerHTML = markup;
+    document.body.removeAttribute('class');
+    document.documentElement.hidden = false;
+    document.title = 'Preview expired · TechCloud';
+  }
+  function check() {
+    clearTimeout(timer);
+    const remaining = deadline - Date.now();
+    if (!Number.isFinite(remaining) || remaining <= 0) lock();
+    else timer = setTimeout(check, Math.min(remaining, 60000));
+  }
+  check();
+  window.addEventListener('pageshow', check);
+  window.addEventListener('focus', check);
+  document.addEventListener('visibilitychange', check);
+})();
+</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Backups are only the beginning: planning a recovery test &#8211; TechCloud · Design preview</title><meta name="description" content="TechCloud custom WordPress website design preview."><link rel="icon" type="image/svg+xml" sizes="any" href="../../assets/favicon.svg?v=fe02aececf8e"><link rel="stylesheet" href="../../assets/site.css?v=d35efbe0d112"><link rel="stylesheet" href="../../assets/rich.css?v=8c82d8887a72"><link rel="stylesheet" href="../../assets/blog.css?v=dfe4d61aa56c"><style>.preview-notice{text-align:center;background:#172135;color:#e1e7f1;font:10px/1.6 Manrope,sans-serif;letter-spacing:.05em;padding:7px 16px}body{-webkit-user-select:none;user-select:none}input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}img,video{-webkit-user-drag:none}</style></head>
+<body id="top" class="wp-singular post-template-default single single-post postid-83 single-format-standard wp-embed-responsive wp-theme-techcloud"><div class="preview-notice">TechCloud · Design preview · Content for review</div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="site-header-shell">
+<header class="site-header wrap">
+    <a class="brand" href="../../" aria-label="TechCloud home"><img src="../../assets/logo.png" width="2560" height="1158" alt="TechCloud"></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list"><li><a href="../../">Home</a></li><li><a href="../../services/">Services</a></li><li><a href="../../case-studies/">Case studies</a></li><li><a href="../../contact/">Contact</a></li></ul>        <a class="shop-link" href="../../shop/">Shop <svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+    </nav>
+</header>
+</div>
+<span class="scroll-top-marker" aria-hidden="true"></span>
+<main id="main" class="blog-single wrap">
+    <article class="blog-article post-83 post type-post status-publish format-standard has-post-thumbnail hentry category-business-continuity">
+        <a class="blog-back" href="../">← Back to blog</a>
+        <header class="blog-hero">
+            <div class="blog-hero-media"><img width="960" height="540" src="../../assets/uploads/2026/10/managed-it-poster.webp" class="blog-image wp-post-image" alt="" loading="eager" decoding="async" fetchpriority="high" srcset="../../assets/uploads/2026/10/managed-it-poster.webp 960w, ../../assets/uploads/2026/10/managed-it-poster-300x169.webp 300w, ../../assets/uploads/2026/10/managed-it-poster-768x432.webp 768w" sizes="(max-width: 960px) 100vw, 960px" /></div>
+            <div class="blog-hero-copy">
+                <span class="eyebrow">TechCloud insights</span>
+                <h1>Backups are only the beginning: planning a recovery test</h1>
+                <time class="blog-date" datetime="2026-10-19T09:00:00+08:00">19 October 2026</time>
+            </div>
+        </header>
+        <div class="blog-body">
+            <p class="wp-block-paragraph"><em>Sample article for design review. Final TechCloud blog content will be imported separately.</em></p><p class="wp-block-paragraph">A backup is more useful when your team knows how to restore it. Make time to check the process before you need it.</p><h2 class="wp-block-heading">Start with your business</h2><p class="wp-block-paragraph">Before choosing a solution, make a clear picture of how your team works today. Involve the people who use the systems every day and record the issues they want to resolve.</p><h2 class="wp-block-heading">Make the scope clear</h2><p class="wp-block-paragraph">Write down what needs to happen, who is responsible and which dependencies could affect the work. Agree on a practical sequence and a way to track progress.</p><h2 class="wp-block-heading">Plan the handover</h2><p class="wp-block-paragraph">Keep the relevant information together and make sure your team knows where to find help. Review the result with the people who will use it and record any follow-up work.</p><blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><p class="wp-block-paragraph">A useful plan is one your team can find, understand and put into practice.</p></blockquote>        </div>
+    </article>
+                <section class="blog-related" aria-labelledby="related-blogs-title">
+            <h2 id="related-blogs-title">Related Blogs</h2>
+            <div class="blog-grid">    <article class="blog-card post-77 post type-post status-publish format-standard has-post-thumbnail hentry category-business-continuity">
+        <a class="blog-card-link" href="../disaster-recovery-planning-5-step-emergency-plan-for-smes/">
+            <div class="blog-card-media"><img width="1024" height="683" src="../../assets/uploads/2026/10/infrastructure-1024x683.webp" class="blog-image wp-post-image" alt="" loading="lazy" decoding="async" srcset="../../assets/uploads/2026/10/infrastructure-1024x683.webp 1024w, ../../assets/uploads/2026/10/infrastructure-300x200.webp 300w, ../../assets/uploads/2026/10/infrastructure-768x512.webp 768w, ../../assets/uploads/2026/10/infrastructure.webp 1536w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></div>
+            <div class="blog-card-copy">
+                <time class="blog-date" datetime="2026-10-28T09:00:00+08:00">28 October 2026</time>
+                <h3>Disaster Recovery Planning: 5-Step Emergency Plan for SMEs</h3>
+                <p>A clear plan helps your team respond when everyday systems are interrupted. Start with the people, priorities and information you depend on.</p>
+                <span class="blog-card-more">Read article <span aria-hidden="true"><svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></span>
+            </div>
+        </a>
+    </article>
+        <article class="blog-card post-89 post type-post status-publish format-standard has-post-thumbnail hentry category-business-continuity">
+        <a class="blog-card-link" href="../keeping-your-recovery-plan-up-to-date/">
+            <div class="blog-card-media"><img width="1024" height="683" src="../../assets/uploads/2026/10/infrastructure-1-1024x683.webp" class="blog-image wp-post-image" alt="" loading="lazy" decoding="async" srcset="../../assets/uploads/2026/10/infrastructure-1-1024x683.webp 1024w, ../../assets/uploads/2026/10/infrastructure-1-300x200.webp 300w, ../../assets/uploads/2026/10/infrastructure-1-768x512.webp 768w, ../../assets/uploads/2026/10/infrastructure-1.webp 1536w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></div>
+            <div class="blog-card-copy">
+                <time class="blog-date" datetime="2026-10-10T09:00:00+08:00">10 October 2026</time>
+                <h3>Keeping your recovery plan up to date</h3>
+                <p>People, suppliers and systems change. A regular review helps keep the details in your recovery plan useful.</p>
+                <span class="blog-card-more">Read article <span aria-hidden="true"><svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></span>
+            </div>
+        </a>
+    </article>
+        <article class="blog-card post-79 post type-post status-publish format-standard has-post-thumbnail hentry category-it-support">
+        <a class="blog-card-link" href="../choosing-a-managed-it-support-partner/">
+            <div class="blog-card-media"><img width="960" height="540" src="../../assets/uploads/2026/10/support-poster.webp" class="blog-image wp-post-image" alt="" loading="lazy" decoding="async" srcset="../../assets/uploads/2026/10/support-poster.webp 960w, ../../assets/uploads/2026/10/support-poster-300x169.webp 300w, ../../assets/uploads/2026/10/support-poster-768x432.webp 768w" sizes="auto, (max-width: 960px) 100vw, 960px" /></div>
+            <div class="blog-card-copy">
+                <time class="blog-date" datetime="2026-10-25T09:00:00+08:00">25 October 2026</time>
+                <h3>What to look for in a managed IT support partner</h3>
+                <p>The right support starts with an understanding of your team. These questions can help you shape a useful first conversation.</p>
+                <span class="blog-card-more">Read article <span aria-hidden="true"><svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></span>
+            </div>
+        </a>
+    </article>
+    </div>
+        </section>
+            </main>
+<footer class="site-footer footer-expanded">
+    <div class="wrap">
+        <div class="footer-main">
+            <div class="footer-contact">
+                <h2>Talk to TechCloud.</h2>
+                <p>IT support, a new project or extra hands for your team. Tell us what you need.</p>
+                <div class="footer-actions">
+                    <a class="button footer-button-primary" href="../../contact/#contact-form">Send an enquiry <svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+                    <a class="button footer-button-secondary" href="tel:+6560496060">Call +65 6049 6060</a>
+                </div>
+                <a class="footer-email" href="mailto:hello@techcloud.sg">hello@techcloud.sg <svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+            </div>
+            <div class="footer-location">
+                <iframe class="footer-map" src="https://maps.google.com/maps?hl=en&amp;q=629%20Aljunied%20Road%2C%20Cititech%20Industrial%20Building%2C%20%2303-03%2C%20Singapore%20389838&amp;z=16&amp;output=embed" title="TechCloud office location at Cititech Industrial Building" width="640" height="260" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="footer-address"><p>629 Aljunied Road, Cititech Industrial Building, #03-03, Singapore 389838</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=629%20Aljunied%20Road%2C%20Cititech%20Industrial%20Building%2C%20%2303-03%2C%20Singapore%20389838" target="_blank" rel="noopener noreferrer nofollow">Open in Maps <svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+            </div>
+        </div>
+        <div class="footer-navigation">
+            <a class="footer-wordmark" href="../../" aria-label="TechCloud home"><img src="../../assets/logo.png" width="2560" height="1158" alt="TechCloud" loading="lazy" decoding="async"></a>
+            <nav aria-label="Footer navigation"><a href="../../services/">Services</a><a href="../../case-studies/">Case studies</a><a href="../">Blog</a><a href="../../contact/">Contact</a><a href="../../shop/">Shop <svg class="arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></nav>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 TechCloud Private Limited.</span>
+            <nav class="footer-legal" aria-label="Website policies"><a href="../../terms-and-conditions/">Terms &amp; Conditions</a><a href="../../privacy-policy/">Privacy Policy</a><a href="../../cookies/">Cookies</a></nav>
+            <a class="footer-credit" href="https://adcendes.com.sg/" target="_blank" rel="noopener noreferrer nofollow">Designed by AdCendes</a>
+        </div>
+    </div>
+</footer>
+<a class="back-to-top" href="#top" aria-label="Scroll to top" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a>
+
+
+
+
+<script src="../../assets/site.js?v=6e3f4ef430ab" defer></script><script src="../../assets/preview-guard.js?v=d0b854fa4a36" defer></script></body></html>
