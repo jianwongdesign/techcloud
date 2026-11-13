@@ -1,6 +1,6 @@
 # Blog design — 13 November 2026
 
-Built on `feature/blog-design` for review. No production files, posts, accounts or settings were changed. The existing GitHub Pages preview deadline was not extended.
+Built on `feature/blog-design` and merged into `main` for the requested shareable review. No production files, posts, accounts or settings were changed. The GitHub Pages review is available at https://jianwongdesign.github.io/techcloud/blog/ until 16 November 2026, 11:30 am Singapore/Malaysia.
 
 ## Review locally
 

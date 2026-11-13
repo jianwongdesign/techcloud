@@ -109,4 +109,4 @@ The native page title, excerpt and blocks edit the H1, hero introduction and bod
 
 ## Blog design review
 
-The `feature/blog-design` branch adds `/blog/`, native WordPress article templates, pagination, Related Blogs and footer navigation. Review locally at http://localhost:8129/blog/. See [blog design and migration notes](docs/BLOG-DESIGN.md) for setup and checks. Sample posts are local review fixtures; live migration is deferred until access is supplied. The existing public preview expiry has not been extended.
+The `feature/blog-design` branch adds `/blog/`, native WordPress article templates, pagination, Related Blogs and footer navigation. Review locally at http://localhost:8129/blog/. See [blog design and migration notes](docs/BLOG-DESIGN.md) for setup and checks. Sample posts are local review fixtures; live migration is deferred until access is supplied. Shareable review: https://jianwongdesign.github.io/techcloud/blog/ (until 16 November 2026, 11:30 am Singapore/Malaysia).
