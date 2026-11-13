@@ -1,6 +1,17 @@
 # TechCloud — premium custom-theme preview
 
-Updated 13 November 2026.
+Updated 14 November 2026.
+
+## Restart checkpoint — 14 November
+
+- Before this documentation checkpoint, local `main` and `origin/main` both matched `6478eb1afa96a44d072c2f367620866c68820ad6`; the working tree was clean. Blog design, exported review pages and prepared white-background favicon are committed. This checkpoint introduces no design or production changes.
+- The public blog listing was fetched today and byte-matched `preview/blog/index.html`. The local blog route/pagination/related-post checks and all 27 static-page checks passed. The full responsive review and 72-file publication verification from 13 November remain the latest comprehensive checks; they were not repeated today.
+- Local WordPress and MariaDB are running at http://localhost:8129. Preserve the Docker volumes and ignored `.env`; do not reseed or restore the old migration archive.
+- Resume in `/Users/jianwong/project/techcloud`: read this file and `docs/BLOG-DESIGN.md`, run `git status --short --branch` and `git pull --ff-only` on `main`. If Docker is stopped, run `colima start`; then `docker-compose up -d wordpress` to reopen the existing site. Review at http://localhost:8129/blog/.
+- Next step: collect team design feedback and working live WordPress access. Live blog/fav-icon changes remain pending. Deploy the reviewed theme changes and configure the posts page/permalinks after checking the current live site; preserve real posts, users and enquiries. Never import the seven local sample articles or the whole local database to production.
+- The original live admin password was rejected; obtain the new account/access from the team rather than retrying it. Credentials and SQL/`.wpress` backups remain local and ignored by Git.
+- The current review policy is still `2026-11-16T03:30:00Z`; no expiry change was made for this restart. The user's last request about sharing concerned a simple viewing message without availability wording. Recheck the actual preview before sharing later.
+- Detailed implementation/migration notes: `docs/BLOG-DESIGN.md`. Local private evidence/backups: `artifacts/blog-20261113/`, `artifacts/favicon-20261111/`, and `artifacts/migration-20261110/`.
 
 ## Shareable blog review — 13 November
 
