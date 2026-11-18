@@ -2,7 +2,7 @@
 /**
  * Plugin Name: TechCloud Content
  * Description: Case studies and private contact enquiries for TechCloud's custom theme.
- * Version: 0.2.0
+ * Version: 0.2.1
  */
 defined('ABSPATH') || exit;
 function tc_register_content() {

@@ -1,5 +1,19 @@
 # Blog design — 13 November 2026
 
+## Separate Case Studies restored — 16 November 2026
+
+The user requested Case Studies back. Production again serves `/case-studies/` and its four original illustrative detail pages without redirects. Both Case studies and Blog appear in header/footer navigation; the homepage uses its original case-study feed. The eight Blog posts, Microsoft outage article, unique featured images and 6/2 pagination are unchanged. No content was duplicated. The three-file theme restoration passed public HTTP/content checks and desktop, tablet and phone spot checks. See the latest `HANDOFF.md` entry and `artifacts/restore-cases-20261116/RESULT.md`. This supersedes the shared-section decision below; the static preview remains an older snapshot.
+
+## Live publication — 15 November 2026
+
+The user subsequently clarified that Case studies and Blog should be one section. Production now has one **Blog** navigation destination, homepage cards from the same Posts feed, a `/case-studies/` → `/blog/` redirect and four legacy-example redirects to the corresponding blog articles. The old `tc_case` records remain saved; future case studies belong in native Posts alongside other articles. The shared feed still contains eight posts with 6/2 pagination. The three-file theme update and redirects passed public HTTP and desktop/phone/tablet checks. The static review below has not been regenerated to reflect this live change.
+
+Later the same day, the requested Microsoft outage case study was published at https://techcloud.sg/blog/microsoft-365-outage-temporary-email-continuity/. It uses verified incident information and a clearly labelled proposed response. Three new Higgsfield illustrations added its own hero and replaced the two repeated blog images, using 8.25 of the authorized 30 credits. There are now eight posts, eight distinct featured images and 6/2 pagination. Desktop, phone and tablet spot checks and anonymous route/canonical/related-link checks passed. See the newest `HANDOFF.md` entry and `docs/higgsfield-blog-budget-20261115.json`.
+
+The user explicitly approved the seven preview articles as new live blog content. They are now published at https://techcloud.sg/blog/ with the sample disclaimers removed, current publication dates, original slugs, featured images, 6/1 pagination and related articles. This approval supersedes the sample-only restriction below for this completed publication; the local fixture seeder remains localhost-only. The normal theme update and a scoped WXR import preserved existing live users, pages and enquiries. No local database was restored. See `HANDOFF.md` and the ignored `artifacts/blog-live-20261115/RESULT.md` for backup, verification and rollback details.
+
+The notes below describe the original design-review phase.
+
 Built on `feature/blog-design` and merged into `main` for the requested shareable review. No production files, posts, accounts or settings were changed. The GitHub Pages review is available at https://jianwongdesign.github.io/techcloud/blog/ until 16 November 2026, 11:30 am Singapore/Malaysia.
 
 ## Review locally

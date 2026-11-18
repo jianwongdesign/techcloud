@@ -15,6 +15,31 @@ add_action('init', function () {
 function tc_enquiry_email() {
     return sanitize_email(get_theme_mod('tc_email', 'hello@techcloud.sg'));
 }
+function tc_enquiry_bcc() {
+    $email = get_option('tc_enquiry_bcc', '');
+    return is_string($email) && is_email($email) ? $email : '';
+}
+function tc_enquiry_sanitize_bcc($value) {
+    $email = is_string($value) ? trim($value) : '';
+    if ($email === '' || is_email($email)) return $email;
+    add_settings_error('tc_enquiry_bcc', 'invalid_bcc', 'Enter one valid BCC email address, or leave it blank.');
+    return tc_enquiry_bcc();
+}
+add_action('admin_init', function () {
+    register_setting('tc_enquiry_email_settings', 'tc_enquiry_bcc', ['type' => 'string', 'sanitize_callback' => 'tc_enquiry_sanitize_bcc', 'default' => '']);
+});
+add_action('admin_menu', function () {
+    add_submenu_page('edit.php?post_type=tc_enquiry', 'Enquiry email settings', 'Email settings', 'manage_options', 'tc-enquiry-email', function () {
+        if (!current_user_can('manage_options')) return;
+        echo '<div class="wrap"><h1>Enquiry email settings</h1>';
+        settings_errors();
+        echo '<p>Contact-form notifications are sent to <strong>' . esc_html(tc_enquiry_email()) . '</strong>.</p><form action="options.php" method="post">';
+        settings_fields('tc_enquiry_email_settings');
+        echo '<table class="form-table"><tr><th scope="row"><label for="tc-enquiry-bcc">BCC email</label></th><td><input type="email" class="regular-text" id="tc-enquiry-bcc" name="tc_enquiry_bcc" value="' . esc_attr(tc_enquiry_bcc()) . '"><p class="description">Receive a hidden copy of each contact-form notification. Leave blank to disable.</p></td></tr></table>';
+        submit_button();
+        echo '</form></div>';
+    });
+});
 function tc_enquiry_services() {
     return ['managed-it' => 'Managed IT services', 'end-user-support' => 'End-user IT support', 'staffing' => 'IT staffing', 'project-management' => 'Project management', 'infrastructure' => 'IT installation & infrastructure', 'not-sure' => 'Not sure yet'];
 }
@@ -64,7 +89,11 @@ function tc_process_enquiry($raw, $ip) {
     set_transient($rate_key, ['count' => ($rate['count'] ?? 0) + 1, 'last' => time()], HOUR_IN_SECONDS);
     $service = tc_enquiry_services()[$values['service']];
     $message = "New website enquiry\n\nName: {$values['name']}\nEmail: {$values['email']}\nCompany: {$values['company']}\nPhone: {$values['phone']}\nService: {$service}\n\n{$values['message']}\n\nView in WordPress: " . admin_url('post.php?post=' . $id . '&action=edit');
-    $sent = wp_mail(tc_enquiry_email(), 'TechCloud website enquiry #' . $id, $message, ['Reply-To: ' . sanitize_email($values['email'])]);
+    $headers = ['Reply-To: ' . sanitize_email($values['email'])];
+    $bcc = tc_enquiry_bcc();
+    if ($bcc) $headers[] = 'Bcc: ' . $bcc;
+    $sent = wp_mail(tc_enquiry_email(), 'TechCloud website enquiry #' . $id, $message, $headers);
+    update_post_meta($id, '_tc_notification_bcc', $bcc);
     update_post_meta($id, '_tc_notification', $sent ? 'Accepted by mail transport' : 'Email notification failed — enquiry retained here');
     return $id;
 }
@@ -122,7 +151,7 @@ add_shortcode('techcloud_contact_form', function () {
 
 add_action('add_meta_boxes_tc_enquiry', function () {
     add_meta_box('tc-enquiry-details', 'Contact details', function ($post) {
-        foreach (['name' => 'Name', 'email' => 'Email', 'company' => 'Company', 'phone' => 'Phone', 'service' => 'Service', 'notification' => 'Notification'] as $key => $label) {
+        foreach (['name' => 'Name', 'email' => 'Email', 'company' => 'Company', 'phone' => 'Phone', 'service' => 'Service', 'notification' => 'Notification', 'notification_bcc' => 'Notification BCC'] as $key => $label) {
             $value = get_post_meta($post->ID, '_tc_' . $key, true);
             if ($key === 'service') $value = tc_enquiry_services()[$value] ?? $value;
             echo '<p><strong>' . esc_html($label) . ':</strong> ' . esc_html($value ?: '—') . '</p>';

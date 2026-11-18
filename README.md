@@ -73,7 +73,9 @@ The footer includes Terms & Conditions, Privacy Policy, Cookies and a linked “
 
 The blue footer includes enquiry and call buttons, email, the configured address, a Google map and directions link. The Contact page uses `[techcloud_contact]` and `[techcloud_contact_form]` in native shortcode blocks.
 
-On WordPress, valid enquiries are stored privately under **Enquiries**, accessible only to administrators. The first-party plugin validates fields, checks a nonce and honeypot, limits repeated submissions and prevents duplicate notifications. It attempts an email notification to the business email in the Customizer; a failed notification does not discard the record. Inbox delivery has not been verified on hosting.
+On WordPress, valid enquiries are stored privately under **Enquiries**, accessible only to administrators. The first-party plugin validates fields, checks a nonce and honeypot, limits repeated submissions and prevents duplicate notifications. It attempts an email notification to the business email in the Customizer; a failed notification does not discard the record. Administrators can set one optional BCC address under **Enquiries → Email settings**. This applies only to contact-form notifications; each private enquiry records the BCC used. The address is stored in WordPress settings, not the public source. Inbox delivery has not been verified on hosting.
+
+Live mail setup as of 18 November 2026: BCC is disabled. **WP Mail Logging → Email Log** records form notification attempts; test enquiry 53007 was verified with no BCC. The official **SMTP2GO** plugin is installed, but sending is disabled pending the client's API key and verified sender configuration. A successful WordPress log entry does not prove inbox delivery. These third-party plugins were installed on production and are not bundled in this repository.
 
 Local integration checks intercept mail and remove test records:
 
@@ -93,7 +95,7 @@ Reference content and asset provenance: [docs/content-sources.md](docs/content-s
 
 ## Three-day review expiry
 
-`preview-policy.json` fixes the preview deadline at **5 November 2026, 6:36:19 pm Singapore/Malaysia time** (`2026-11-05T10:36:19Z`). It does not reset on visits or exports. The inline guard checks first load, open tabs, focus, page restore and visibility changes. After expiry it replaces the site with an AdCendes contact screen.
+`preview-policy.json` fixes the preview deadline at **16 November 2026, 11:30 am Singapore/Malaysia time** (`2026-11-16T03:30:00Z`). This review window has expired. It does not reset on visits or exports. The inline guard checks first load, open tabs, focus, page restore and visibility changes. After expiry it replaces the site with an AdCendes contact screen.
 
 Pages builds go through `scripts/build-pages.py`. At and after the deadline, the published artifact contains only expiry pages for every route and the 404, with no original images, video, fonts or scripts. The GitHub schedule checks every 15 minutes and skips deployment before the deadline. Scheduled runs can be delayed by GitHub; the browser guard provides the immediate display limit using the visitor's clock.
 
@@ -109,4 +111,4 @@ The native page title, excerpt and blocks edit the H1, hero introduction and bod
 
 ## Blog design review
 
-The `feature/blog-design` branch adds `/blog/`, native WordPress article templates, pagination, Related Blogs and footer navigation. Review locally at http://localhost:8129/blog/. See [blog design and migration notes](docs/BLOG-DESIGN.md) for setup and checks. Sample posts are local review fixtures; live migration is deferred until access is supplied. Shareable review: https://jianwongdesign.github.io/techcloud/blog/ (until 16 November 2026, 11:30 am Singapore/Malaysia).
+The blog templates are merged into `main`. Production at https://techcloud.sg/blog/ has eight approved articles, distinct featured images, `/blog/{post-slug}/` URLs and six-post pagination. The separate Case Studies section was restored on 16 November. Review the older local fixtures at http://localhost:8129/blog/; the GitHub Pages review expired on 16 November. See [blog design and migration notes](docs/BLOG-DESIGN.md) and [the current handoff](HANDOFF.md) for publication history and remaining setup. Git pushes do not synchronize the production WordPress database.

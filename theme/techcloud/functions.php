@@ -53,10 +53,18 @@ function tc_shop_url() {
     return str_starts_with($url, '/') ? home_url($url) : $url;
 }
 function tc_default_menu() {
-    $items = ['/' => 'Home', '/services/' => 'Services', '/case-studies/' => 'Case studies', '/contact/' => 'Contact'];
+    $items = ['/' => 'Home', '/services/' => 'Services', '/case-studies/' => 'Case studies', '/blog/' => 'Blog', '/contact/' => 'Contact'];
     echo '<ul class="nav-list">';
     foreach ($items as $path => $label) {
-        $active = $path === '/' ? is_front_page() : ($path === '/case-studies/' ? (is_post_type_archive('tc_case') || is_singular('tc_case')) : is_page(trim($path, '/')));
+        if ($path === '/') {
+            $active = is_front_page();
+        } elseif ($path === '/case-studies/') {
+            $active = is_post_type_archive('tc_case') || is_singular('tc_case');
+        } elseif ($path === '/blog/') {
+            $active = is_home() || is_singular('post') || is_category() || is_tag();
+        } else {
+            $active = is_page(trim($path, '/'));
+        }
         echo '<li><a ' . ($active ? 'aria-current="page" ' : '') . 'href="' . esc_url(home_url($path)) . '">' . esc_html($label) . '</a></li>';
     }
     echo '</ul>';

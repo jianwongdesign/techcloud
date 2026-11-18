@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-15",
+  "scope": "Email continuity case study image and two replacements for duplicated blog featured images",
+  "authorized_cap_credits": 30,
+  "estimated_credits": 8.25,
+  "charged_credits": 8.25,
+  "balance_before": 861.01,
+  "balance_after_jobs": 852.76,
+  "model": "gpt_image_2_6",
+  "settings": { "aspect_ratio": "16:9", "resolution": "2k", "quality": "high", "batch_size": 1, "output_format": "webp" },
+  "jobs": [
+    { "id": "c37d13d5-b3d9-4849-be35-5f402a944dd5", "subject": "email-continuity", "credits": 2.75, "post_id": 53000, "media_id": 52009 },
+    { "id": "932b2473-d27b-42ae-ba37-33015bbbca19", "subject": "device-rollout", "credits": 2.75, "post_id": 52004, "media_id": 52010 },
+    { "id": "4e7477f3-76ae-45f7-956f-ed3686b64ab5", "subject": "recovery-plan-review", "credits": 2.75, "post_id": 52006, "media_id": 52008 }
+  ],
+  "retries": 0,
+  "publication": "https://techcloud.sg/blog/microsoft-365-outage-temporary-email-continuity/",
+  "private_generation_record": "artifacts/email-continuity-20261115/generation-record.json"
+}
