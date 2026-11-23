@@ -1,6 +1,14 @@
 # TechCloud — premium custom-theme preview
 
-Updated 18 November 2026.
+Updated 24 November 2026.
+
+## Live indexing, case study drafts and client sitemap — 24 November
+
+- In production WordPress, all four illustrative Case Studies were moved to Draft. The homepage and [Case Studies page](https://techcloud.sg/case-studies/) now display the existing announcement. All four former detail URLs returned HTTP 404 to logged-out visitors. The eight Blog articles remain published, including the separate Microsoft 365 article.
+- Search engine indexing was enabled under Settings → Reading. After the RunCache purge, all 23 checked public pages returned HTTP 200 without a `noindex` meta tag or response header. The [WordPress XML sitemap](https://techcloud.sg/wp-sitemap.xml) and its four child sitemaps returned HTTP 200.
+- The [client sitemap PDF](output/pdf/TechCloud%20Website%20Sitemap.pdf) links to the live pages and the XML sitemap. A matching copy and the client screenshots are in Downloads. The earlier local XML draft is superseded by the live WordPress sitemap.
+- Ask whether TechCloud wants us to handle Google Search Console. The signed-in account could not access the domain or HTTPS URL-prefix property. Sitemap submission and Google's latest crawl are unverified. The public XML still lists Sample Page, Shop and the policy pages marked as drafts in their copy.
+- These changes were made in the production WordPress database. The local fixture and static preview retain their earlier configuration. The pre-change case records and public verification are stored locally under `artifacts/case-studies-20261124/`.
 
 ## Git checkpoint — 18 November
 

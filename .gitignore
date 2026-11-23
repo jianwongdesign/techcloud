@@ -10,3 +10,6 @@ __pycache__/
 
 # Client source document stays local; only the website copy is published.
 FPD*.docx
+
+# Superseded by WordPress's live XML sitemap.
+/output/xml/TechCloud Draft Sitemap.xml
